@@ -291,7 +291,7 @@ class __TwigTemplate_bde74e090da67d79c21779a1c019119c extends Template
                         </div>
 
                         <div class=\"single-input\">
-                            <input type=\"password\" placeholder=\"Confirmer mot de passe\" required>
+                            <input type=\"text\" placeholder=\"Age\">
                             <i class=\"fas fa-lock\"></i>
                         </div>
 
@@ -999,7 +999,7 @@ class __TwigTemplate_bde74e090da67d79c21779a1c019119c extends Template
                         </div>
 
                         <div class=\"single-input\">
-                            <input type=\"password\" placeholder=\"Confirmer mot de passe\" required>
+                            <input type=\"text\" placeholder=\"Age\">
                             <i class=\"fas fa-lock\"></i>
                         </div>
 
