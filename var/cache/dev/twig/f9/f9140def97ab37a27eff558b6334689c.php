@@ -128,7 +128,7 @@ class __TwigTemplate_a4952c980f2cc4a44779832ddffb9ef8 extends Template
             <div class=\"container\">
                 <div class=\"header-one-wrapper\">
                     <div class=\"left-side-header\">
-                        <a href=\"index.html\" class=\"logo-area\">
+                        <a href=\"#\" class=\"logo-area\">
                                 <img src=\"assets/images/logo/logo-1.png\" alt=\"logo\" width=\"280\" height=\"auto\">
 
                             </a>
@@ -836,7 +836,7 @@ class __TwigTemplate_a4952c980f2cc4a44779832ddffb9ef8 extends Template
             <div class=\"container\">
                 <div class=\"header-one-wrapper\">
                     <div class=\"left-side-header\">
-                        <a href=\"index.html\" class=\"logo-area\">
+                        <a href=\"#\" class=\"logo-area\">
                                 <img src=\"assets/images/logo/logo-1.png\" alt=\"logo\" width=\"280\" height=\"auto\">
 
                             </a>
