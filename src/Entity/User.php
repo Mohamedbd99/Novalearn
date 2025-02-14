@@ -4,9 +4,11 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -14,7 +16,10 @@ class User
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $utilisateur = null;
+    private ?string $role = null;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $id_fils = null;
 
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
@@ -25,10 +30,10 @@ class User
     #[ORM\Column]
     private ?int $age = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $num_tel = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $difficulte = null;
 
     #[ORM\Column(length: 255)]
@@ -38,25 +43,39 @@ class User
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $passsword = null;
+    private ?string $password = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $no = null;
+    private ?string $genre = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $specialite = null;
+
+    // Méthodes de l'interface UserInterface
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUtilisateur(): ?string
+    public function getRole(): ?string
     {
-        return $this->utilisateur;
+        return $this->role;
     }
 
-    public function setUtilisateur(string $utilisateur): static
+    public function getIdFils(): ?int
     {
-        $this->utilisateur = $utilisateur;
+        return $this->id_fils;
+    }
 
+    public function setIdFils(?int $id_fils): self
+    {
+        $this->id_fils = $id_fils;
+        return $this;
+    }
+
+    public function setRole(string $role): static
+    {
+        $this->role = $role;
         return $this;
     }
 
@@ -68,7 +87,6 @@ class User
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -80,7 +98,6 @@ class User
     public function setPrenom(string $prenom): static
     {
         $this->prenom = $prenom;
-
         return $this;
     }
 
@@ -92,7 +109,6 @@ class User
     public function setAge(int $age): static
     {
         $this->age = $age;
-
         return $this;
     }
 
@@ -104,7 +120,6 @@ class User
     public function setNumTel(int $num_tel): static
     {
         $this->num_tel = $num_tel;
-
         return $this;
     }
 
@@ -116,7 +131,6 @@ class User
     public function setDifficulte(string $difficulte): static
     {
         $this->difficulte = $difficulte;
-
         return $this;
     }
 
@@ -128,7 +142,6 @@ class User
     public function setNivDifficulte(string $niv_difficulte): static
     {
         $this->niv_difficulte = $niv_difficulte;
-
         return $this;
     }
 
@@ -140,31 +153,56 @@ class User
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
-    public function getPasssword(): ?string
+    public function getPassword(): ?string
     {
-        return $this->passsword;
+        return $this->password;
     }
 
-    public function setPasssword(string $passsword): static
+    public function setPassword(string $password): static
     {
-        $this->passsword = $passsword;
-
+        $this->password = $password;
         return $this;
     }
 
-    public function getNo(): ?string
+    public function getGenre(): ?string
     {
-        return $this->no;
+        return $this->genre;
     }
 
-    public function setNo(string $no): static
+    public function setGenre(string $genre): static
     {
-        $this->no = $no;
-
+        $this->genre = $genre;
         return $this;
     }
+
+    public function getSpecialite(): ?string
+    {
+        return $this->specialite;
+    }
+
+    public function setSpecialite(string $specialite): static
+    {
+        $this->specialite = $specialite;
+        return $this;
+    }
+
+    // Implémentation de UserInterface
+    public function getRoles(): array
+    {
+        return [$this->role ?? 'ROLE_USER'];
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->email; // Identifiant utilisé pour l'authentification
+    }
+
+    public function eraseCredentials(): void
+    {
+        // Si vous stockez des données sensibles temporaires, effacez-les ici.
+    }
+
 }
