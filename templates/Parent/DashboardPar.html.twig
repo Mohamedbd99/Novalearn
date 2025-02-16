@@ -76,10 +76,17 @@
     <div class="sidebar">
         <div>
             <h2>Menu</h2>
-            <button class="modify-button">Modifier mon compte</button>
+            <li>
+               <a class="nav-link" href="blogsUser">Blog</a>
+            </li>
+             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+        <li><a class="modify-button" href="{{ path('app_profile') }}">Modifier mon compte</a></li>
+        <li>
             <form action="{{ path('app_logout') }}" method="post">
-                <button type="submit" class="logout-button">Se Déconnecter</button>
+                <button type="submit" class="dropdown-item">Se Déconnecter</button>
             </form>
+        </li>
+    </ul>
         </div>
     </div>
     <div class="dashboard">

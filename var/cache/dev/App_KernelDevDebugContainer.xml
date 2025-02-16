@@ -218,11 +218,39 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\AdminController"/>
       </call>
     </service>
+    <service id="App\Controller\BlogController" class="App\Controller\BlogController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\BlogController"/>
+      </call>
+    </service>
+    <service id="App\Controller\BlogsController" class="App\Controller\BlogsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\BlogsController"/>
+      </call>
+    </service>
+    <service id="App\Controller\CoursController" class="App\Controller\CoursController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\CoursController"/>
+      </call>
+    </service>
     <service id="App\Controller\DefaultController" class="App\Controller\DefaultController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\DefaultController"/>
+      </call>
+    </service>
+    <service id="App\Controller\DetailsBlogController" class="App\Controller\DetailsBlogController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\DetailsBlogController"/>
       </call>
     </service>
     <service id="App\Controller\LoginContController" class="App\Controller\LoginContController" public="true" autowire="true" autoconfigure="true">
@@ -253,6 +281,12 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\UserController"/>
       </call>
     </service>
+    <service id="App\Form\BlogType" class="App\Form\BlogType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\CourseType" class="App\Form\CourseType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\FormEnsType" class="App\Form\FormEnsType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -264,6 +298,14 @@
     </service>
     <service id="App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
+    </service>
+    <service id="App\Repository\BlogRepository" class="App\Repository\BlogRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\CourseRepository" class="App\Repository\CourseRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -296,7 +338,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.alQjCTL"/>
+      <argument type="service" id=".service_locator.IJETQAu"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -905,6 +947,8 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\BlogType</argument>
+        <argument>App\Form\CourseType</argument>
         <argument>App\Form\FormEnsType</argument>
         <argument>App\Form\FormMedType</argument>
         <argument>App\Form\FormParType</argument>
@@ -1661,7 +1705,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.alQjCTL"/>
+      <argument type="service" id=".service_locator.IJETQAu"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -1965,7 +2009,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.R1Nnkle"/>
+      <argument type="service" id=".service_locator.KCRDdu4"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -2882,7 +2926,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator._inl0RG"/>
+      <argument type="service" id=".service_locator.oHOy7vw"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4433,9 +4477,21 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BlogController" class="App\Controller\BlogController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BlogController" class="App\Controller\BlogController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\BlogController" class="App\Controller\BlogController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BlogsController" class="App\Controller\BlogsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BlogsController" class="App\Controller\BlogsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\BlogsController" class="App\Controller\BlogsController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CoursController" class="App\Controller\CoursController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CoursController" class="App\Controller\CoursController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CoursController" class="App\Controller\CoursController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\DefaultController" class="App\Controller\DefaultController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\DefaultController" class="App\Controller\DefaultController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\DefaultController" class="App\Controller\DefaultController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\DetailsBlogController" class="App\Controller\DetailsBlogController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\DetailsBlogController" class="App\Controller\DetailsBlogController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\DetailsBlogController" class="App\Controller\DetailsBlogController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LoginContController" class="App\Controller\LoginContController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LoginContController" class="App\Controller\LoginContController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LoginContController" class="App\Controller\LoginContController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4448,6 +4504,10 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\BlogType" class="App\Form\BlogType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\BlogType" class="App\Form\BlogType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CourseType" class="App\Form\CourseType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CourseType" class="App\Form\CourseType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FormEnsType" class="App\Form\FormEnsType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\FormEnsType" class="App\Form\FormEnsType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FormMedType" class="App\Form\FormMedType" autowire="true" abstract="true"/>
@@ -4456,6 +4516,10 @@
     <service id=".abstract.instanceof.App\Form\FormParType" class="App\Form\FormParType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserType" class="App\Form\UserType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\BlogRepository" class="App\Repository\BlogRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\BlogRepository" class="App\Repository\BlogRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CourseRepository" class="App\Repository\CourseRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CourseRepository" class="App\Repository\CourseRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.w7.f4fT" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -4900,19 +4964,70 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
+    <service id=".service_locator.5YMAFtt" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="blogRepository" type="service_closure" id="App\Repository\BlogRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator..TQcBti" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="blog" type="service_closure" id=".errored..service_locator..TQcBti.App\Entity\Blog"/>
+      </argument>
+    </service>
+    <service id=".service_locator.wVePTfL" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="blog" type="service_closure" id=".errored..service_locator.wVePTfL.App\Entity\Blog"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.QkVYtxV" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="courseRepository" type="service_closure" id="App\Repository\CourseRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jqHm011" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="course" type="service_closure" id=".errored..service_locator.jqHm011.App\Entity\Course"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Slsl7X4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="course" type="service_closure" id=".errored..service_locator.Slsl7X4.App\Entity\Course"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
     <service id=".service_locator.rSTd.nA" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.alQjCTL" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.IJETQAu" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::admin" type="service_closure" id=".service_locator.kPUOGb8"/>
         <argument key="App\Controller\AdminController::deleteUser" type="service_closure" id=".service_locator.NjUBG3v"/>
         <argument key="App\Controller\AdminController::editUser" type="service_closure" id=".service_locator.NjUBG3v"/>
         <argument key="App\Controller\AdminController::editUsers" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\BlogController::delete" type="service_closure" id=".service_locator.wVePTfL"/>
+        <argument key="App\Controller\BlogController::edit" type="service_closure" id=".service_locator.wVePTfL"/>
+        <argument key="App\Controller\BlogController::index" type="service_closure" id=".service_locator.5YMAFtt"/>
+        <argument key="App\Controller\BlogController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\BlogController::show" type="service_closure" id=".service_locator..TQcBti"/>
+        <argument key="App\Controller\BlogsController::blog" type="service_closure" id=".service_locator.5YMAFtt"/>
+        <argument key="App\Controller\BlogsController::index" type="service_closure" id=".service_locator.5YMAFtt"/>
+        <argument key="App\Controller\CoursController::add" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CoursController::delete" type="service_closure" id=".service_locator.Slsl7X4"/>
+        <argument key="App\Controller\CoursController::edit" type="service_closure" id=".service_locator.Slsl7X4"/>
+        <argument key="App\Controller\CoursController::index" type="service_closure" id=".service_locator.QkVYtxV"/>
+        <argument key="App\Controller\CoursController::show" type="service_closure" id=".service_locator.jqHm011"/>
+        <argument key="App\Controller\DetailsBlogController::index" type="service_closure" id=".service_locator.5YMAFtt"/>
         <argument key="App\Controller\LoginContController::login" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\SignupController::signup" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\SignupController::signupPar" type="service_closure" id=".service_locator.CsMkqUa"/>
@@ -4928,6 +5043,19 @@
         <argument key="App\Controller\AdminController:deleteUser" type="service_closure" id=".service_locator.NjUBG3v"/>
         <argument key="App\Controller\AdminController:editUser" type="service_closure" id=".service_locator.NjUBG3v"/>
         <argument key="App\Controller\AdminController:editUsers" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\BlogController:delete" type="service_closure" id=".service_locator.wVePTfL"/>
+        <argument key="App\Controller\BlogController:edit" type="service_closure" id=".service_locator.wVePTfL"/>
+        <argument key="App\Controller\BlogController:index" type="service_closure" id=".service_locator.5YMAFtt"/>
+        <argument key="App\Controller\BlogController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\BlogController:show" type="service_closure" id=".service_locator..TQcBti"/>
+        <argument key="App\Controller\BlogsController:blog" type="service_closure" id=".service_locator.5YMAFtt"/>
+        <argument key="App\Controller\BlogsController:index" type="service_closure" id=".service_locator.5YMAFtt"/>
+        <argument key="App\Controller\CoursController:add" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CoursController:delete" type="service_closure" id=".service_locator.Slsl7X4"/>
+        <argument key="App\Controller\CoursController:edit" type="service_closure" id=".service_locator.Slsl7X4"/>
+        <argument key="App\Controller\CoursController:index" type="service_closure" id=".service_locator.QkVYtxV"/>
+        <argument key="App\Controller\CoursController:show" type="service_closure" id=".service_locator.jqHm011"/>
+        <argument key="App\Controller\DetailsBlogController:index" type="service_closure" id=".service_locator.5YMAFtt"/>
         <argument key="App\Controller\LoginContController:login" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\SignupController:signup" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\SignupController:signupPar" type="service_closure" id=".service_locator.CsMkqUa"/>
@@ -5016,9 +5144,11 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.R1Nnkle" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.KCRDdu4" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\BlogType" type="service_closure" id="App\Form\BlogType"/>
+        <argument key="App\Form\CourseType" type="service_closure" id="App\Form\CourseType"/>
         <argument key="App\Form\FormEnsType" type="service_closure" id="App\Form\FormEnsType"/>
         <argument key="App\Form\FormMedType" type="service_closure" id="App\Form\FormMedType"/>
         <argument key="App\Form\FormParType" type="service_closure" id="App\Form\FormParType"/>
@@ -5040,9 +5170,11 @@
         <argument key="doctrine.orm.listeners.pdo_session_handler_schema_listener" type="service_closure" id="doctrine.orm.listeners.pdo_session_handler_schema_listener"/>
       </argument>
     </service>
-    <service id=".service_locator._inl0RG" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.oHOy7vw" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\BlogRepository" type="service_closure" id="App\Repository\BlogRepository"/>
+        <argument key="App\Repository\CourseRepository" type="service_closure" id="App\Repository\CourseRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
@@ -5252,9 +5384,33 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\BlogController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\BlogController"/>
+      <argument>App\Controller\BlogController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\BlogsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\BlogsController"/>
+      <argument>App\Controller\BlogsController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\CoursController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CoursController"/>
+      <argument>App\Controller\CoursController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\DefaultController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\DefaultController"/>
       <argument>App\Controller\DefaultController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\DetailsBlogController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\DetailsBlogController"/>
+      <argument>App\Controller\DetailsBlogController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
@@ -5414,7 +5570,11 @@
         <argument type="collection">
           <argument>App\Kernel</argument>
           <argument>App\Controller\AdminController</argument>
+          <argument>App\Controller\BlogController</argument>
+          <argument>App\Controller\BlogsController</argument>
+          <argument>App\Controller\CoursController</argument>
           <argument>App\Controller\DefaultController</argument>
+          <argument>App\Controller\DetailsBlogController</argument>
           <argument>App\Controller\LoginContController</argument>
           <argument>App\Controller\ProfileController</argument>
           <argument>App\Controller\SignupController</argument>
@@ -5467,6 +5627,18 @@
     <service id="debug.security.event_dispatcher.main.inner" class="Symfony\Component\EventDispatcher\EventDispatcher"/>
     <service id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.y4_Zrx.&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
+    </service>
+    <service id=".errored..service_locator..TQcBti.App\Entity\Blog" class="App\Entity\Blog">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator..TQcBti&quot;: it needs an instance of &quot;App\Entity\Blog&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.wVePTfL.App\Entity\Blog" class="App\Entity\Blog">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.wVePTfL&quot;: it needs an instance of &quot;App\Entity\Blog&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.jqHm011.App\Entity\Course" class="App\Entity\Course">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.jqHm011&quot;: it needs an instance of &quot;App\Entity\Course&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.Slsl7X4.App\Entity\Course" class="App\Entity\Course">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.Slsl7X4&quot;: it needs an instance of &quot;App\Entity\Course&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
@@ -6286,16 +6458,16 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.alQjCTL"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.IJETQAu"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.XDGmiR3" alias=".1_ServiceLocator~crV.Epe"/>
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
     <service id=".service_locator.8IbU9zc" alias=".service_locator.NjUBG3v"/>
-    <service id=".service_locator.gtFHVKV" alias=".service_locator.alQjCTL"/>
+    <service id=".service_locator.gu.L08v" alias=".service_locator.IJETQAu"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.xnV2Oy7" alias=".service_locator.R1Nnkle"/>
+    <service id=".service_locator.LHFekZk" alias=".service_locator.KCRDdu4"/>
     <service id=".service_locator.LMuqDDe" alias=".service_locator.VHsrTPK"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
@@ -6311,6 +6483,12 @@
     <service id=".service_locator.025Wi8b" alias=".service_locator.kPUOGb8"/>
     <service id=".service_locator.SPFAmCQ" alias=".service_locator.NjUBG3v"/>
     <service id=".service_locator.9e2t_lq" alias=".service_locator.CsMkqUa"/>
+    <service id=".service_locator.9GA7Ybb" alias=".service_locator.5YMAFtt"/>
+    <service id=".service_locator.0sAFfyY" alias=".service_locator..TQcBti"/>
+    <service id=".service_locator.2J3O7ND" alias=".service_locator.wVePTfL"/>
+    <service id=".service_locator.HRkK60W" alias=".service_locator.QkVYtxV"/>
+    <service id=".service_locator.QPhu3Rh" alias=".service_locator.jqHm011"/>
+    <service id=".service_locator.OpHR6MG" alias=".service_locator.Slsl7X4"/>
     <service id=".service_locator.7NIAq8D" alias=".service_locator.rSTd.nA"/>
     <service id=".service_locator.GDg2hr7" alias=".service_locator.O2p6Lk7"/>
     <service id=".service_locator.dGUCsbe" alias=".service_locator.oR77BOj"/>

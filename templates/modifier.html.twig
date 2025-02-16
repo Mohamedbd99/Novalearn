@@ -1,0 +1,66 @@
+{% block title %}Modifier un cours{% endblock %}
+
+{% block head %}
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #9c27b0; /* Mauve */
+        }
+
+        .form-container .btn-primary {
+            background-color: #ffeb3b; /* Jaune */
+            color: #fff;
+            border: none;
+        }
+
+        .form-container .btn-primary:hover {
+            background-color: #fdd835; /* Jaune foncé */
+        }
+
+        .form-container .btn-secondary {
+            background-color: #4caf50; /* Vert */
+            color: #fff;
+            border: none;
+        }
+
+        .form-container .btn-secondary:hover {
+            background-color: #388e3c; /* Vert foncé */
+        }
+
+        .form-container a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #9c27b0; /* Mauve */
+            text-decoration: none;
+        }
+
+        .form-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="form-container">
+        <h1>Modifier le cours : {{ course.titre }}</h1>
+
+        {{ form_start(form) }}
+            {{ form_row(form.titre) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.contenu) }}
+            <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+        {{ form_end(form) }}
+
+        <a href="{{ path('app_cours') }}" class="btn btn-secondary">Retour à la liste des cours</a>
+    </div>
+{% endblock %}

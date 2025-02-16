@@ -150,6 +150,9 @@
     <div class="content">
     <h1>Liste des Utilisateurs</h1>
 
+         <form action="{{ path('app_logout') }}" method="post">
+                <button class="btn btn-delete" type="submit" class="dropdown-item">Se Déconnecter</button>
+            </form>
         <a href="{{ path('app_AddParent', {'type': 'parent'}) }}" class="btn btn-ajout">Ajouter un parent</a>
         <h2>Liste des Parents</h2>
         <table>
@@ -184,6 +187,7 @@
 
         
         <a href="{{ path('app_AddUser', {'type': 'eleve'}) }}" class="btn btn-ajout">Ajouter un élève</a>
+
         <h2>Liste des Élèves</h2>
         <table>
             <thead>

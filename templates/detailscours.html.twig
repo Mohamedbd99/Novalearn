@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du cours{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-4">{{ course.titre }}</h1>
+        
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Description :</h5>
+                <p class="card-text">{{ course.description }}</p>
+
+                <h5 class="card-title">Contenu :</h5>
+                <p class="card-text">{{ course.contenu }}</p>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <a href="{{ path('course_edit', { 'id': course.id }) }}" class="btn btn-primary">Modifier</a>
+
+            <form action="{{ path('course_delete', { 'id': course.id }) }}" method="post" style="display:inline;">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ course.id) }}">
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
+
+            <a href="{{ path('app_cours') }}" class="btn btn-secondary">Retour à la liste</a>
+        </div>
+    </div>
+{% endblock %}

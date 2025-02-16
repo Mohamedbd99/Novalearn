@@ -120,25 +120,35 @@ class __TwigTemplate_fb7eb80c167c46f8b6fc95eaf6823d50 extends Template
     <div class=\"sidebar\">
         <div>
             <h2>Menu</h2>
-            <button class=\"modify-button\">Modifier mon compte</button>
+            <li>
+               <a class=\"nav-link\" href=\"blogsUser\">Blog</a>
+            </li>
+             <ul class=\"dropdown-menu dropdown-menu-end\" aria-labelledby=\"userDropdown\">
+        <li><a class=\"modify-button\" href=\"";
+        // line 83
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_profile");
+        yield "\">Modifier mon compte</a></li>
+        <li>
             <form action=\"";
-        // line 80
+        // line 85
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
         yield "\" method=\"post\">
-                <button type=\"submit\" class=\"logout-button\">Se Déconnecter</button>
+                <button type=\"submit\" class=\"dropdown-item\">Se Déconnecter</button>
             </form>
+        </li>
+    </ul>
         </div>
     </div>
     <div class=\"dashboard\">
         <h2>Bienvenue Mr ";
-        // line 86
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 86, $this->source); })()), "nom", [], "any", false, false, false, 86), "html", null, true);
+        // line 93
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 93, $this->source); })()), "nom", [], "any", false, false, false, 93), "html", null, true);
         yield " ";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 86, $this->source); })()), "prenom", [], "any", false, false, false, 86), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 93, $this->source); })()), "prenom", [], "any", false, false, false, 93), "html", null, true);
         yield "!</h2>
         <p>L'ID de votre fils est : <strong>";
-        // line 87
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 87, $this->source); })()), "getIdFils", [], "any", false, false, false, 87), "html", null, true);
+        // line 94
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 94, $this->source); })()), "getIdFils", [], "any", false, false, false, 94), "html", null, true);
         yield "</strong></p>
         
         <div class=\"chart-container\">
@@ -218,7 +228,7 @@ class __TwigTemplate_fb7eb80c167c46f8b6fc95eaf6823d50 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  141 => 87,  135 => 86,  126 => 80,  45 => 1,);
+        return array (  151 => 94,  145 => 93,  134 => 85,  129 => 83,  45 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -301,10 +311,17 @@ class __TwigTemplate_fb7eb80c167c46f8b6fc95eaf6823d50 extends Template
     <div class=\"sidebar\">
         <div>
             <h2>Menu</h2>
-            <button class=\"modify-button\">Modifier mon compte</button>
+            <li>
+               <a class=\"nav-link\" href=\"blogsUser\">Blog</a>
+            </li>
+             <ul class=\"dropdown-menu dropdown-menu-end\" aria-labelledby=\"userDropdown\">
+        <li><a class=\"modify-button\" href=\"{{ path('app_profile') }}\">Modifier mon compte</a></li>
+        <li>
             <form action=\"{{ path('app_logout') }}\" method=\"post\">
-                <button type=\"submit\" class=\"logout-button\">Se Déconnecter</button>
+                <button type=\"submit\" class=\"dropdown-item\">Se Déconnecter</button>
             </form>
+        </li>
+    </ul>
         </div>
     </div>
     <div class=\"dashboard\">

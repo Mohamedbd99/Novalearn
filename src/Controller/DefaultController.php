@@ -37,5 +37,11 @@ class DefaultController extends AbstractController
     {
         return $this->render('home/Courses.html.twig');
     }
+
+    #[Route('/HomeMedecin', name: 'app_HomeMedecin')]
+    public function homeMed(): Response
+    {
+        return $this->render('homeMedecin.html.twig');
+    }
 }
 
