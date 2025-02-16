@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - NovaLearn{% endblock %}
+
+{% block body %}
+<div class="container py-4">
+    <div class="text-center mb-5">
+        <h1 class="display-4 mb-4">Bienvenue sur NovaLearn</h1>
+        <a href="{{ path('app_reclamation_new') }}" class="btn btn-primary btn-lg mb-5">
+            <i class="fas fa-exclamation-circle me-2"></i>
+            Faire une réclamation
+        </a>
+    </div>
+
+    <!-- Classes Section -->
+    <section class="mb-5">
+        <h2 class="text-center mb-4">Nos Classes</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Classe A</h5>
+                        <p class="card-text">Description de la classe A</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Classe B</h5>
+                        <p class="card-text">Description de la classe B</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Classe C</h5>
+                        <p class="card-text">Description de la classe C</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reclamation Button Section -->
+    <section class="text-center py-4">
+        <div class="card bg-light">
+            <div class="card-body">
+                <h3 class="mb-3">Vous avez une réclamation ?</h3>
+                <p class="mb-4">N'hésitez pas à nous faire part de vos préoccupations.</p>
+                <a href="{{ path('app_reclamation_new') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-paper-plane me-2"></i>
+                    Soumettre une réclamation
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
