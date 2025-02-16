@@ -54,17 +54,9 @@
                 <li><a href="event.html">Event</a></li>
                 <li><a href="event-details.html">Event Details</a></li>
                 <li><a href="program-details.html">Program Details</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
             </ul>
         </li>
-
-        <li class="has-dropdown">
-            <a class="nav-link" href="#">Classes</a>
-            <ul class="submenu">
-                <li><a href="course.html">Courses</a></li>
-                <li><a href="course-details.html">Course Details</a></li>
-            </ul>
-        </li>
+         <li><a class="nav-link" href="{{ path('app_blog_index') }}">Dashboard</a></li>
 
         <li><a class="nav-link" href="contact.html">Contact</a></li>
 
@@ -75,9 +67,10 @@
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
         <li><a class="dropdown-item" href="{{ path('app_profile') }}">Gérer le profil</a></li>
-        <li><a class="dropdown-item" href="{{ path('app_blog_index') }}">Dashboard</a></li>
+        <li><form action="{{ path('app_logout') }}" method="post">
+                                     <button type="submit" class="dropdown-item">Se Déconnecter</button>
+                                     </form>    </li>
          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-        <li><a class="dropdown-item" href="{{ path('app_profile') }}">Gérer le profil</a></li>
         <li>
             <form action="{{ path('app_logout') }}" method="post">
                 <button type="submit" class="dropdown-item">Se Déconnecter</button>

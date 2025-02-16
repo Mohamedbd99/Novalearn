@@ -218,6 +218,10 @@ class __TwigTemplate_1cd8772bd88dea860bc9ce8bac0d3329 extends Template
         // line 114
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_blog_new");
         yield "\" class=\"create-btn\">Create new</a>
+     <a href=\"";
+        // line 115
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_HomeMedecin");
+        yield "\" class=\"create-btn\">Retour</a>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -238,7 +242,7 @@ class __TwigTemplate_1cd8772bd88dea860bc9ce8bac0d3329 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  219 => 114,  213 => 110,  204 => 106,  202 => 109,  194 => 102,  190 => 101,  185 => 99,  181 => 98,  177 => 97,  173 => 96,  169 => 95,  165 => 94,  162 => 93,  157 => 92,  66 => 3,  49 => 2,  46 => 1,);
+        return array (  223 => 115,  219 => 114,  213 => 110,  204 => 106,  202 => 109,  194 => 102,  190 => 101,  185 => 99,  181 => 98,  177 => 97,  173 => 96,  169 => 95,  165 => 94,  162 => 93,  157 => 92,  66 => 3,  49 => 2,  46 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -357,6 +361,7 @@ class __TwigTemplate_1cd8772bd88dea860bc9ce8bac0d3329 extends Template
 
     <!-- Bouton pour créer un nouveau blog -->
     <a href=\"{{ path('app_blog_new') }}\" class=\"create-btn\">Create new</a>
+     <a href=\"{{ path('app_HomeMedecin') }}\" class=\"create-btn\">Retour</a>
 {% endblock %}
 ", "blog/index.html.twig", "C:\\Users\\yassi\\Downloads\\Novalearn-master\\Novalearn-master\\templates\\blog\\index.html.twig");
     }

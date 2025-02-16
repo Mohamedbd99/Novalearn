@@ -92,17 +92,12 @@ class __TwigTemplate_5ff8fa20258e184cdd6fa4458f2f2d90 extends Template
                 <li><a href=\"event.html\">Event</a></li>
                 <li><a href=\"event-details.html\">Event Details</a></li>
                 <li><a href=\"program-details.html\">Program Details</a></li>
-                <li><a href=\"pricing.html\">Pricing</a></li>
             </ul>
         </li>
-
-        <li class=\"has-dropdown\">
-            <a class=\"nav-link\" href=\"#\">Classes</a>
-            <ul class=\"submenu\">
-                <li><a href=\"course.html\">Courses</a></li>
-                <li><a href=\"course-details.html\">Course Details</a></li>
-            </ul>
-        </li>
+         <li><a class=\"nav-link\" href=\"";
+        // line 59
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_blog_index");
+        yield "\">Dashboard</a></li>
 
         <li><a class=\"nav-link\" href=\"contact.html\">Contact</a></li>
 
@@ -113,21 +108,19 @@ class __TwigTemplate_5ff8fa20258e184cdd6fa4458f2f2d90 extends Template
     </a>
     <ul class=\"dropdown-menu dropdown-menu-end\" aria-labelledby=\"userDropdown\">
         <li><a class=\"dropdown-item\" href=\"";
-        // line 77
+        // line 69
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_profile");
         yield "\">Gérer le profil</a></li>
-        <li><a class=\"dropdown-item\" href=\"";
-        // line 78
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_blog_index");
-        yield "\">Dashboard</a></li>
+        <li><form action=\"";
+        // line 70
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
+        yield "\" method=\"post\">
+                                     <button type=\"submit\" class=\"dropdown-item\">Se Déconnecter</button>
+                                     </form>    </li>
          <ul class=\"dropdown-menu dropdown-menu-end\" aria-labelledby=\"userDropdown\">
-        <li><a class=\"dropdown-item\" href=\"";
-        // line 80
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_profile");
-        yield "\">Gérer le profil</a></li>
         <li>
             <form action=\"";
-        // line 82
+        // line 75
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
         yield "\" method=\"post\">
                 <button type=\"submit\" class=\"dropdown-item\">Se Déconnecter</button>
@@ -1522,7 +1515,7 @@ class __TwigTemplate_5ff8fa20258e184cdd6fa4458f2f2d90 extends Template
                     <div class=\"modal-body\">
                         <form method=\"post\" action=\"#\">
                             <input type=\"hidden\" name=\"_csrf_token\" value=\"";
-        // line 1474
+        // line 1467
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("authenticate"), "html", null, true);
         yield "\">
 
@@ -1541,7 +1534,7 @@ class __TwigTemplate_5ff8fa20258e184cdd6fa4458f2f2d90 extends Template
                             <button type=\"submit\" class=\"rts-btn btn-primary\">Sign In</button>
 
                             <p class=\"dont-acc mt--20\">Don't Have an Account? <a href=\"";
-        // line 1490
+        // line 1483
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_signup");
         yield "\">Inscription Élève</a> / <a href=\"";
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_signupPar");
@@ -1846,7 +1839,7 @@ class __TwigTemplate_5ff8fa20258e184cdd6fa4458f2f2d90 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  1808 => 11,  1798 => 10,  1781 => 7,  1545 => 1490,  1526 => 1474,  131 => 82,  126 => 80,  121 => 78,  117 => 77,  63 => 25,  61 => 10,  55 => 7,  47 => 1,);
+        return array (  1801 => 11,  1791 => 10,  1774 => 7,  1538 => 1483,  1519 => 1467,  124 => 75,  116 => 70,  112 => 69,  99 => 59,  63 => 25,  61 => 10,  55 => 7,  47 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -1907,17 +1900,9 @@ class __TwigTemplate_5ff8fa20258e184cdd6fa4458f2f2d90 extends Template
                 <li><a href=\"event.html\">Event</a></li>
                 <li><a href=\"event-details.html\">Event Details</a></li>
                 <li><a href=\"program-details.html\">Program Details</a></li>
-                <li><a href=\"pricing.html\">Pricing</a></li>
             </ul>
         </li>
-
-        <li class=\"has-dropdown\">
-            <a class=\"nav-link\" href=\"#\">Classes</a>
-            <ul class=\"submenu\">
-                <li><a href=\"course.html\">Courses</a></li>
-                <li><a href=\"course-details.html\">Course Details</a></li>
-            </ul>
-        </li>
+         <li><a class=\"nav-link\" href=\"{{ path('app_blog_index') }}\">Dashboard</a></li>
 
         <li><a class=\"nav-link\" href=\"contact.html\">Contact</a></li>
 
@@ -1928,9 +1913,10 @@ class __TwigTemplate_5ff8fa20258e184cdd6fa4458f2f2d90 extends Template
     </a>
     <ul class=\"dropdown-menu dropdown-menu-end\" aria-labelledby=\"userDropdown\">
         <li><a class=\"dropdown-item\" href=\"{{ path('app_profile') }}\">Gérer le profil</a></li>
-        <li><a class=\"dropdown-item\" href=\"{{ path('app_blog_index') }}\">Dashboard</a></li>
+        <li><form action=\"{{ path('app_logout') }}\" method=\"post\">
+                                     <button type=\"submit\" class=\"dropdown-item\">Se Déconnecter</button>
+                                     </form>    </li>
          <ul class=\"dropdown-menu dropdown-menu-end\" aria-labelledby=\"userDropdown\">
-        <li><a class=\"dropdown-item\" href=\"{{ path('app_profile') }}\">Gérer le profil</a></li>
         <li>
             <form action=\"{{ path('app_logout') }}\" method=\"post\">
                 <button type=\"submit\" class=\"dropdown-item\">Se Déconnecter</button>
