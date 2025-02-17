@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event Details{% endblock %}
+
+{% block body %}
+    <h1>{{ event.nom }}</h1>
+    <p>{{ event.datetime|date('Y-m-d H:i') }}</p>
+    <p>{{ event.description }}</p>
+    <p>{{ event.lieu }}</p>
+    <img src="{{ asset('uploads/' ~ event.image) }}" alt="Event Image">
+
+    <a href="{{ path('event_edit', {'id': event.id}) }}">Edit</a>
+
+    <form method="post" action="{{ path('event_delete', {'id': event.id}) }}">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}">
+        <button class="btn btn-danger">Delete</button>
+    </form>
+{% endblock %}

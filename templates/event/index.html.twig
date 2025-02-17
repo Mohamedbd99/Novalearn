@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Events{% endblock %}
+
+{% block body %}
+    <h1>Events</h1>
+
+    <ul>
+        {% for event in events %}
+            <li>{{ event.nom }} - {{ event.date|date('Y-m-d H:i') }} - <a href="{{ path('event_show', {'id': event.id}) }}">Voir</a></li>
+        {% else %}
+            <li>No events available</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('event_new') }}">Create new event</a>
+{% endblock %}
