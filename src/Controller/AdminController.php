@@ -16,7 +16,6 @@ class AdminController extends AbstractController
     #[Route('/admin', name: 'app_admin')]
     public function admin(UserRepository $userRepository): Response
     {
-        // Récupérer les utilisateurs triés par rôle
         $parents = $userRepository->findBy(['role' => 'parent']);
         $eleves = $userRepository->findBy(['role' => 'eleve']);
         $enseignants = $userRepository->findBy(['role' => 'enseignant']);
@@ -39,7 +38,6 @@ class AdminController extends AbstractController
             throw $this->createNotFoundException('Utilisateur non trouvé');
         }
 
-        // Création du formulaire
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -78,32 +76,26 @@ public function deleteUser($id, UserRepository $userRepository, EntityManagerInt
 #[Route('/user/edit', name: 'app_edit_users')]
 public function editUsers(Request $request, EntityManagerInterface $entityManager): Response
 {
-    // Récupérer l'utilisateur connecté
     $user = $this->getUser();
 
-    // Si aucun utilisateur n'est connecté, rediriger vers la page de connexion
     if (!$user) {
         return $this->redirectToRoute('app_home');
     }
 
-    // Créer le formulaire pour éditer l'utilisateur
     $form = $this->createForm(UserType::class, $user);
 
-    // Gérer les soumissions du formulaire
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-        // Enregistrer les modifications dans la base de données
+
         $entityManager->flush();
 
-        // Rediriger vers la page de profil après modification
         return $this->redirectToRoute('app_profile');
     }
 
-    // Afficher le formulaire dans la vue
     return $this->render('user/ModifierProf.html.twig', [
         'form' => $form->createView(),
-        'user' => $user, // Passer l'utilisateur pour pré-remplir le formulaire
+        'user' => $user, 
     ]);
 }
 

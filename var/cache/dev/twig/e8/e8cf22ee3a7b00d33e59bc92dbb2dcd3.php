@@ -153,7 +153,7 @@ class __TwigTemplate_9af3098604d2cfd23a91ffcd3755b9b1 extends Template
                                   <li><a class=\"dropdown-item\" href=\"";
         // line 106
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_profile");
-        yield "\">Gérer le profil</a></li>
+        yield "\">Gérer le profil</a></li> 
                             </ul>
                            
                         </nav>
@@ -944,7 +944,7 @@ class __TwigTemplate_9af3098604d2cfd23a91ffcd3755b9b1 extends Template
                                     <a class=\"nav-link\" href=\"contact.html\">Contact</a>
                                 </li>
                                  <li><a class=\"nav-link\" href=\"{{ path('app_cours') }}\">Cours</a></li>
-                                  <li><a class=\"dropdown-item\" href=\"{{ path('app_profile') }}\">Gérer le profil</a></li>
+                                  <li><a class=\"dropdown-item\" href=\"{{ path('app_profile') }}\">Gérer le profil</a></li> 
                             </ul>
                            
                         </nav>

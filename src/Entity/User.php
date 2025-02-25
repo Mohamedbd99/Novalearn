@@ -51,7 +51,6 @@ class User implements UserInterface
     #[ORM\Column(length: 255)]
     private ?string $specialite = null;
 
-    // Méthodes de l'interface UserInterface
     public function getId(): ?int
     {
         return $this->id;
@@ -189,7 +188,6 @@ class User implements UserInterface
         return $this;
     }
 
-    // Implémentation de UserInterface
     public function getRoles(): array
     {
         return [$this->role ?? 'ROLE_USER'];
@@ -197,12 +195,12 @@ class User implements UserInterface
 
     public function getUserIdentifier(): string
     {
-        return $this->email; // Identifiant utilisé pour l'authentification
+        return $this->email; 
     }
 
     public function eraseCredentials(): void
     {
-        // Si vous stockez des données sensibles temporaires, effacez-les ici.
+        
     }
 
 }

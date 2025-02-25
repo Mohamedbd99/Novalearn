@@ -19,23 +19,20 @@ class SignupController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
     
         $form->handleRequest($request);
-        $id_fils = (int) $request->get('id_fils');  // Convertir en entier
+        $id_fils = (int) $request->get('id_fils');  
         $user->setIdFils($id_fils);
     
         if ($form->isSubmitted() && $form->isValid()) {
-            // Enregistrer directement le mot de passe sans le hacher
-            // On garde le mot de passe tel quel sans modification.
-            
-            // Ajouter un rôle par défaut si nécessaire
+    
             if (!$user->getRole()) {
-                $user->setRole('ROLE_USER');  // Exemple d'attribution de rôle par défaut
+                $user->setRole('ROLE_USER');  
             }
 
-            // Enregistrement de l'utilisateur dans la base de données
+           
             $entityManager->persist($user);
             $entityManager->flush();
     
-            return $this->redirectToRoute('app_signup');  // Ajuste la redirection si nécessaire
+            return $this->redirectToRoute('app_signup'); 
         }
     
         return $this->render('Signup/enfant.html.twig', [
@@ -52,19 +49,16 @@ class SignupController extends AbstractController
         $form->handleRequest($request);
     
         if ($form->isSubmitted() && $form->isValid()) {
-            // Enregistrer directement le mot de passe sans le hacher
-            // On garde le mot de passe tel quel sans modification.
-            
-            // Ajouter un rôle par défaut si nécessaire
+           
             if (!$user->getRole()) {
-                $user->setRole('ROLE_USER');  // Exemple d'attribution de rôle par défaut
+                $user->setRole('ROLE_USER'); 
             }
 
-            // Enregistrement de l'utilisateur dans la base de données
+            
             $entityManager->persist($user);  
             $entityManager->flush();
     
-            return $this->redirectToRoute('app_signupPar');  // Ajuste la redirection si nécessaire
+            return $this->redirectToRoute('app_signupPar');  
         }
     
         return $this->render('Signup/parents.html.twig', [

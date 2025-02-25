@@ -43,5 +43,7 @@ class DefaultController extends AbstractController
     {
         return $this->render('homeMedecin.html.twig');
     }
+
+    
 }
 

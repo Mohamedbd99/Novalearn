@@ -11,10 +11,9 @@ class BlogsController extends AbstractController
 {#[Route('/blogsUser', name: 'app_blogs')]
     public function index(BlogRepository $blogRepository): Response
     {
-        // Requête pour récupérer les blogs avec leurs auteurs
         $blogs = $blogRepository->createQueryBuilder('b')
-            ->leftJoin('b.author', 'a') // Jointure avec l’auteur
-            ->addSelect('a') // Sélectionne aussi l’auteur
+            ->leftJoin('b.author', 'a') 
+            ->addSelect('a') 
             ->getQuery()
             ->getResult();
     
@@ -26,10 +25,10 @@ class BlogsController extends AbstractController
     #[Route('/blogsEns', name: 'app_blogs_ens')]
     public function blog(BlogRepository $blogRepository): Response
     {
-        // Requête pour récupérer les blogs avec leurs auteurs
+        
         $blogs = $blogRepository->createQueryBuilder('b')
-            ->leftJoin('b.author', 'a') // Jointure avec l’auteur
-            ->addSelect('a') // Sélectionne aussi l’auteur
+            ->leftJoin('b.author', 'a') 
+            ->addSelect('a') 
             ->getQuery()
             ->getResult();
     

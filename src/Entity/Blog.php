@@ -32,11 +32,11 @@ class Blog
     #[ORM\ManyToOne]
     private ?User $author = null;
 
-    // Ajout de la nouvelle propriété 'title'
+    
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    // Getters et setters de 'title'
+    
     public function getTitle(): ?string
     {
         return $this->title;
