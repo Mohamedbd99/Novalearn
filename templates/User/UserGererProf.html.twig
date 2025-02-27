@@ -1,0 +1,116 @@
+
+
+{% block body %}
+    <div class="container mt-4 profile-container">
+        <div class="profile-header">
+            <h1>Bonjour, {{ user.nom }}!</h1> <!-- Affiche le nom de l'utilisateur -->
+        </div>
+
+        <div class="profile-details">
+            <p><strong>ID :</strong> {{ user.id }}</p>
+            <p><strong>Nom :</strong> {{ user.nom }}</p>
+            <p><strong>Prénom :</strong> {{ user.prenom }}</p>
+            <p><strong>Âge :</strong> {{ user.age }}</p>
+            <p><strong>Email :</strong> {{ user.email }}</p>
+            <p><strong>Votre Difficulte :</strong> {{ user.difficulte }}</p>
+        </div>
+
+        <!-- Bouton "Modifier Profil" -->
+        <a href="{{ path('app_edit_users') }}" class="btn-modifier">Modifier Profil</a> 
+        <a href="{{ path('app_HomeUser') }}" class="btn-secondary">Retour</a>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        /* Général */
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f4f4f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header h1 {
+            font-size: 2rem;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-details {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .profile-details p {
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .profile-details strong {
+            color: #007bff;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: #fff;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-secondary {
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+
+        /* Bouton "Modifier Profil" */
+        .btn-modifier {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #28a745;
+            color: #fff;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-modifier:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-container {
+                padding: 20px;
+            }
+
+            .profile-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .profile-details p {
+                font-size: 1rem;
+            }
+
+            .btn-modifier {
+                font-size: 1rem;
+                width: 100%;
+            }
+        }
+    </style>
+{% endblock %}
