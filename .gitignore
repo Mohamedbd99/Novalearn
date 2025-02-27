@@ -29,3 +29,5 @@ composer.phar
 # Ignore environment file in pythonQuiz
 pythonQuiz/.env
 pythonQuiz/.env.*
+.env
+.env.*
