@@ -1089,17 +1089,18 @@ class __TwigTemplate_88c2cfabd361c3e5299788845a8f957e extends Template
         // line 1030
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forgot_password_request");
         yield "\">Mot de passe oublié ?</a>
+                        
                     </div>
 
                     <button type=\"submit\" class=\"rts-btn btn-primary\">Sign In</button>
 
                     <p class=\"dont-acc mt--20\">Don't Have an Account? 
                         <a href=\"";
-        // line 1036
+        // line 1037
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_signup");
         yield "\">Inscription Élève</a> / 
                         <a href=\"";
-        // line 1037
+        // line 1038
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_signupPar");
         yield "\">Inscription Parent</a>
                     </p>
@@ -1414,7 +1415,7 @@ class __TwigTemplate_88c2cfabd361c3e5299788845a8f957e extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  1373 => 11,  1360 => 10,  1337 => 7,  1103 => 1037,  1099 => 1036,  1090 => 1030,  1081 => 1024,  1075 => 1021,  1071 => 1020,  1068 => 1019,  1062 => 1016,  1059 => 1015,  1057 => 1014,  66 => 25,  64 => 10,  58 => 7,  50 => 1,);
+        return array (  1374 => 11,  1361 => 10,  1338 => 7,  1104 => 1038,  1100 => 1037,  1090 => 1030,  1081 => 1024,  1075 => 1021,  1071 => 1020,  1068 => 1019,  1062 => 1016,  1059 => 1015,  1057 => 1014,  66 => 25,  64 => 10,  58 => 7,  50 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -2449,6 +2450,7 @@ class __TwigTemplate_88c2cfabd361c3e5299788845a8f957e extends Template
 
                     <div class=\"d-flex mb--20 align-items-center\">
                         <a href=\"{{ path('app_forgot_password_request') }}\">Mot de passe oublié ?</a>
+                        
                     </div>
 
                     <button type=\"submit\" class=\"rts-btn btn-primary\">Sign In</button>

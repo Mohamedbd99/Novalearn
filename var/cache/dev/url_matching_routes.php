@@ -16,6 +16,7 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/admin' => [[['_route' => 'app_admin', '_controller' => 'App\\Controller\\AdminController::admin'], null, null, null, false, false, null]],
         '/user/edit' => [[['_route' => 'app_edit_users', '_controller' => 'App\\Controller\\AdminController::editUsers'], null, null, null, false, false, null]],
+        '/admin/dashboard' => [[['_route' => 'app_admin_dashboard', '_controller' => 'App\\Controller\\AdminController::dashboard'], null, null, null, false, false, null]],
         '/in' => [[['_route' => 'app_blog_index', '_controller' => 'App\\Controller\\BlogController::index'], null, ['GET' => 0], null, false, false, null]],
         '/new' => [[['_route' => 'app_blog_new', '_controller' => 'App\\Controller\\BlogController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/blogsUser' => [[['_route' => 'app_blogs', '_controller' => 'App\\Controller\\BlogsController::index'], null, null, null, false, false, null]],
@@ -75,6 +76,7 @@ return [
                 .')'
                 .'|/details_blog([^/]++)(*:351)'
                 .'|/reset\\-password/reset(?:/([^/]++))?(*:395)'
+                .'|/verify\\-email/([^/]++)(*:426)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -94,8 +96,9 @@ return [
         306 => [[['_route' => 'course_edit', '_controller' => 'App\\Controller\\CoursController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         320 => [[['_route' => 'course_delete', '_controller' => 'App\\Controller\\CoursController::delete'], ['id'], ['POST' => 0], null, false, false, null]],
         351 => [[['_route' => 'app_details_blog', '_controller' => 'App\\Controller\\DetailsBlogController::index'], ['id'], null, null, false, true, null]],
-        395 => [
-            [['_route' => 'app_reset_password', 'token' => null, '_controller' => 'App\\Controller\\ResetPasswordController::reset'], ['token'], null, null, false, true, null],
+        395 => [[['_route' => 'app_reset_password', 'token' => null, '_controller' => 'App\\Controller\\ResetPasswordController::reset'], ['token'], null, null, false, true, null]],
+        426 => [
+            [['_route' => 'app_verify_email', '_controller' => 'App\\Controller\\SignupController::verifyEmail'], ['token'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

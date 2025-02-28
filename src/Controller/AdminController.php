@@ -99,6 +99,22 @@ public function editUsers(Request $request, EntityManagerInterface $entityManage
     ]);
 }
 
+#[Route('/admin/dashboard', name: 'app_admin_dashboard')]
+public function dashboard(UserRepository $userRepository): Response
+{
+    $counts = [
+        'eleves' => count($userRepository->findBy(['role' => 'eleve'])),
+        'enseignants' => count($userRepository->findBy(['role' => 'enseignant'])),
+        'parents' => count($userRepository->findBy(['role' => 'parent'])),
+        'medecins' => count($userRepository->findBy(['role' => 'medecin'])),
+    ];
+
+    return $this->render('admin/dashboard.html.twig', [
+        'counts' => $counts,
+    ]);
+}
+
+
 
 }
 

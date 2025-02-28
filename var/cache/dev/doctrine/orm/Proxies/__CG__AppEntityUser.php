@@ -28,6 +28,7 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\InternalProxy
         "\0".parent::class."\0".'genre' => [parent::class, 'genre', null],
         "\0".parent::class."\0".'id' => [parent::class, 'id', null],
         "\0".parent::class."\0".'id_fils' => [parent::class, 'id_fils', null],
+        "\0".parent::class."\0".'isVerified' => [parent::class, 'isVerified', null],
         "\0".parent::class."\0".'niv_difficulte' => [parent::class, 'niv_difficulte', null],
         "\0".parent::class."\0".'nom' => [parent::class, 'nom', null],
         "\0".parent::class."\0".'num_tel' => [parent::class, 'num_tel', null],
@@ -35,12 +36,14 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\InternalProxy
         "\0".parent::class."\0".'prenom' => [parent::class, 'prenom', null],
         "\0".parent::class."\0".'role' => [parent::class, 'role', null],
         "\0".parent::class."\0".'specialite' => [parent::class, 'specialite', null],
+        "\0".parent::class."\0".'verificationToken' => [parent::class, 'verificationToken', null],
         'age' => [parent::class, 'age', null],
         'difficulte' => [parent::class, 'difficulte', null],
         'email' => [parent::class, 'email', null],
         'genre' => [parent::class, 'genre', null],
         'id' => [parent::class, 'id', null],
         'id_fils' => [parent::class, 'id_fils', null],
+        'isVerified' => [parent::class, 'isVerified', null],
         'niv_difficulte' => [parent::class, 'niv_difficulte', null],
         'nom' => [parent::class, 'nom', null],
         'num_tel' => [parent::class, 'num_tel', null],
@@ -48,6 +51,7 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\InternalProxy
         'prenom' => [parent::class, 'prenom', null],
         'role' => [parent::class, 'role', null],
         'specialite' => [parent::class, 'specialite', null],
+        'verificationToken' => [parent::class, 'verificationToken', null],
     ];
 
     public function __isInitialized(): bool

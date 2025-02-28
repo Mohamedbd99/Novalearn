@@ -12,9 +12,9 @@ class User implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: "bigint")]
     private ?int $id = null;
-
+    
     #[ORM\Column(length: 255)]
     private ?string $role = null;
 
@@ -36,8 +36,9 @@ class User implements UserInterface
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $difficulte = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $niv_difficulte = null;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+private ?string $niv_difficulte = null;
+
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
@@ -48,8 +49,14 @@ class User implements UserInterface
     #[ORM\Column(length: 255)]
     private ?string $genre = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $specialite = null;
+
+    #[ORM\Column(type: "boolean")]
+    private bool $isVerified = false;
+
+    #[ORM\Column(type: "string", nullable: true)]
+    private ?string $verificationToken = null;
 
     public function getId(): ?int
     {
@@ -201,6 +208,29 @@ class User implements UserInterface
     public function eraseCredentials(): void
     {
         
+    }
+
+    public function getIsVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getVerificationToken(): ?string
+    {
+        return $this->verificationToken;
+    }
+
+    public function setVerificationToken(?string $verificationToken): self
+    {
+        $this->verificationToken = $verificationToken;
+        return $this;
     }
 
 }

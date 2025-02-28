@@ -390,61 +390,230 @@ class __TwigTemplate_b29cd7e508647ef178ca972e47aaea72 extends Template
         yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 347, $this->source); })()), 'form_start');
         yield " <!-- Commence le formulaire -->
 
-       <div class=\"form-inner\">
-    <div class=\"form-group\">";
+        <div class=\"form-inner\">
+            <div class=\"form-group\">";
         // line 350
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 350, $this->source); })()), "nom", [], "any", false, false, false, 350), 'row');
         yield "</div>
-    <div class=\"form-group\">";
+            <div class=\"form-group\">";
         // line 351
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 351, $this->source); })()), "prenom", [], "any", false, false, false, 351), 'row');
         yield "</div>
-    <div class=\"form-group\">";
+            <div class=\"form-group\">";
         // line 352
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 352, $this->source); })()), "age", [], "any", false, false, false, 352), 'row');
         yield "</div>
-    <div class=\"form-group\">";
+            <div class=\"form-group\">";
         // line 353
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 353, $this->source); })()), "num_tel", [], "any", false, false, false, 353), 'row');
         yield "</div>
-    <div class=\"form-group\">";
+            <div class=\"form-group\">";
         // line 354
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 354, $this->source); })()), "role", [], "any", false, false, false, 354), 'row');
         yield "</div>
-    <div class=\"form-group\">";
+            <div class=\"form-group\">";
         // line 355
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 355, $this->source); })()), "difficulte", [], "any", false, false, false, 355), 'row');
         yield "</div>
-    <div class=\"form-group\">";
+            <div class=\"form-group\">";
         // line 356
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 356, $this->source); })()), "niv_difficulte", [], "any", false, false, false, 356), 'row');
         yield "</div>
-    <div class=\"form-group\">";
+            <div class=\"form-group\">";
         // line 357
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 357, $this->source); })()), "email", [], "any", false, false, false, 357), 'row');
         yield "</div>
-    <div class=\"form-group\">";
+            <div class=\"form-group\">";
         // line 358
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 358, $this->source); })()), "genre", [], "any", false, false, false, 358), 'row', ["attr" => ["class" => "radio-btn"]]);
         yield "</div>
-    <div class=\"form-group\">";
-        // line 359
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 359, $this->source); })()), "password", [], "any", false, false, false, 359), 'row');
-        yield "</div>
+            
+            <!-- Champ Mot de Passe avec Barre de Difficulté -->
+            <div class=\"form-group\">
+                ";
+        // line 362
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 362, $this->source); })()), "password", [], "any", false, false, false, 362), 'label');
+        yield "
+                ";
+        // line 363
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 363, $this->source); })()), "password", [], "any", false, false, false, 363), 'widget');
+        yield "
+                <div id=\"password-strength-meter\" class=\"progress\" style=\"height: 20px;\">
+                    <div id=\"password-strength-meter-bar\" class=\"progress-bar\" style=\"width: 0%;\"></div>
+                </div>
+            </div>
 
-     <div class=\"form-btn text-center\">
+            <div class=\"form-btn text-center\">
                 <button type=\"submit\" class=\"rts-btn btn-primary\" style=\"background: #ffcc00; color: #000; padding: 12px 20px; border-radius: 5px; font-size: 18px; cursor: pointer;\">S'inscrire</button>
-     </div>
+            </div>
+        </div>
 
-   </div>
-
-          ";
-        // line 367
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 367, $this->source); })()), 'form_end');
+        ";
+        // line 374
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 374, $this->source); })()), 'form_end');
         yield " <!-- Fin du formulaire -->
-        
- </div>
+
+    </div>
+
+    <!-- Popup Modal -->
+    <div id=\"popupModal\" class=\"popup-modal\" style=\"display: none;\">
+        <div class=\"popup-content\" style=\"background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\">
+            <span id=\"closePopup\" style=\"position: absolute; top: 10px; right: 10px; font-size: 24px; cursor: pointer;\">&times;</span>
+            <h2 style=\"color: #333;\">Inscription réussie !</h2>
+            <p style=\"color: #555;\">Un email de vérification a été envoyé à votre adresse pour finaliser l'inscription. Veuillez vérifier votre boîte de réception.</p>
+        </div>
+    </div>
+
+    <style>
+        /* Popup Modal */
+        .popup-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup-content {
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .popup-content h2 {
+            color: #333;
+        }
+
+        .popup-content p {
+            color: #555;
+        }
+
+        .popup-content button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .popup-content button:hover {
+            background-color: #e6b800;
+        }
+
+        /* Barre de progression du mot de passe */
+        #password-strength-meter {
+            margin-top: 10px;
+        }
+
+        #password-strength-meter-bar {
+            width: 0%;
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+    </style>
+
+    <script>
+        // Fonction de calcul de la force du mot de passe
+        function calculatePasswordStrength(password) {
+            var strength = 0;
+            if (password.length >= 6) {
+                strength += 1; // Longueur minimale
+            }
+            if (password.match(/[a-z]/)) {
+                strength += 1; // Lettres minuscules
+            }
+            if (password.match(/[A-Z]/)) {
+                strength += 1; // Lettres majuscules
+            }
+            if (password.match(/[0-9]/)) {
+                strength += 1; // Chiffres
+            }
+            if (password.match(/[^a-zA-Z0-9]/)) {
+                strength += 1; // Caractères spéciaux
+            }
+            return strength;
+        }
+
+        // Fonction pour mettre à jour la barre de progression
+        function updatePasswordStrengthBar(password) {
+            var strength = calculatePasswordStrength(password);
+            var bar = document.getElementById('password-strength-meter-bar');
+            var level = 0;
+
+            switch (strength) {
+                case 1:
+                    level = 20;
+                    break;
+                case 2:
+                    level = 40;
+                    break;
+                case 3:
+                    level = 60;
+                    break;
+                case 4:
+                    level = 80;
+                    break;
+                case 5:
+                    level = 100;
+                    break;
+            }
+
+            bar.style.width = level + '%';
+            // Ajoutez une couleur pour chaque niveau
+            if (level < 40) {
+                bar.className = 'progress-bar bg-danger';
+            } else if (level < 70) {
+                bar.className = 'progress-bar bg-warning';
+            } else {
+                bar.className = 'progress-bar bg-success';
+            }
+        }
+
+        // Écouter la saisie du mot de passe
+        document.getElementById('";
+        // line 503
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 503, $this->source); })()), "password", [], "any", false, false, false, 503), "vars", [], "any", false, false, false, 503), "id", [], "any", false, false, false, 503), "html", null, true);
+        yield "').addEventListener('input', function (e) {
+            updatePasswordStrengthBar(e.target.value);
+        });
+
+        // Afficher la popup si l'email a été envoyé
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailSent = ";
+        // line 509
+        yield (((isset($context["email_sent"]) || array_key_exists("email_sent", $context) ? $context["email_sent"] : (function () { throw new RuntimeError('Variable "email_sent" does not exist.', 509, $this->source); })())) ? ("true") : ("false"));
+        yield ";  // Utilisation de la variable passée depuis Symfony
+            if (emailSent) {
+                document.getElementById(\"popupModal\").style.display = \"flex\";
+            }
+        });
+
+        // Fermer la popup
+        document.getElementById(\"closePopup\")?.addEventListener(\"click\", function() {
+            document.getElementById(\"popupModal\").style.display = \"none\";
+        });
+
+        // Fermer la popup si l'utilisateur clique en dehors de la zone popup
+        window.addEventListener(\"click\", function(event) {
+            const popup = document.getElementById(\"popupModal\");
+            if (event.target === popup) {
+                popup.style.display = \"none\";
+            }
+        });
+    </script>
 </body>
+
+
 </html>
 
        
@@ -907,7 +1076,7 @@ class __TwigTemplate_b29cd7e508647ef178ca972e47aaea72 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  866 => 11,  853 => 10,  830 => 7,  443 => 367,  432 => 359,  428 => 358,  424 => 357,  420 => 356,  416 => 355,  412 => 354,  408 => 353,  404 => 352,  400 => 351,  396 => 350,  390 => 347,  66 => 25,  64 => 10,  58 => 7,  50 => 1,);
+        return array (  1035 => 11,  1022 => 10,  999 => 7,  594 => 509,  585 => 503,  453 => 374,  439 => 363,  435 => 362,  428 => 358,  424 => 357,  420 => 356,  416 => 355,  412 => 354,  408 => 353,  404 => 352,  400 => 351,  396 => 350,  390 => 347,  66 => 25,  64 => 10,  58 => 7,  50 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -1260,28 +1429,188 @@ class __TwigTemplate_b29cd7e508647ef178ca972e47aaea72 extends Template
 
         {{ form_start(form) }} <!-- Commence le formulaire -->
 
-       <div class=\"form-inner\">
-    <div class=\"form-group\">{{ form_row(form.nom) }}</div>
-    <div class=\"form-group\">{{ form_row(form.prenom) }}</div>
-    <div class=\"form-group\">{{ form_row(form.age) }}</div>
-    <div class=\"form-group\">{{ form_row(form.num_tel) }}</div>
-    <div class=\"form-group\">{{ form_row(form.role) }}</div>
-    <div class=\"form-group\">{{ form_row(form.difficulte) }}</div>
-    <div class=\"form-group\">{{ form_row(form.niv_difficulte) }}</div>
-    <div class=\"form-group\">{{ form_row(form.email) }}</div>
-    <div class=\"form-group\">{{ form_row(form.genre, {'attr': {'class': 'radio-btn'}}) }}</div>
-    <div class=\"form-group\">{{ form_row(form.password) }}</div>
+        <div class=\"form-inner\">
+            <div class=\"form-group\">{{ form_row(form.nom) }}</div>
+            <div class=\"form-group\">{{ form_row(form.prenom) }}</div>
+            <div class=\"form-group\">{{ form_row(form.age) }}</div>
+            <div class=\"form-group\">{{ form_row(form.num_tel) }}</div>
+            <div class=\"form-group\">{{ form_row(form.role) }}</div>
+            <div class=\"form-group\">{{ form_row(form.difficulte) }}</div>
+            <div class=\"form-group\">{{ form_row(form.niv_difficulte) }}</div>
+            <div class=\"form-group\">{{ form_row(form.email) }}</div>
+            <div class=\"form-group\">{{ form_row(form.genre, {'attr': {'class': 'radio-btn'}}) }}</div>
+            
+            <!-- Champ Mot de Passe avec Barre de Difficulté -->
+            <div class=\"form-group\">
+                {{ form_label(form.password) }}
+                {{ form_widget(form.password) }}
+                <div id=\"password-strength-meter\" class=\"progress\" style=\"height: 20px;\">
+                    <div id=\"password-strength-meter-bar\" class=\"progress-bar\" style=\"width: 0%;\"></div>
+                </div>
+            </div>
 
-     <div class=\"form-btn text-center\">
+            <div class=\"form-btn text-center\">
                 <button type=\"submit\" class=\"rts-btn btn-primary\" style=\"background: #ffcc00; color: #000; padding: 12px 20px; border-radius: 5px; font-size: 18px; cursor: pointer;\">S'inscrire</button>
-     </div>
+            </div>
+        </div>
 
-   </div>
+        {{ form_end(form) }} <!-- Fin du formulaire -->
 
-          {{ form_end(form) }} <!-- Fin du formulaire -->
-        
- </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id=\"popupModal\" class=\"popup-modal\" style=\"display: none;\">
+        <div class=\"popup-content\" style=\"background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\">
+            <span id=\"closePopup\" style=\"position: absolute; top: 10px; right: 10px; font-size: 24px; cursor: pointer;\">&times;</span>
+            <h2 style=\"color: #333;\">Inscription réussie !</h2>
+            <p style=\"color: #555;\">Un email de vérification a été envoyé à votre adresse pour finaliser l'inscription. Veuillez vérifier votre boîte de réception.</p>
+        </div>
+    </div>
+
+    <style>
+        /* Popup Modal */
+        .popup-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup-content {
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .popup-content h2 {
+            color: #333;
+        }
+
+        .popup-content p {
+            color: #555;
+        }
+
+        .popup-content button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .popup-content button:hover {
+            background-color: #e6b800;
+        }
+
+        /* Barre de progression du mot de passe */
+        #password-strength-meter {
+            margin-top: 10px;
+        }
+
+        #password-strength-meter-bar {
+            width: 0%;
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+    </style>
+
+    <script>
+        // Fonction de calcul de la force du mot de passe
+        function calculatePasswordStrength(password) {
+            var strength = 0;
+            if (password.length >= 6) {
+                strength += 1; // Longueur minimale
+            }
+            if (password.match(/[a-z]/)) {
+                strength += 1; // Lettres minuscules
+            }
+            if (password.match(/[A-Z]/)) {
+                strength += 1; // Lettres majuscules
+            }
+            if (password.match(/[0-9]/)) {
+                strength += 1; // Chiffres
+            }
+            if (password.match(/[^a-zA-Z0-9]/)) {
+                strength += 1; // Caractères spéciaux
+            }
+            return strength;
+        }
+
+        // Fonction pour mettre à jour la barre de progression
+        function updatePasswordStrengthBar(password) {
+            var strength = calculatePasswordStrength(password);
+            var bar = document.getElementById('password-strength-meter-bar');
+            var level = 0;
+
+            switch (strength) {
+                case 1:
+                    level = 20;
+                    break;
+                case 2:
+                    level = 40;
+                    break;
+                case 3:
+                    level = 60;
+                    break;
+                case 4:
+                    level = 80;
+                    break;
+                case 5:
+                    level = 100;
+                    break;
+            }
+
+            bar.style.width = level + '%';
+            // Ajoutez une couleur pour chaque niveau
+            if (level < 40) {
+                bar.className = 'progress-bar bg-danger';
+            } else if (level < 70) {
+                bar.className = 'progress-bar bg-warning';
+            } else {
+                bar.className = 'progress-bar bg-success';
+            }
+        }
+
+        // Écouter la saisie du mot de passe
+        document.getElementById('{{ form.password.vars.id }}').addEventListener('input', function (e) {
+            updatePasswordStrengthBar(e.target.value);
+        });
+
+        // Afficher la popup si l'email a été envoyé
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailSent = {{ email_sent ? 'true' : 'false' }};  // Utilisation de la variable passée depuis Symfony
+            if (emailSent) {
+                document.getElementById(\"popupModal\").style.display = \"flex\";
+            }
+        });
+
+        // Fermer la popup
+        document.getElementById(\"closePopup\")?.addEventListener(\"click\", function() {
+            document.getElementById(\"popupModal\").style.display = \"none\";
+        });
+
+        // Fermer la popup si l'utilisateur clique en dehors de la zone popup
+        window.addEventListener(\"click\", function(event) {
+            const popup = document.getElementById(\"popupModal\");
+            if (event.target === popup) {
+                popup.style.display = \"none\";
+            }
+        });
+    </script>
 </body>
+
+
 </html>
 
        

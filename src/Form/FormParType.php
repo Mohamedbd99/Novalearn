@@ -21,7 +21,7 @@ class FormParType extends AbstractType
         
 ->add('role', ChoiceType::class, [
     'choices' => [
-        'Parent' => 'Parent',
+        'ROLE_PARENT' => 'ROLE_PARENT',
     ],
     'required' => true,  
     'empty_data' => 'USER', 
@@ -61,11 +61,18 @@ class FormParType extends AbstractType
     ])
     
     ->add('id_fils', IntegerType::class, [
-    'required' => false,  
-    'empty_data' => null,  
-]);
-
-        
+        'required' => false,  
+        'empty_data' => null,  
+    ])
+    
+    ->add('niv_difficulte', IntegerType::class, [
+        'required' => false,
+        'data' => 1, // Assignation automatique de la valeur 1
+        'attr' => ['hidden' => true], // Caché dans le formulaire HTML
+    ]);
+    
+    
+                
     }
 
     public function configureOptions(OptionsResolver $resolver): void

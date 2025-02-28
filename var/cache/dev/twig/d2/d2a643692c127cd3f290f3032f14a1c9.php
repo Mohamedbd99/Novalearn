@@ -188,7 +188,7 @@ class __TwigTemplate_8b56b252f612ad3376135ea36ce4aa4a extends Template
     <div class=\"sidebar\" id=\"sidebar\">
         <h2>Admin Panel</h2>
         <ul>
-            <li><a href=\"#\"><i class=\"fa fa-home\"></i> Tableau de bord</a></li>
+            <li><a href=\"admin/dashboard\"><i class=\"fa fa-home\"></i> Tableau de bord</a></li>
             <li><a href= \"admin\"><i class=\"fa fa-users\"></i> Utilisateurs</a></li>
             <li><a href=\"#\"><i class=\"fa fa-cogs\"></i> Paramètres</a></li>
         </ul>
@@ -696,7 +696,7 @@ class __TwigTemplate_8b56b252f612ad3376135ea36ce4aa4a extends Template
     <div class=\"sidebar\" id=\"sidebar\">
         <h2>Admin Panel</h2>
         <ul>
-            <li><a href=\"#\"><i class=\"fa fa-home\"></i> Tableau de bord</a></li>
+            <li><a href=\"admin/dashboard\"><i class=\"fa fa-home\"></i> Tableau de bord</a></li>
             <li><a href= \"admin\"><i class=\"fa fa-users\"></i> Utilisateurs</a></li>
             <li><a href=\"#\"><i class=\"fa fa-cogs\"></i> Paramètres</a></li>
         </ul>

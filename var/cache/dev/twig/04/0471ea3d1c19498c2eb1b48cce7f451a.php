@@ -32,7 +32,6 @@ class __TwigTemplate_5f8d6f9a03fffef9f10b9ba86f2c6705 extends Template
         $this->parent = false;
 
         $this->blocks = [
-            'title' => [$this, 'block_title'],
             'body' => [$this, 'block_body'],
         ];
     }
@@ -47,11 +46,9 @@ class __TwigTemplate_5f8d6f9a03fffef9f10b9ba86f2c6705 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "reset_password/check_email.html.twig"));
 
         // line 1
-        yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
-        // line 2
         yield "
 ";
-        // line 3
+        // line 2
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -62,30 +59,6 @@ class __TwigTemplate_5f8d6f9a03fffef9f10b9ba86f2c6705 extends Template
         yield from [];
     }
 
-    // line 1
-    /**
-     * @return iterable<null|scalar|\Stringable>
-     */
-    public function block_title(array $context, array $blocks = []): iterable
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
-
-        yield "Password Reset Email Sent";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-        yield from [];
-    }
-
-    // line 3
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -98,7 +71,7 @@ class __TwigTemplate_5f8d6f9a03fffef9f10b9ba86f2c6705 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 4
+        // line 3
         yield "    <style>
         /* Style global de la page */
         body {
@@ -191,14 +164,14 @@ class __TwigTemplate_5f8d6f9a03fffef9f10b9ba86f2c6705 extends Template
         <p>
             If an account matching your email exists, an email has just been sent with a link to reset your password.
             This link will expire in ";
-        // line 95
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(CoreExtension::getAttribute($this->env, $this->source, (isset($context["resetToken"]) || array_key_exists("resetToken", $context) ? $context["resetToken"] : (function () { throw new RuntimeError('Variable "resetToken" does not exist.', 95, $this->source); })()), "expirationMessageKey", [], "any", false, false, false, 95), CoreExtension::getAttribute($this->env, $this->source, (isset($context["resetToken"]) || array_key_exists("resetToken", $context) ? $context["resetToken"] : (function () { throw new RuntimeError('Variable "resetToken" does not exist.', 95, $this->source); })()), "expirationMessageData", [], "any", false, false, false, 95), "ResetPasswordBundle"), "html", null, true);
+        // line 94
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(CoreExtension::getAttribute($this->env, $this->source, (isset($context["resetToken"]) || array_key_exists("resetToken", $context) ? $context["resetToken"] : (function () { throw new RuntimeError('Variable "resetToken" does not exist.', 94, $this->source); })()), "expirationMessageKey", [], "any", false, false, false, 94), CoreExtension::getAttribute($this->env, $this->source, (isset($context["resetToken"]) || array_key_exists("resetToken", $context) ? $context["resetToken"] : (function () { throw new RuntimeError('Variable "resetToken" does not exist.', 94, $this->source); })()), "expirationMessageData", [], "any", false, false, false, 94), "ResetPasswordBundle"), "html", null, true);
         yield ".
         </p>
 
         <p>
             If you don't receive an email, please check your spam folder or <a href=\"";
-        // line 99
+        // line 98
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forgot_password_request");
         yield "\">try again</a>.
         </p>
@@ -226,13 +199,12 @@ class __TwigTemplate_5f8d6f9a03fffef9f10b9ba86f2c6705 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  202 => 99,  195 => 95,  102 => 4,  89 => 3,  66 => 1,  55 => 3,  52 => 2,  50 => 1,);
+        return array (  175 => 98,  168 => 94,  75 => 3,  52 => 2,  49 => 1,);
     }
 
     public function getSourceContext(): Source
     {
-        return new Source("{% block title %}Password Reset Email Sent{% endblock %}
-
+        return new Source("
 {% block body %}
     <style>
         /* Style global de la page */

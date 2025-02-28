@@ -21,9 +21,9 @@ class FormMedType extends AbstractType
         
 ->add('role', ChoiceType::class, [
     'choices' => [
-        'Medecin' => 'Medecin',
-        'Parent' => 'Parent',
-        'User' => 'User',
+        'Medecin' => 'ROLE_MEDECIN',
+        'Parent' => 'ROLE_PARENT',
+        'User' => 'ROLE_ELEVE',
         'Enseignant' => 'Enseignant',
     ],
     'required' => true,  

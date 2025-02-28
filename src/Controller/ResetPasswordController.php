@@ -166,15 +166,57 @@ class ResetPasswordController extends AbstractController
 
             return $this->redirectToRoute('app_check_email');
         }
+        $token = $resetToken->getToken(); // Retrieve the token string
+
+        $htmlContent = "
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset=\"UTF-8\">
+                    <title>Password Reset Request</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            background-color: #f4f4f4;
+                            padding: 20px;
+                        }
+                        .container {
+                            background-color: #fff;
+                            padding: 20px;
+                            border-radius: 5px;
+                        }
+                        .button {
+                            display: inline-block;
+                            padding: 10px 15px;
+                            background-color: #007bff;
+                            color: #fff;
+                            text-decoration: none;
+                            border-radius: 5px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class=\"container\">
+                        <h1>Demande de Réinitialisation de Mot de Passe</h1>
+                        <p>Bonjour,</p>
+                        <p>Vous avez demandé la réinitialisation de votre mot de passe. Cliquez sur le lien ci-dessous pour définir un nouveau mot de passe :</p>
+                        <p>
+                            <a href=\"http://127.0.0.1:8000/reset-password/reset/$token\">
+                                http://127.0.0.1:8000/reset-password/reset/$token
+                            </a>
+                        </p>
+                        <p>Si vous n'avez pas demandé la réinitialisation de votre mot de passe, veuillez ignorer cet email.</p>
+                        <p>Cordialement,,<br>Novalearn</p>
+                    </div>
+                </body>
+            </html>
+        ";
 
         $email = (new TemplatedEmail())
             ->from(new Address('mohamedyassine.gharsallah@esen.tn'))
             ->to((string) $user->getEmail())
             ->subject('Your password reset request')
-            ->htmlTemplate('reset_password/email.html.twig')
-            ->context([
-                'resetToken' => $resetToken,
-            ])
+            ->html($htmlContent);
         ;
 
         $mailer->send($email);

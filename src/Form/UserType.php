@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class UserType extends AbstractType
 {
@@ -33,17 +34,42 @@ class UserType extends AbstractType
                 'label' => 'Prénom',
                 'required' => true,
             ])
-            ->add('age', IntegerType::class, [
-                'label' => 'Âge',
-                'required' => true,
-            ])
-            
-            ->add('num_tel', IntegerType::class)
 
+     ->add('age', IntegerType::class, [
+        'label' => 'Âge',
+        'required' => true,
+        'constraints' => [
+            new Assert\Range([
+                'min' => 4,
+                'max' => 14,
+                'notInRangeMessage' => 'L\'âge doit être compris entre 4 et 14 ans.'
+            ])
+        ]
+    ])
+
+    
+    ->add('num_tel', TextType::class, [
+        'label' => 'Numéro de téléphone',
+        'required' => true,
+        'attr' => [
+            'placeholder' => 'Ex: 12345678',
+            'maxlength' => 8,  // Limiter la saisie à 8 chiffres
+        ],
+        'constraints' => [
+            new Assert\Regex([
+                'pattern' => '/^[0-9]{8}$/',  // Valide que ce sont exactement 8 chiffres
+                'message' => 'Le numéro de téléphone doit être composé de 8 chiffres.',
+            ]),
+        ],
+    ])
+
+
+    
             ->add('difficulte', TextType::class, [
                 'label' => 'Difficulté',
                 'required' => true,
             ])
+    
             ->add('niv_difficulte', ChoiceType::class, [
                 'choices' => [
                     '1' => 1,
@@ -56,10 +82,21 @@ class UserType extends AbstractType
                 'expanded' => false, 
                 'multiple' => false, 
             ])
+    
             ->add('email', EmailType::class, [
                 'label' => 'Adresse e-mail',
                 'required' => true,
+                'constraints' => [
+                    new Assert\Email([
+                        'message' => 'L\'adresse e-mail n\'est pas valide.',
+                    ]),
+                    new Assert\Regex([
+                        'pattern' => '/^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|esprit\.tn|esen\.tn)$/',
+                        'message' => 'L\'adresse e-mail doit appartenir à l\'un des domaines suivants : @gmail.com, @yahoo.com, @esprit.tn, @esen.tn.',
+                    ]),
+                ],
             ])
+
             ->add('genre', ChoiceType::class, [
                 'label' => 'Genre',
                 'required' => false,
@@ -73,6 +110,10 @@ class UserType extends AbstractType
             ->add('password', PasswordType::class, [
                 'label' => 'Mot de passe',
                 'required' => true,
+                'attr' => [
+                    'data-toggle' => 'password', // Utilisé pour le JavaScript
+                    'id' => 'password-input',     // ID pour identifier facilement l'élément
+                ],
             ]);
     }
 

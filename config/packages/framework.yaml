@@ -1,10 +1,13 @@
-# see https://symfony.com/doc/current/reference/configuration/framework.html
 # config/packages/framework.yaml
 framework:
     secret: '%env(APP_SECRET)%'
     annotations:
         enabled: true
-        
+
+    # Configuration du routeur
+    router:
+        default_uri: 'http://localhost:8000'  # Utilise la variable APP_URL définie dans .env
+
     # Enables session support. Note that the session will ONLY be started if you read or write from it.
     # Remove or comment this section to explicitly disable session support.
     session:
