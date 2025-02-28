@@ -16,10 +16,10 @@ class AdminController extends AbstractController
     #[Route('/admin', name: 'app_admin')]
     public function admin(UserRepository $userRepository): Response
     {
-        $parents = $userRepository->findBy(['role' => 'parent']);
-        $eleves = $userRepository->findBy(['role' => 'eleve']);
+        $parents = $userRepository->findBy(['role' => 'ROLE_PARENT']);
+        $eleves = $userRepository->findBy(['role' => 'ROLE_ELEVE']);
         $enseignants = $userRepository->findBy(['role' => 'enseignant']);
-        $medecins = $userRepository->findBy(['role' => 'medecin']);
+        $medecins = $userRepository->findBy(['role' => 'ROLE_MEDECIN']);
         
         return $this->render('Admin/admin.html.twig', [
             'parents' => $parents,
