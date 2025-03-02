@@ -19,7 +19,7 @@ class LoginContController extends AbstractController
             return $this->redirectToRoute('app_home'); 
         }
 
-        return $this->render('home/base.html.twig', [
+        return $this->render('Home/base.html.twig', [
             'email' => $email,
             'error' => $error,
         ]);
