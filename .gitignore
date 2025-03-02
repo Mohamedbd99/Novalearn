@@ -15,16 +15,8 @@ node_modules
 
 /vendor/
 /var/
-/public/build/
-/public/bundles/
-/public/build/
-/public/bundles/
-/public/build/
-/public/bundles/
-/public/build/
-/public/bundles/
-/public/build/
 
+vendor
 
 *.py[cod] 
 *.pyo
