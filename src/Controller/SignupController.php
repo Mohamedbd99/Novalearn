@@ -141,7 +141,7 @@ public function signupPar(Request $request, EntityManagerInterface $entityManage
         $entityManager->flush();
 
         // Rediriger vers la page de connexion ou une autre page appropriée
-        return $this->redirectToRoute('app_login');
+        return $this->redirectToRoute('app_home');
     }
 
     return $this->render('Signup/parents.html.twig', [

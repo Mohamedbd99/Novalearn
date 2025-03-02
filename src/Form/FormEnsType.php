@@ -20,13 +20,12 @@ class FormEnsType extends AbstractType
         
 ->add('role', ChoiceType::class, [
     'choices' => [
-        'Enseignant' => 'Enseignant',
-        'Parent' => 'Parent',
-        'User' => 'User',
-        'Medecin' => 'Medecin',
+        'Enseignant' => 'ROLE_ENSEIGNANT',
+        'Parent' => 'ROLE_PARENT',
+        'Eleve' => 'ROLE_ELEVE',
+        'Medecin' => 'ROLE_MEDECIN',
     ],
-    'required' => true,  
-    'empty_data' => 'USER',  
+    'required' => true,    
 ])
 
 ->add('nom', TextType::class, [

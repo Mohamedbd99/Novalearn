@@ -4,17 +4,21 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User implements UserInterface
+#[UniqueEntity(fields: ['email'], message: 'Cet email est déjà utilisé.')]
+#[UniqueEntity(fields: ['num_tel'], message: 'Ce numéro de téléphone est déjà utilisé.')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: "bigint")]
     private ?int $id = null;
-    
+
     #[ORM\Column(length: 255)]
     private ?string $role = null;
 
@@ -30,17 +34,19 @@ class User implements UserInterface
     #[ORM\Column]
     private ?int $age = null;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', unique: true)]
+    #[Assert\NotBlank(message: 'Le numéro de téléphone ne peut pas être vide.')]
     private ?int $num_tel = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $difficulte = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-private ?string $niv_difficulte = null;
+    private ?string $niv_difficulte = null;
 
-
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
+    #[Assert\NotBlank(message: 'L\'email ne peut pas être vide.')]
+    #[Assert\Email(message: 'Veuillez saisir un email valide.')]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
@@ -58,6 +64,8 @@ private ?string $niv_difficulte = null;
     #[ORM\Column(type: "string", nullable: true)]
     private ?string $verificationToken = null;
 
+    // Getters and Setters
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,20 +76,20 @@ private ?string $niv_difficulte = null;
         return $this->role;
     }
 
+    public function setRole(string $role): static
+    {
+        $this->role = $role;
+        return $this;
+    }
+
     public function getIdFils(): ?int
     {
         return $this->id_fils;
     }
 
-    public function setIdFils(?int $id_fils): self
+    public function setIdFils(?int $id_fils): static
     {
         $this->id_fils = $id_fils;
-        return $this;
-    }
-
-    public function setRole(string $role): static
-    {
-        $this->role = $role;
         return $this;
     }
 
@@ -134,7 +142,7 @@ private ?string $niv_difficulte = null;
         return $this->difficulte;
     }
 
-    public function setDifficulte(string $difficulte): static
+    public function setDifficulte(?string $difficulte): static
     {
         $this->difficulte = $difficulte;
         return $this;
@@ -145,7 +153,7 @@ private ?string $niv_difficulte = null;
         return $this->niv_difficulte;
     }
 
-    public function setNivDifficulte(string $niv_difficulte): static
+    public function setNivDifficulte(?string $niv_difficulte): static
     {
         $this->niv_difficulte = $niv_difficulte;
         return $this;
@@ -189,7 +197,7 @@ private ?string $niv_difficulte = null;
         return $this->specialite;
     }
 
-    public function setSpecialite(string $specialite): static
+    public function setSpecialite(?string $specialite): static
     {
         $this->specialite = $specialite;
         return $this;
@@ -202,12 +210,12 @@ private ?string $niv_difficulte = null;
 
     public function getUserIdentifier(): string
     {
-        return $this->email; 
+        return $this->email;
     }
 
     public function eraseCredentials(): void
     {
-        
+        // Pas besoin d'implémentation ici pour l'instant
     }
 
     public function getIsVerified(): bool
@@ -218,7 +226,6 @@ private ?string $niv_difficulte = null;
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
-
         return $this;
     }
 
@@ -232,5 +239,4 @@ private ?string $niv_difficulte = null;
         $this->verificationToken = $verificationToken;
         return $this;
     }
-
 }

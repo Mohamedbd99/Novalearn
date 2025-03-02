@@ -68,7 +68,7 @@ class LoginControllerAuthenticator extends AbstractLoginFormAuthenticator
         if (in_array('ROLE_MEDECIN', $user->getRoles(), true)) {
             return new RedirectResponse($this->urlGenerator->generate('app_HomeMedecin'));
         }
-        if (in_array('Enseignant', $user->getRoles(), true)) {
+        if (in_array('ROLE_ENSEIGNANT', $user->getRoles(), true)) {
             return new RedirectResponse($this->urlGenerator->generate('app_cours'));
         }
 

@@ -103,10 +103,10 @@ public function editUsers(Request $request, EntityManagerInterface $entityManage
 public function dashboard(UserRepository $userRepository): Response
 {
     $counts = [
-        'eleves' => count($userRepository->findBy(['role' => 'eleve'])),
+        'eleves' => count($userRepository->findBy(['role' => 'ROLE_ELEVE'])),
         'enseignants' => count($userRepository->findBy(['role' => 'enseignant'])),
-        'parents' => count($userRepository->findBy(['role' => 'parent'])),
-        'medecins' => count($userRepository->findBy(['role' => 'medecin'])),
+        'parents' => count($userRepository->findBy(['role' => 'ROLE_PARENT'])),
+        'medecins' => count($userRepository->findBy(['role' => 'ROLE_MEDECIN'])),
     ];
 
     return $this->render('admin/dashboard.html.twig', [

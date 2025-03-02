@@ -19,13 +19,12 @@ class FormParType extends AbstractType
     {
         $builder
         
-->add('role', ChoiceType::class, [
-    'choices' => [
-        'ROLE_PARENT' => 'ROLE_PARENT',
-    ],
-    'required' => true,  
-    'empty_data' => 'USER', 
-])
+        ->add('role', ChoiceType::class, [
+            'choices' => [
+                'Parent' => 'ROLE_PARENT',
+            ],
+            'required' => true,
+        ])
 
 ->add('nom', TextType::class, [
     'required' => false,  

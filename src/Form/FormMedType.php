@@ -23,11 +23,10 @@ class FormMedType extends AbstractType
     'choices' => [
         'Medecin' => 'ROLE_MEDECIN',
         'Parent' => 'ROLE_PARENT',
-        'User' => 'ROLE_ELEVE',
-        'Enseignant' => 'Enseignant',
+        'Eleve' => 'ROLE_ELEVE',
+        'Enseignant' => 'ROLE_ENSEIGNANT',
     ],
-    'required' => true,  
-    'empty_data' => 'USER',  
+    'required' => true,   
 ])
 
 ->add('nom', TextType::class, [

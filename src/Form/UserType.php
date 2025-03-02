@@ -20,7 +20,7 @@ class UserType extends AbstractType
         $builder
         ->add('role', ChoiceType::class, [
             'choices' => [
-                'Eleve' => 'Eleve',  
+                'Eleve' => 'ROLE_ELEVE',  
             ],
             'label' => 'Rôle',
             'expanded' => false, 
