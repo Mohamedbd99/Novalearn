@@ -32,3 +32,6 @@ pythonQuiz/.env.*
 .env
 .env.*
 pythonQuiz/myenv
+/var/cache/
+/vendor/composer/installed.json
+/vendor/composer/installed.php
