@@ -1,0 +1,209 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Réclamations{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .search-bar {
+            margin-bottom: 20px;
+        }
+        .filters {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .pagination {
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .pagination .page-link {
+            padding: 0.5rem 1rem;
+            color: #6c757d;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+        }
+        .pagination .page-item.active .page-link {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .pagination .page-link:hover {
+            color: #0056b3;
+            text-decoration: none;
+            background-color: #e9ecef;
+            border-color: #dee2e6;
+        }
+        .table-responsive {
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid mt-4">
+        <h1 class="mb-4">Gestion des Réclamations</h1>
+
+        <div class="filters">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="searchQuery" placeholder="Rechercher par nom, email ou message...">
+                </div>
+                <div class="col-md-2">
+                    <select class="form-select" id="statusFilter">
+                        <option value="">Tous les statuts</option>
+                        <option value="En attente">En attente</option>
+                        <option value="En cours">En cours</option>
+                        <option value="Traitée">Traitée</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-select" id="priorityFilter">
+                        <option value="">Toutes les priorités</option>
+                        <option value="Urgente">Urgente</option>
+                        <option value="Haute">Haute</option>
+                        <option value="Moyenne">Moyenne</option>
+                        <option value="Basse">Basse</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>{{ knp_pagination_sortable(pagination, 'ID', 'r.id') }}</th>
+                        <th>{{ knp_pagination_sortable(pagination, 'Date', 'r.createdAt') }}</th>
+                        <th>{{ knp_pagination_sortable(pagination, 'Nom', 'r.nom') }}</th>
+                        <th>{{ knp_pagination_sortable(pagination, 'Email', 'r.email') }}</th>
+                        <th>Message</th>
+                        <th>{{ knp_pagination_sortable(pagination, 'Priorité', 'r.priorite') }}</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reclamation in pagination %}
+                        <tr class="{% if reclamation.priorite == 'Urgente' %}table-danger{% elseif reclamation.priorite == 'Haute' %}table-warning{% elseif reclamation.priorite == 'Moyenne' %}table-info{% endif %}">
+                            <td>{{ reclamation.id }}</td>
+                            <td>{{ reclamation.createdAt|date('d/m/Y H:i') }}</td>
+                            <td>{{ reclamation.nom }}</td>
+                            <td>
+                                {{ reclamation.email }}
+                                {% if reclamation.email|length > 10 %}
+                                    <span class="badge bg-secondary">{{ pagination|filter(r => r.email == reclamation.email)|length }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ reclamation.message }}</td>
+                            <td>
+                                <span class="badge bg-{{ reclamation.priorite == 'Urgente' ? 'danger' : (reclamation.priorite == 'Haute' ? 'warning' : (reclamation.priorite == 'Moyenne' ? 'info' : 'success')) }}">
+                                    {{ reclamation.priorite }}
+                                </span>
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-info" title="Voir" data-bs-toggle="modal" data-bs-target="#viewModal{{ reclamation.id }}">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}" class="btn btn-sm btn-warning" title="Modifier">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form method="post" action="{{ path('app_reclamation_delete', {'id': reclamation.id}) }}" class="d-inline" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette réclamation ?');">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reclamation.id) }}">
+                                        <button class="btn btn-sm btn-danger" title="Supprimer">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="viewModal{{ reclamation.id }}" tabindex="-1" aria-labelledby="viewModalLabel{{ reclamation.id }}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="viewModalLabel{{ reclamation.id }}">Détails de la réclamation #{{ reclamation.id }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <dl class="row">
+                                                    <dt class="col-sm-4">Date</dt>
+                                                    <dd class="col-sm-8">{{ reclamation.createdAt|date('d/m/Y H:i') }}</dd>
+                                                    
+                                                    <dt class="col-sm-4">Nom</dt>
+                                                    <dd class="col-sm-8">{{ reclamation.nom }}</dd>
+                                                    
+                                                    <dt class="col-sm-4">Email</dt>
+                                                    <dd class="col-sm-8">{{ reclamation.email }}</dd>
+                                                    
+                                                    <dt class="col-sm-4">Message</dt>
+                                                    <dd class="col-sm-8">{{ reclamation.message }}</dd>
+                                                    
+                                                    <dt class="col-sm-4">Priorité</dt>
+                                                    <dd class="col-sm-8">
+                                                        <span class="badge bg-{{ reclamation.priorite == 'Urgente' ? 'danger' : (reclamation.priorite == 'Haute' ? 'warning' : (reclamation.priorite == 'Moyenne' ? 'info' : 'success')) }}">
+                                                            {{ reclamation.priorite }}
+                                                        </span>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchQuery');
+            const statusFilter = document.getElementById('statusFilter');
+            const priorityFilter = document.getElementById('priorityFilter');
+            let searchTimeout;
+
+            function updateFilters() {
+                const searchValue = searchInput.value;
+                const statusValue = statusFilter.value;
+                const priorityValue = priorityFilter.value;
+
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.set('search', searchValue);
+                currentUrl.searchParams.set('status', statusValue);
+                currentUrl.searchParams.set('priority', priorityValue);
+                currentUrl.searchParams.set('page', '1'); // Reset to first page on filter change
+
+                window.location.href = currentUrl.toString();
+            }
+
+            // Add event listeners with debounce for search
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(updateFilters, 500);
+            });
+
+            // Add event listeners for filters
+            statusFilter.addEventListener('change', updateFilters);
+            priorityFilter.addEventListener('change', updateFilters);
+
+            // Set initial values from URL params
+            const urlParams = new URLSearchParams(window.location.search);
+            searchInput.value = urlParams.get('search') || '';
+            statusFilter.value = urlParams.get('status') || '';
+            priorityFilter.value = urlParams.get('priority') || '';
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% if pagination.items|length > 0 %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'ID', 'r.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Date', 'r.createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Nom', 'r.nom') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Email', 'r.email') }}</th>
+                <th>Message</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Priorité', 'r.priorite') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Statut', 'r.statut') }}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reclamation in pagination %}
+                {% set rowClass = '' %}
+                {% if reclamation.priorite == 'Urgente' %}
+                    {% set rowClass = 'table-danger' %}
+                {% elseif reclamation.priorite == 'Haute' %}
+                    {% set rowClass = 'table-warning' %}
+                {% elseif reclamation.priorite == 'Moyenne' %}
+                    {% set rowClass = 'table-info' %}
+                {% elseif reclamation.priorite == 'Basse' %}
+                    {% set rowClass = 'table-primary' %}
+                {% endif %}
+                
+                <tr class="{{ rowClass }}">
+                    <td>{{ reclamation.id }}</td>
+                    <td>{{ reclamation.createdAt|date('d/m/Y H:i') }}</td>
+                    <td>{{ reclamation.nom }}</td>
+                    <td>
+                        {{ reclamation.email }}
+                        {% if emailCounts[reclamation.email] > 1 %}
+                            <span class="badge bg-secondary">{{ emailCounts[reclamation.email] }}</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ reclamation.message|badwords_filter|nl2br }}</td>
+                    <td>
+                        <span class="badge {% if reclamation.priorite == 'Urgente' %}bg-danger{% elseif reclamation.priorite == 'Haute' %}bg-warning text-dark{% elseif reclamation.priorite == 'Moyenne' %}bg-info text-dark{% else %}bg-primary{% endif %}">
+                            {{ reclamation.priorite }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge {% if reclamation.statut == 'En attente' %}bg-warning text-dark{% elseif reclamation.statut == 'En cours' %}bg-info text-dark{% else %}bg-success{% endif %}">
+                            {{ reclamation.statut }}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="{{ path('admin_reclamation_show', {'id': reclamation.id}) }}" 
+                               class="btn btn-sm btn-info" title="Voir">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="{{ path('admin_reclamation_edit', {'id': reclamation.id}) }}" 
+                               class="btn btn-sm btn-warning" title="Modifier">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <form method="post" action="{{ path('admin_reclamation_delete', {'id': reclamation.id}) }}" 
+                                  style="display: inline-block;"
+                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette réclamation ?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reclamation.id) }}">
+                                <button type="submit" class="btn btn-sm btn-danger" title="Supprimer">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation d-flex justify-content-center mt-4">
+        {{ knp_pagination_render(pagination, 'admin/pagination.html.twig') }}
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        Aucune réclamation trouvée
+    </div>
+{% endif %}

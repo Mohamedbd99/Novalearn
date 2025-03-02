@@ -21,7 +21,11 @@ class HttpClientConfig
     private $_usedProperties = [];
 
     /**
+<<<<<<< HEAD
      * @default false
+=======
+     * @default true
+>>>>>>> 50bad6b7 (projet)
      * @param ParamConfigurator|bool $value
      * @return $this
      */

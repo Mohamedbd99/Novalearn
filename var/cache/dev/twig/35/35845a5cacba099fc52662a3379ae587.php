@@ -1,0 +1,1455 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\CoreExtension;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+use Twig\TemplateWrapper;
+
+/* reclamation/public/new.html.twig */
+class __TwigTemplate_90ca545ca255690d48c6a41a8f539bf4 extends Template
+{
+    private Source $source;
+    /**
+     * @var array<string, Template>
+     */
+    private array $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->blocks = [
+            'title' => [$this, 'block_title'],
+            'stylesheets' => [$this, 'block_stylesheets'],
+            'body' => [$this, 'block_body'],
+            'javascripts' => [$this, 'block_javascripts'],
+        ];
+    }
+
+    protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
+    {
+        // line 1
+        return "base_public.html.twig";
+    }
+
+    protected function doDisplay(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "reclamation/public/new.html.twig"));
+
+        $this->parent = $this->loadTemplate("base_public.html.twig", "reclamation/public/new.html.twig", 1);
+        yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    // line 3
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_title(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        yield "Soumettre une Réclamation - NovaLearn";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        yield from [];
+    }
+
+    // line 5
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_stylesheets(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        // line 6
+        yield "    ";
+        yield from $this->yieldParentBlock("stylesheets", $context, $blocks);
+        yield "
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h1 {
+            color: #0d6efd;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: #6c757d;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #344767;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            border: 1px solid #e9ecef;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        .form-select {
+            height: 45px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 0 12px;
+        }
+
+        .priority-selector {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .priority-option {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .priority-option:hover {
+            transform: translateY(-2px);
+        }
+
+        .priority-option.selected {
+            transform: translateY(-2px);
+        }
+
+        .priority-option i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .priority-option.urgent {
+            color: #dc3545;
+        }
+
+        .priority-option.urgent.selected {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .priority-option.high {
+            color: #ffc107;
+        }
+
+        .priority-option.high.selected {
+            background-color: #ffc107;
+            color: white;
+            border-color: #ffc107;
+        }
+
+        .priority-option.medium {
+            color: #0dcaf0;
+        }
+
+        .priority-option.medium.selected {
+            background-color: #0dcaf0;
+            color: white;
+            border-color: #0dcaf0;
+        }
+
+        .priority-option.low {
+            color: #198754;
+        }
+
+        .priority-option.low.selected {
+            background-color: #198754;
+            color: white;
+            border-color: #198754;
+        }
+
+        .character-counter {
+            font-size: 0.8rem;
+            color: #6c757d;
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        .btn-submit {
+            background-color: #0d6efd;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-2px);
+        }
+
+        .preview-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+
+        .preview-container.hidden {
+            display: none;
+        }
+
+        #messagePreview {
+            white-space: pre-wrap;
+            color: #495057;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        /* Animation de chargement */
+        .loading {
+            position: relative;
+        }
+
+        .loading:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            right: 10px;
+            margin-top: -10px;
+            border: 2px solid #fff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: loading 0.6s linear infinite;
+        }
+
+        @keyframes loading {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Styles du chatbot */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #0d6efd;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .chatbot-container.active {
+            display: flex;
+        }
+
+        .chatbot-header {
+            padding: 15px;
+            background: #0d6efd;
+            color: white;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .chatbot-header i {
+            margin-right: 10px;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+
+        .message.user {
+            margin-left: auto;
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 15px 15px 0 15px;
+        }
+
+        .message.bot {
+            margin-right: auto;
+            background: #0d6efd;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 15px 15px 15px 0;
+        }
+
+        .chatbot-input {
+            padding: 15px;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #e9ecef;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .chatbot-input button {
+            background: #0d6efd;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-input button:hover {
+            background: #0b5ed7;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 10px 15px;
+            background: #e9ecef;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #6c757d;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        yield from [];
+    }
+
+    // line 354
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_body(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        // line 355
+        yield "    <div class=\"container\">
+        <div class=\"form-container\">
+            <div class=\"form-header\">
+                <h1>Soumettre une Réclamation</h1>
+                <p>Nous sommes là pour vous aider. Décrivez votre problème et nous y répondrons dans les plus brefs délais.</p>
+            </div>
+
+            ";
+        // line 362
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 362, $this->source); })()), 'form_start', ["attr" => ["class" => "needs-validation", "novalidate" => "novalidate"]]);
+        yield "
+                
+                <div class=\"form-group\">
+                    ";
+        // line 365
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 365, $this->source); })()), "category", [], "any", false, false, false, 365), 'label', ["label_attr" => ["class" => "form-label"], "label" => "Catégorie de la réclamation"]);
+        yield "
+                    ";
+        // line 366
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 366, $this->source); })()), "category", [], "any", false, false, false, 366), 'widget', ["attr" => ["class" => "form-select", "required" => true, "placeholder" => "Choisissez une catégorie"]]);
+        // line 372
+        yield "
+                    <div class=\"error-message\">
+                        ";
+        // line 374
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 374, $this->source); })()), "category", [], "any", false, false, false, 374), 'errors');
+        yield "
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 379
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 379, $this->source); })()), "nom", [], "any", false, false, false, 379), 'label', ["label_attr" => ["class" => "form-label"], "label" => "Votre nom complet"]);
+        yield "
+                    ";
+        // line 380
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 380, $this->source); })()), "nom", [], "any", false, false, false, 380), 'widget', ["attr" => ["class" => "form-control", "required" => true, "placeholder" => "Entrez votre nom complet"]]);
+        // line 386
+        yield "
+                    <div class=\"error-message\">
+                        ";
+        // line 388
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 388, $this->source); })()), "nom", [], "any", false, false, false, 388), 'errors');
+        yield "
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 393
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 393, $this->source); })()), "email", [], "any", false, false, false, 393), 'label', ["label_attr" => ["class" => "form-label"], "label" => "Votre adresse email"]);
+        yield "
+                    ";
+        // line 394
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 394, $this->source); })()), "email", [], "any", false, false, false, 394), 'widget', ["attr" => ["class" => "form-control", "required" => true, "placeholder" => "exemple@domaine.com", "type" => "email"]]);
+        // line 401
+        yield "
+                    <div class=\"error-message\">
+                        ";
+        // line 403
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 403, $this->source); })()), "email", [], "any", false, false, false, 403), 'errors');
+        yield "
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    <label class=\"form-label\">Niveau de priorité</label>
+                    <div class=\"priority-selector\">
+                        <div class=\"priority-option low\" data-value=\"Basse\">
+                            <i class=\"fas fa-arrow-down\"></i>
+                            <div>Basse</div>
+                        </div>
+                        <div class=\"priority-option medium\" data-value=\"Moyenne\">
+                            <i class=\"fas fa-minus\"></i>
+                            <div>Moyenne</div>
+                        </div>
+                        <div class=\"priority-option high\" data-value=\"Haute\">
+                            <i class=\"fas fa-arrow-up\"></i>
+                            <div>Haute</div>
+                        </div>
+                        <div class=\"priority-option urgent\" data-value=\"Urgente\">
+                            <i class=\"fas fa-exclamation-triangle\"></i>
+                            <div>Urgente</div>
+                        </div>
+                    </div>
+                    ";
+        // line 427
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 427, $this->source); })()), "priorite", [], "any", false, false, false, 427), 'widget', ["attr" => ["class" => "d-none"]]);
+        yield "
+                    <div class=\"error-message\">
+                        ";
+        // line 429
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 429, $this->source); })()), "priorite", [], "any", false, false, false, 429), 'errors');
+        yield "
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 434
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 434, $this->source); })()), "message", [], "any", false, false, false, 434), 'label', ["label_attr" => ["class" => "form-label"], "label" => "Décrivez votre problème"]);
+        yield "
+                    ";
+        // line 435
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 435, $this->source); })()), "message", [], "any", false, false, false, 435), 'widget', ["attr" => ["class" => "form-control", "required" => true, "rows" => 5, "placeholder" => "Décrivez votre problème en détail...", "maxlength" => "1000"]]);
+        // line 443
+        yield "
+                    <div class=\"character-counter\" id=\"charCounter\">0/1000 caractères</div>
+                    <div class=\"error-message\">
+                        ";
+        // line 446
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 446, $this->source); })()), "message", [], "any", false, false, false, 446), 'errors');
+        yield "
+                    </div>
+                </div>
+
+                <div class=\"preview-container hidden\">
+                    <h6 class=\"mb-3\">Aperçu de votre message</h6>
+                    <p id=\"messagePreview\" class=\"mb-0\"></p>
+                </div>
+
+                <button type=\"submit\" class=\"btn btn-primary btn-submit\" id=\"submitButton\">
+                    <i class=\"fas fa-paper-plane me-2\"></i>Envoyer la réclamation
+                </button>
+
+            ";
+        // line 459
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 459, $this->source); })()), 'form_end');
+        yield "
+        </div>
+    </div>
+
+    ";
+        // line 464
+        yield "    <div class=\"chatbot-toggle\" id=\"chatbotToggle\">
+        <i class=\"fas fa-comments fa-lg\"></i>
+    </div>
+
+    <div class=\"chatbot-container\" id=\"chatbotContainer\">
+        <div class=\"chatbot-header\">
+            <i class=\"fas fa-robot\"></i>
+            <span>Assistant NovaLearn</span>
+        </div>
+        <div class=\"chatbot-messages\" id=\"chatbotMessages\">
+            <div class=\"message bot\">
+                Bonjour ! Je suis là pour vous aider à soumettre votre réclamation. N'hésitez pas à me poser des questions.
+            </div>
+            <div class=\"typing-indicator\" id=\"typingIndicator\">
+                <div class=\"dots\">
+                    <div class=\"dot\"></div>
+                    <div class=\"dot\"></div>
+                    <div class=\"dot\"></div>
+                </div>
+            </div>
+        </div>
+        <div class=\"chatbot-input\">
+            <input type=\"text\" id=\"chatbotInput\" placeholder=\"Tapez votre message...\">
+            <button id=\"chatbotSend\">
+                <i class=\"fas fa-paper-plane\"></i>
+            </button>
+        </div>
+    </div>
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        yield from [];
+    }
+
+    // line 494
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_javascripts(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 495
+        yield "    ";
+        yield from $this->yieldParentBlock("javascripts", $context, $blocks);
+        yield "
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Priority selector
+            const priorityOptions = document.querySelectorAll('.priority-option');
+            const priorityInput = document.querySelector('#reclamation_priorite');
+
+            // Set default priority to \"Moyenne\"
+            const defaultPriority = document.querySelector('.priority-option.medium');
+            defaultPriority.classList.add('selected');
+            priorityInput.value = 'Moyenne';
+
+            priorityOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    priorityOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    priorityInput.value = this.dataset.value;
+                });
+            });
+
+            // Character counter for message
+            const messageTextarea = document.querySelector('#reclamation_message');
+            const charCounter = document.querySelector('#charCounter');
+            const maxLength = 1000;
+
+            messageTextarea.addEventListener('input', function() {
+                const remaining = maxLength - this.value.length;
+                charCounter.textContent = `\${this.value.length}/\${maxLength} caractères`;
+                
+                if (this.value.length > maxLength) {
+                    charCounter.style.color = '#dc3545';
+                } else {
+                    charCounter.style.color = '#6c757d';
+                }
+
+                // Update preview
+                const previewContainer = document.querySelector('.preview-container');
+                const messagePreview = document.querySelector('#messagePreview');
+                
+                if (this.value.trim() !== '') {
+                    previewContainer.classList.remove('hidden');
+                    messagePreview.textContent = this.value;
+                } else {
+                    previewContainer.classList.add('hidden');
+                }
+            });
+
+            // Form validation and loading state
+            const form = document.querySelector('form');
+            const submitButton = document.querySelector('#submitButton');
+
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    submitButton.classList.add('loading');
+                    submitButton.disabled = true;
+                }
+                form.classList.add('was-validated');
+            });
+
+            // Chatbot
+            const chatbotToggle = document.getElementById('chatbotToggle');
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            const chatbotInput = document.getElementById('chatbotInput');
+            const chatbotSend = document.getElementById('chatbotSend');
+            const typingIndicator = document.getElementById('typingIndicator');
+
+            // Toggle chatbot
+            chatbotToggle.addEventListener('click', function() {
+                chatbotContainer.classList.toggle('active');
+                if (chatbotContainer.classList.contains('active')) {
+                    chatbotInput.focus();
+                }
+            });
+
+            // Send message on Enter
+            chatbotInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            // Send message on button click
+            chatbotSend.addEventListener('click', sendMessage);
+
+            function addMessage(message, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message \${isUser ? 'user' : 'bot'}`;
+                messageDiv.textContent = message;
+                chatbotMessages.insertBefore(messageDiv, typingIndicator);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            function showTypingIndicator() {
+                typingIndicator.classList.add('active');
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            function hideTypingIndicator() {
+                typingIndicator.classList.remove('active');
+            }
+
+            async function sendMessage() {
+                const message = chatbotInput.value.trim();
+                if (!message) return;
+
+                // Add user message
+                addMessage(message, true);
+                chatbotInput.value = '';
+
+                // Show typing indicator
+                showTypingIndicator();
+
+                try {
+                    const response = await fetch('";
+        // line 613
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("chatbot_message");
+        yield "', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ message })
+                    });
+
+                    const data = await response.json();
+                    
+                    // Hide typing indicator
+                    hideTypingIndicator();
+
+                    if (data.error) {
+                        addMessage(\"Désolé, je ne peux pas répondre pour le moment. Veuillez réessayer plus tard.\");
+                    } else {
+                        addMessage(data.response);
+                    }
+                } catch (error) {
+                    hideTypingIndicator();
+                    addMessage(\"Désolé, une erreur est survenue. Veuillez réessayer plus tard.\");
+                }
+            }
+        });
+    </script>
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        yield from [];
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getTemplateName(): string
+    {
+        return "reclamation/public/new.html.twig";
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function isTraitable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getDebugInfo(): array
+    {
+        return array (  756 => 613,  634 => 495,  624 => 494,  588 => 464,  581 => 459,  565 => 446,  560 => 443,  558 => 435,  554 => 434,  546 => 429,  541 => 427,  514 => 403,  510 => 401,  508 => 394,  504 => 393,  496 => 388,  492 => 386,  490 => 380,  486 => 379,  478 => 374,  474 => 372,  472 => 366,  468 => 365,  462 => 362,  453 => 355,  443 => 354,  87 => 6,  77 => 5,  60 => 3,  43 => 1,);
+    }
+
+    public function getSourceContext(): Source
+    {
+        return new Source("{% extends 'base_public.html.twig' %}
+
+{% block title %}Soumettre une Réclamation - NovaLearn{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h1 {
+            color: #0d6efd;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: #6c757d;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #344767;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            border: 1px solid #e9ecef;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        .form-select {
+            height: 45px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 0 12px;
+        }
+
+        .priority-selector {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .priority-option {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .priority-option:hover {
+            transform: translateY(-2px);
+        }
+
+        .priority-option.selected {
+            transform: translateY(-2px);
+        }
+
+        .priority-option i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .priority-option.urgent {
+            color: #dc3545;
+        }
+
+        .priority-option.urgent.selected {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .priority-option.high {
+            color: #ffc107;
+        }
+
+        .priority-option.high.selected {
+            background-color: #ffc107;
+            color: white;
+            border-color: #ffc107;
+        }
+
+        .priority-option.medium {
+            color: #0dcaf0;
+        }
+
+        .priority-option.medium.selected {
+            background-color: #0dcaf0;
+            color: white;
+            border-color: #0dcaf0;
+        }
+
+        .priority-option.low {
+            color: #198754;
+        }
+
+        .priority-option.low.selected {
+            background-color: #198754;
+            color: white;
+            border-color: #198754;
+        }
+
+        .character-counter {
+            font-size: 0.8rem;
+            color: #6c757d;
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        .btn-submit {
+            background-color: #0d6efd;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-2px);
+        }
+
+        .preview-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+
+        .preview-container.hidden {
+            display: none;
+        }
+
+        #messagePreview {
+            white-space: pre-wrap;
+            color: #495057;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        /* Animation de chargement */
+        .loading {
+            position: relative;
+        }
+
+        .loading:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            right: 10px;
+            margin-top: -10px;
+            border: 2px solid #fff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: loading 0.6s linear infinite;
+        }
+
+        @keyframes loading {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Styles du chatbot */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #0d6efd;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .chatbot-container.active {
+            display: flex;
+        }
+
+        .chatbot-header {
+            padding: 15px;
+            background: #0d6efd;
+            color: white;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .chatbot-header i {
+            margin-right: 10px;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+
+        .message.user {
+            margin-left: auto;
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 15px 15px 0 15px;
+        }
+
+        .message.bot {
+            margin-right: auto;
+            background: #0d6efd;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 15px 15px 15px 0;
+        }
+
+        .chatbot-input {
+            padding: 15px;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #e9ecef;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .chatbot-input button {
+            background: #0d6efd;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-input button:hover {
+            background: #0b5ed7;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 10px 15px;
+            background: #e9ecef;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #6c757d;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class=\"container\">
+        <div class=\"form-container\">
+            <div class=\"form-header\">
+                <h1>Soumettre une Réclamation</h1>
+                <p>Nous sommes là pour vous aider. Décrivez votre problème et nous y répondrons dans les plus brefs délais.</p>
+            </div>
+
+            {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+                
+                <div class=\"form-group\">
+                    {{ form_label(form.category, 'Catégorie de la réclamation', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.category, {
+                        'attr': {
+                            'class': 'form-select',
+                            'required': true,
+                            'placeholder': 'Choisissez une catégorie'
+                        }
+                    }) }}
+                    <div class=\"error-message\">
+                        {{ form_errors(form.category) }}
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(form.nom, 'Votre nom complet', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.nom, {
+                        'attr': {
+                            'class': 'form-control',
+                            'required': true,
+                            'placeholder': 'Entrez votre nom complet'
+                        }
+                    }) }}
+                    <div class=\"error-message\">
+                        {{ form_errors(form.nom) }}
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(form.email, 'Votre adresse email', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.email, {
+                        'attr': {
+                            'class': 'form-control',
+                            'required': true,
+                            'placeholder': 'exemple@domaine.com',
+                            'type': 'email'
+                        }
+                    }) }}
+                    <div class=\"error-message\">
+                        {{ form_errors(form.email) }}
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    <label class=\"form-label\">Niveau de priorité</label>
+                    <div class=\"priority-selector\">
+                        <div class=\"priority-option low\" data-value=\"Basse\">
+                            <i class=\"fas fa-arrow-down\"></i>
+                            <div>Basse</div>
+                        </div>
+                        <div class=\"priority-option medium\" data-value=\"Moyenne\">
+                            <i class=\"fas fa-minus\"></i>
+                            <div>Moyenne</div>
+                        </div>
+                        <div class=\"priority-option high\" data-value=\"Haute\">
+                            <i class=\"fas fa-arrow-up\"></i>
+                            <div>Haute</div>
+                        </div>
+                        <div class=\"priority-option urgent\" data-value=\"Urgente\">
+                            <i class=\"fas fa-exclamation-triangle\"></i>
+                            <div>Urgente</div>
+                        </div>
+                    </div>
+                    {{ form_widget(form.priorite, {'attr': {'class': 'd-none'}}) }}
+                    <div class=\"error-message\">
+                        {{ form_errors(form.priorite) }}
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(form.message, 'Décrivez votre problème', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.message, {
+                        'attr': {
+                            'class': 'form-control',
+                            'required': true,
+                            'rows': 5,
+                            'placeholder': 'Décrivez votre problème en détail...',
+                            'maxlength': '1000'
+                        }
+                    }) }}
+                    <div class=\"character-counter\" id=\"charCounter\">0/1000 caractères</div>
+                    <div class=\"error-message\">
+                        {{ form_errors(form.message) }}
+                    </div>
+                </div>
+
+                <div class=\"preview-container hidden\">
+                    <h6 class=\"mb-3\">Aperçu de votre message</h6>
+                    <p id=\"messagePreview\" class=\"mb-0\"></p>
+                </div>
+
+                <button type=\"submit\" class=\"btn btn-primary btn-submit\" id=\"submitButton\">
+                    <i class=\"fas fa-paper-plane me-2\"></i>Envoyer la réclamation
+                </button>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    {# Chatbot #}
+    <div class=\"chatbot-toggle\" id=\"chatbotToggle\">
+        <i class=\"fas fa-comments fa-lg\"></i>
+    </div>
+
+    <div class=\"chatbot-container\" id=\"chatbotContainer\">
+        <div class=\"chatbot-header\">
+            <i class=\"fas fa-robot\"></i>
+            <span>Assistant NovaLearn</span>
+        </div>
+        <div class=\"chatbot-messages\" id=\"chatbotMessages\">
+            <div class=\"message bot\">
+                Bonjour ! Je suis là pour vous aider à soumettre votre réclamation. N'hésitez pas à me poser des questions.
+            </div>
+            <div class=\"typing-indicator\" id=\"typingIndicator\">
+                <div class=\"dots\">
+                    <div class=\"dot\"></div>
+                    <div class=\"dot\"></div>
+                    <div class=\"dot\"></div>
+                </div>
+            </div>
+        </div>
+        <div class=\"chatbot-input\">
+            <input type=\"text\" id=\"chatbotInput\" placeholder=\"Tapez votre message...\">
+            <button id=\"chatbotSend\">
+                <i class=\"fas fa-paper-plane\"></i>
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Priority selector
+            const priorityOptions = document.querySelectorAll('.priority-option');
+            const priorityInput = document.querySelector('#reclamation_priorite');
+
+            // Set default priority to \"Moyenne\"
+            const defaultPriority = document.querySelector('.priority-option.medium');
+            defaultPriority.classList.add('selected');
+            priorityInput.value = 'Moyenne';
+
+            priorityOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    priorityOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    priorityInput.value = this.dataset.value;
+                });
+            });
+
+            // Character counter for message
+            const messageTextarea = document.querySelector('#reclamation_message');
+            const charCounter = document.querySelector('#charCounter');
+            const maxLength = 1000;
+
+            messageTextarea.addEventListener('input', function() {
+                const remaining = maxLength - this.value.length;
+                charCounter.textContent = `\${this.value.length}/\${maxLength} caractères`;
+                
+                if (this.value.length > maxLength) {
+                    charCounter.style.color = '#dc3545';
+                } else {
+                    charCounter.style.color = '#6c757d';
+                }
+
+                // Update preview
+                const previewContainer = document.querySelector('.preview-container');
+                const messagePreview = document.querySelector('#messagePreview');
+                
+                if (this.value.trim() !== '') {
+                    previewContainer.classList.remove('hidden');
+                    messagePreview.textContent = this.value;
+                } else {
+                    previewContainer.classList.add('hidden');
+                }
+            });
+
+            // Form validation and loading state
+            const form = document.querySelector('form');
+            const submitButton = document.querySelector('#submitButton');
+
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    submitButton.classList.add('loading');
+                    submitButton.disabled = true;
+                }
+                form.classList.add('was-validated');
+            });
+
+            // Chatbot
+            const chatbotToggle = document.getElementById('chatbotToggle');
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            const chatbotInput = document.getElementById('chatbotInput');
+            const chatbotSend = document.getElementById('chatbotSend');
+            const typingIndicator = document.getElementById('typingIndicator');
+
+            // Toggle chatbot
+            chatbotToggle.addEventListener('click', function() {
+                chatbotContainer.classList.toggle('active');
+                if (chatbotContainer.classList.contains('active')) {
+                    chatbotInput.focus();
+                }
+            });
+
+            // Send message on Enter
+            chatbotInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            // Send message on button click
+            chatbotSend.addEventListener('click', sendMessage);
+
+            function addMessage(message, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message \${isUser ? 'user' : 'bot'}`;
+                messageDiv.textContent = message;
+                chatbotMessages.insertBefore(messageDiv, typingIndicator);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            function showTypingIndicator() {
+                typingIndicator.classList.add('active');
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            function hideTypingIndicator() {
+                typingIndicator.classList.remove('active');
+            }
+
+            async function sendMessage() {
+                const message = chatbotInput.value.trim();
+                if (!message) return;
+
+                // Add user message
+                addMessage(message, true);
+                chatbotInput.value = '';
+
+                // Show typing indicator
+                showTypingIndicator();
+
+                try {
+                    const response = await fetch('{{ path('chatbot_message') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ message })
+                    });
+
+                    const data = await response.json();
+                    
+                    // Hide typing indicator
+                    hideTypingIndicator();
+
+                    if (data.error) {
+                        addMessage(\"Désolé, je ne peux pas répondre pour le moment. Veuillez réessayer plus tard.\");
+                    } else {
+                        addMessage(data.response);
+                    }
+                } catch (error) {
+                    hideTypingIndicator();
+                    addMessage(\"Désolé, une erreur est survenue. Veuillez réessayer plus tard.\");
+                }
+            }
+        });
+    </script>
+{% endblock %}
+", "reclamation/public/new.html.twig", "C:\\xampp\\htdocs\\Novalearn-reclamation\\templates\\reclamation\\public\\new.html.twig");
+    }
+}

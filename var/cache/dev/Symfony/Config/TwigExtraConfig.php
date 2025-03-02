@@ -53,6 +53,7 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
+<<<<<<< HEAD
      * @template TValue
      * @param TValue $value
      * @default {"enabled":false}
@@ -69,6 +70,13 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         }
 
         if (!$this->html instanceof \Symfony\Config\TwigExtra\HtmlConfig) {
+=======
+     * @default {"enabled":true}
+    */
+    public function html(array $value = []): \Symfony\Config\TwigExtra\HtmlConfig
+    {
+        if (null === $this->html) {
+>>>>>>> 50bad6b7 (projet)
             $this->_usedProperties['html'] = true;
             $this->html = new \Symfony\Config\TwigExtra\HtmlConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -223,7 +231,11 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 
         if (array_key_exists('html', $value)) {
             $this->_usedProperties['html'] = true;
+<<<<<<< HEAD
             $this->html = \is_array($value['html']) ? new \Symfony\Config\TwigExtra\HtmlConfig($value['html']) : $value['html'];
+=======
+            $this->html = new \Symfony\Config\TwigExtra\HtmlConfig($value['html']);
+>>>>>>> 50bad6b7 (projet)
             unset($value['html']);
         }
 
@@ -269,7 +281,11 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $output['cache'] = $this->cache instanceof \Symfony\Config\TwigExtra\CacheConfig ? $this->cache->toArray() : $this->cache;
         }
         if (isset($this->_usedProperties['html'])) {
+<<<<<<< HEAD
             $output['html'] = $this->html instanceof \Symfony\Config\TwigExtra\HtmlConfig ? $this->html->toArray() : $this->html;
+=======
+            $output['html'] = $this->html->toArray();
+>>>>>>> 50bad6b7 (projet)
         }
         if (isset($this->_usedProperties['markdown'])) {
             $output['markdown'] = $this->markdown instanceof \Symfony\Config\TwigExtra\MarkdownConfig ? $this->markdown->toArray() : $this->markdown;

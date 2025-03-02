@@ -7,10 +7,23 @@ return [
     'app_edit_user' => [['id'], ['_controller' => 'App\\Controller\\AdminController::editUser'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/user']], [], [], []],
     'app_delete_user' => [['id'], ['_controller' => 'App\\Controller\\AdminController::deleteUser'], [], [['text', '/delete'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/user']], [], [], []],
     'app_edit_users' => [[], ['_controller' => 'App\\Controller\\AdminController::editUsers'], [], [['text', '/user/edit']], [], [], []],
+<<<<<<< HEAD
     'admin_reclamation_index' => [[], ['_controller' => 'App\\Controller\\AdminReclamationController::index'], [], [['text', '/admin/reclamation/']], [], [], []],
     'admin_reclamation_show' => [['id'], ['_controller' => 'App\\Controller\\AdminReclamationController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
     'admin_reclamation_edit' => [['id'], ['_controller' => 'App\\Controller\\AdminReclamationController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
     'admin_reclamation_delete' => [['id'], ['_controller' => 'App\\Controller\\AdminReclamationController::delete'], [], [['text', '/delete'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
+=======
+    'admin_dashboard' => [[], ['_controller' => 'App\\Controller\\AdminDashboardController::index'], [], [['text', '/admin/dashboard']], [], [], []],
+    'app_reclamation_pdf' => [['id'], ['_controller' => 'App\\Controller\\AdminReclamationController::generatePdf'], [], [['text', '/pdf'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation/reclamation']], [], [], []],
+    'admin_user_index' => [[], ['_controller' => 'App\\Controller\\AdminUserController::index'], [], [['text', '/admin/user/']], [], [], []],
+    'admin_user_show' => [['id'], ['_controller' => 'App\\Controller\\AdminUserController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/user']], [], [], []],
+    'admin' => [[], ['_controller' => 'App\\Controller\\Admin\\DashboardController::index'], [], [['text', '/admin']], [], [], []],
+    'admin_reclamation_index' => [[], ['_controller' => 'App\\Controller\\Admin\\ReclamationController::index'], [], [['text', '/admin/reclamation/']], [], [], []],
+    'admin_reclamation_show' => [['id'], ['_controller' => 'App\\Controller\\Admin\\ReclamationController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
+    'admin_reclamation_edit' => [['id'], ['_controller' => 'App\\Controller\\Admin\\ReclamationController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
+    'admin_reclamation_delete' => [['id'], ['_controller' => 'App\\Controller\\Admin\\ReclamationController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
+    'chatbot_message' => [[], ['_controller' => 'App\\Controller\\ChatbotController::message'], [], [['text', '/chatbot/message']], [], [], []],
+>>>>>>> 50bad6b7 (projet)
     'app_HomeUser' => [[], ['_controller' => 'App\\Controller\\DefaultController::home'], [], [['text', '/HomeUser']], [], [], []],
     'app_TeamDetails' => [[], ['_controller' => 'App\\Controller\\DefaultController::teamdet'], [], [['text', '/TeamDetails']], [], [], []],
     'app_Team' => [[], ['_controller' => 'App\\Controller\\DefaultController::team'], [], [['text', '/Team']], [], [], []],
@@ -21,7 +34,17 @@ return [
     'app_profile' => [[], ['_controller' => 'App\\Controller\\ProfileController::index'], [], [['text', '/profile']], [], [], []],
     'app_reclamation_new' => [[], ['_controller' => 'App\\Controller\\ReclamationController::new'], [], [['text', '/reclamation/new']], [], [], []],
     'app_reclamation_success' => [[], ['_controller' => 'App\\Controller\\ReclamationController::success'], [], [['text', '/reclamation/success']], [], [], []],
+<<<<<<< HEAD
     'app_reclamation_mes_reclamations' => [[], ['_controller' => 'App\\Controller\\ReclamationController::mesReclamations'], [], [['text', '/reclamation/reclamation/mes-reclamations']], [], [], []],
+=======
+    'app_reclamation_index' => [[], ['_controller' => 'App\\Controller\\ReclamationController::index'], [], [['text', '/reclamation/']], [], [], []],
+    'app_reclamation_mes_reclamations' => [[], ['_controller' => 'App\\Controller\\ReclamationController::mesReclamations'], [], [['text', '/reclamation/reclamation/mes-reclamations']], [], [], []],
+    'app_reclamation_mes_reclamations_email' => [[], ['_controller' => 'App\\Controller\\ReclamationController::mesReclamationsWithEmail'], [], [['text', '/reclamation/reclamation/mes-reclamations-email']], [], [], []],
+    'app_reclamation_export_pdf' => [['ids'], ['ids' => null, '_controller' => 'App\\Controller\\ReclamationController::exportPdf'], [], [['variable', '/', '[^/]++', 'ids', true], ['text', '/reclamation/export-pdf']], [], [], []],
+    'app_reclamation_list' => [[], ['_controller' => 'App\\Controller\\ReclamationController::list'], [], [['text', '/reclamation/reclamation/list']], [], [], []],
+    'app_reclamation_admin_index' => [[], ['_controller' => 'App\\Controller\\ReclamationController::adminIndex'], [], [['text', '/reclamation/admin/reclamation/']], [], [], []],
+    'admin_reclamation_search' => [[], ['_controller' => 'App\\Controller\\ReclamationController::adminSearch'], [], [['text', '/reclamation/admin/search']], [], [], []],
+>>>>>>> 50bad6b7 (projet)
     'app_signup' => [[], ['_controller' => 'App\\Controller\\SignupController::signup'], [], [['text', '/signup']], [], [], []],
     'app_signupPar' => [[], ['_controller' => 'App\\Controller\\SignupController::signupPar'], [], [['text', '/signupPar']], [], [], []],
     'app_AddUser' => [[], ['_controller' => 'App\\Controller\\UserController::addUser'], [], [['text', '/AddUser']], [], [], []],
@@ -29,14 +52,37 @@ return [
     'app_AddMedecin' => [[], ['_controller' => 'App\\Controller\\UserController::addMedecin'], [], [['text', '/AddMedecin']], [], [], []],
     'app_AddEnseignant' => [[], ['_controller' => 'App\\Controller\\UserController::addEnseignant'], [], [['text', '/AddEnseignant']], [], [], []],
     'app_DashPar' => [[], ['_controller' => 'App\\Controller\\UserController::dashboardParent'], [], [['text', '/DashboardPar']], [], [], []],
+<<<<<<< HEAD
+=======
+    'user_reclamation_index' => [[], ['_controller' => 'App\\Controller\\UserReclamationController::index'], [], [['text', '/mes-reclamations/']], [], [], []],
+    'user_reclamation_edit' => [['id'], ['_controller' => 'App\\Controller\\UserReclamationController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/mes-reclamations']], [], [], []],
+    'app_user_stories' => [[], ['_controller' => 'App\\Controller\\UserStoriesController::index'], [], [['text', '/user-stories/']], [], [], []],
+>>>>>>> 50bad6b7 (projet)
     'App\Controller\AdminController::admin' => [[], ['_controller' => 'App\\Controller\\AdminController::admin'], [], [['text', '/admin']], [], [], []],
     'App\Controller\AdminController::editUser' => [['id'], ['_controller' => 'App\\Controller\\AdminController::editUser'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/user']], [], [], []],
     'App\Controller\AdminController::deleteUser' => [['id'], ['_controller' => 'App\\Controller\\AdminController::deleteUser'], [], [['text', '/delete'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/user']], [], [], []],
     'App\Controller\AdminController::editUsers' => [[], ['_controller' => 'App\\Controller\\AdminController::editUsers'], [], [['text', '/user/edit']], [], [], []],
+<<<<<<< HEAD
     'App\Controller\AdminReclamationController::index' => [[], ['_controller' => 'App\\Controller\\AdminReclamationController::index'], [], [['text', '/admin/reclamation/']], [], [], []],
     'App\Controller\AdminReclamationController::show' => [['id'], ['_controller' => 'App\\Controller\\AdminReclamationController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
     'App\Controller\AdminReclamationController::edit' => [['id'], ['_controller' => 'App\\Controller\\AdminReclamationController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
     'App\Controller\AdminReclamationController::delete' => [['id'], ['_controller' => 'App\\Controller\\AdminReclamationController::delete'], [], [['text', '/delete'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
+=======
+    'App\Controller\AdminDashboardController::index' => [[], ['_controller' => 'App\\Controller\\AdminDashboardController::index'], [], [['text', '/admin/dashboard']], [], [], []],
+    'App\Controller\AdminReclamationController::index' => [[], ['_controller' => 'App\\Controller\\Admin\\ReclamationController::index'], [], [['text', '/admin/reclamation/']], [], [], []],
+    'App\Controller\AdminReclamationController::show' => [['id'], ['_controller' => 'App\\Controller\\Admin\\ReclamationController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
+    'App\Controller\AdminReclamationController::edit' => [['id'], ['_controller' => 'App\\Controller\\Admin\\ReclamationController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
+    'App\Controller\AdminReclamationController::delete' => [['id'], ['_controller' => 'App\\Controller\\Admin\\ReclamationController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
+    'App\Controller\AdminReclamationController::generatePdf' => [['id'], ['_controller' => 'App\\Controller\\AdminReclamationController::generatePdf'], [], [['text', '/pdf'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation/reclamation']], [], [], []],
+    'App\Controller\AdminUserController::index' => [[], ['_controller' => 'App\\Controller\\AdminUserController::index'], [], [['text', '/admin/user/']], [], [], []],
+    'App\Controller\AdminUserController::show' => [['id'], ['_controller' => 'App\\Controller\\AdminUserController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/user']], [], [], []],
+    'App\Controller\Admin\DashboardController::index' => [[], ['_controller' => 'App\\Controller\\Admin\\DashboardController::index'], [], [['text', '/admin']], [], [], []],
+    'App\Controller\Admin\ReclamationController::index' => [[], ['_controller' => 'App\\Controller\\Admin\\ReclamationController::index'], [], [['text', '/admin/reclamation/']], [], [], []],
+    'App\Controller\Admin\ReclamationController::show' => [['id'], ['_controller' => 'App\\Controller\\Admin\\ReclamationController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
+    'App\Controller\Admin\ReclamationController::edit' => [['id'], ['_controller' => 'App\\Controller\\Admin\\ReclamationController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
+    'App\Controller\Admin\ReclamationController::delete' => [['id'], ['_controller' => 'App\\Controller\\Admin\\ReclamationController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/reclamation']], [], [], []],
+    'App\Controller\ChatbotController::message' => [[], ['_controller' => 'App\\Controller\\ChatbotController::message'], [], [['text', '/chatbot/message']], [], [], []],
+>>>>>>> 50bad6b7 (projet)
     'App\Controller\DefaultController::index' => [[], ['_controller' => 'App\\Controller\\LoginContController::login'], [], [['text', '/home']], [], [], []],
     'App\Controller\DefaultController::home' => [[], ['_controller' => 'App\\Controller\\DefaultController::home'], [], [['text', '/HomeUser']], [], [], []],
     'App\Controller\DefaultController::teamdet' => [[], ['_controller' => 'App\\Controller\\DefaultController::teamdet'], [], [['text', '/TeamDetails']], [], [], []],
@@ -49,7 +95,17 @@ return [
     'App\Controller\ProfileController::index' => [[], ['_controller' => 'App\\Controller\\ProfileController::index'], [], [['text', '/profile']], [], [], []],
     'App\Controller\ReclamationController::new' => [[], ['_controller' => 'App\\Controller\\ReclamationController::new'], [], [['text', '/reclamation/new']], [], [], []],
     'App\Controller\ReclamationController::success' => [[], ['_controller' => 'App\\Controller\\ReclamationController::success'], [], [['text', '/reclamation/success']], [], [], []],
+<<<<<<< HEAD
     'App\Controller\ReclamationController::mesReclamations' => [[], ['_controller' => 'App\\Controller\\ReclamationController::mesReclamations'], [], [['text', '/reclamation/reclamation/mes-reclamations']], [], [], []],
+=======
+    'App\Controller\ReclamationController::index' => [[], ['_controller' => 'App\\Controller\\ReclamationController::index'], [], [['text', '/reclamation/']], [], [], []],
+    'App\Controller\ReclamationController::mesReclamations' => [[], ['_controller' => 'App\\Controller\\ReclamationController::mesReclamations'], [], [['text', '/reclamation/reclamation/mes-reclamations']], [], [], []],
+    'App\Controller\ReclamationController::mesReclamationsWithEmail' => [[], ['_controller' => 'App\\Controller\\ReclamationController::mesReclamationsWithEmail'], [], [['text', '/reclamation/reclamation/mes-reclamations-email']], [], [], []],
+    'App\Controller\ReclamationController::exportPdf' => [['ids'], ['ids' => null, '_controller' => 'App\\Controller\\ReclamationController::exportPdf'], [], [['variable', '/', '[^/]++', 'ids', true], ['text', '/reclamation/export-pdf']], [], [], []],
+    'App\Controller\ReclamationController::list' => [[], ['_controller' => 'App\\Controller\\ReclamationController::list'], [], [['text', '/reclamation/reclamation/list']], [], [], []],
+    'App\Controller\ReclamationController::adminIndex' => [[], ['_controller' => 'App\\Controller\\ReclamationController::adminIndex'], [], [['text', '/reclamation/admin/reclamation/']], [], [], []],
+    'App\Controller\ReclamationController::adminSearch' => [[], ['_controller' => 'App\\Controller\\ReclamationController::adminSearch'], [], [['text', '/reclamation/admin/search']], [], [], []],
+>>>>>>> 50bad6b7 (projet)
     'App\Controller\SignupController::signup' => [[], ['_controller' => 'App\\Controller\\SignupController::signup'], [], [['text', '/signup']], [], [], []],
     'App\Controller\SignupController::signupPar' => [[], ['_controller' => 'App\\Controller\\SignupController::signupPar'], [], [['text', '/signupPar']], [], [], []],
     'App\Controller\UserController::addUser' => [[], ['_controller' => 'App\\Controller\\UserController::addUser'], [], [['text', '/AddUser']], [], [], []],
@@ -57,4 +113,10 @@ return [
     'App\Controller\UserController::addMedecin' => [[], ['_controller' => 'App\\Controller\\UserController::addMedecin'], [], [['text', '/AddMedecin']], [], [], []],
     'App\Controller\UserController::addEnseignant' => [[], ['_controller' => 'App\\Controller\\UserController::addEnseignant'], [], [['text', '/AddEnseignant']], [], [], []],
     'App\Controller\UserController::dashboardParent' => [[], ['_controller' => 'App\\Controller\\UserController::dashboardParent'], [], [['text', '/DashboardPar']], [], [], []],
+<<<<<<< HEAD
+=======
+    'App\Controller\UserReclamationController::index' => [[], ['_controller' => 'App\\Controller\\UserReclamationController::index'], [], [['text', '/mes-reclamations/']], [], [], []],
+    'App\Controller\UserReclamationController::edit' => [['id'], ['_controller' => 'App\\Controller\\UserReclamationController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/mes-reclamations']], [], [], []],
+    'App\Controller\UserStoriesController::index' => [[], ['_controller' => 'App\\Controller\\UserStoriesController::index'], [], [['text', '/user-stories/']], [], [], []],
+>>>>>>> 50bad6b7 (projet)
 ];

@@ -1,0 +1,944 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\CoreExtension;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+use Twig\TemplateWrapper;
+
+/* reclamation/new.html.twig */
+class __TwigTemplate_dca155d20dedd35eee21975d748dad49 extends Template
+{
+    private Source $source;
+    /**
+     * @var array<string, Template>
+     */
+    private array $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->blocks = [
+            'title' => [$this, 'block_title'],
+            'stylesheets' => [$this, 'block_stylesheets'],
+            'body' => [$this, 'block_body'],
+            'javascripts' => [$this, 'block_javascripts'],
+        ];
+    }
+
+    protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
+    {
+        // line 1
+        return "base_public.html.twig";
+    }
+
+    protected function doDisplay(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "reclamation/new.html.twig"));
+
+        $this->parent = $this->loadTemplate("base_public.html.twig", "reclamation/new.html.twig", 1);
+        yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    // line 3
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_title(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        yield "Soumettre une Réclamation - NovaLearn";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        yield from [];
+    }
+
+    // line 5
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_stylesheets(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        // line 6
+        yield "    ";
+        yield from $this->yieldParentBlock("stylesheets", $context, $blocks);
+        yield "
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h1 {
+            color: #0d6efd;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: #6c757d;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #344767;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            border: 1px solid #e9ecef;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        .form-select {
+            height: 45px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 0 12px;
+        }
+
+        .priority-selector {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .priority-option {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .priority-option:hover {
+            transform: translateY(-2px);
+        }
+
+        .priority-option.selected {
+            transform: translateY(-2px);
+        }
+
+        .priority-option i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .priority-option.urgent {
+            color: #dc3545;
+        }
+
+        .priority-option.urgent.selected {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .priority-option.high {
+            color: #ffc107;
+        }
+
+        .priority-option.high.selected {
+            background-color: #ffc107;
+            color: white;
+            border-color: #ffc107;
+        }
+
+        .priority-option.medium {
+            color: #0dcaf0;
+        }
+
+        .priority-option.medium.selected {
+            background-color: #0dcaf0;
+            color: white;
+            border-color: #0dcaf0;
+        }
+
+        .priority-option.low {
+            color: #198754;
+        }
+
+        .priority-option.low.selected {
+            background-color: #198754;
+            color: white;
+            border-color: #198754;
+        }
+
+        .character-counter {
+            font-size: 0.8rem;
+            color: #6c757d;
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        .btn-submit {
+            background-color: #0d6efd;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-2px);
+        }
+
+        .preview-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+
+        .preview-container.hidden {
+            display: none;
+        }
+
+        #messagePreview {
+            white-space: pre-wrap;
+            color: #495057;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        /* Animation de chargement */
+        .loading {
+            position: relative;
+        }
+
+        .loading:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            right: 10px;
+            margin-top: -10px;
+            border: 2px solid #fff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: loading 0.6s linear infinite;
+        }
+
+        @keyframes loading {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        yield from [];
+    }
+
+    // line 211
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_body(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        // line 212
+        yield "    <div class=\"container\">
+        <div class=\"form-container\">
+            <div class=\"form-header\">
+                <h1>Soumettre une Réclamation</h1>
+                <p>Nous sommes là pour vous aider. Décrivez votre problème et nous y répondrons dans les plus brefs délais.</p>
+            </div>
+
+            ";
+        // line 219
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 219, $this->source); })()), 'form_start', ["attr" => ["class" => "needs-validation", "novalidate" => "novalidate"]]);
+        yield "
+                
+                <div class=\"form-group\">
+                    ";
+        // line 222
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 222, $this->source); })()), "category", [], "any", false, false, false, 222), 'label', ["label_attr" => ["class" => "form-label"], "label" => "Catégorie de la réclamation"]);
+        yield "
+                    ";
+        // line 223
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 223, $this->source); })()), "category", [], "any", false, false, false, 223), 'widget', ["attr" => ["class" => "form-select", "required" => true, "placeholder" => "Choisissez une catégorie"]]);
+        // line 229
+        yield "
+                    <div class=\"error-message\">
+                        ";
+        // line 231
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 231, $this->source); })()), "category", [], "any", false, false, false, 231), 'errors');
+        yield "
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 236
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 236, $this->source); })()), "nom", [], "any", false, false, false, 236), 'label', ["label_attr" => ["class" => "form-label"], "label" => "Votre nom complet"]);
+        yield "
+                    ";
+        // line 237
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 237, $this->source); })()), "nom", [], "any", false, false, false, 237), 'widget', ["attr" => ["class" => "form-control", "required" => true, "placeholder" => "Entrez votre nom complet"]]);
+        // line 243
+        yield "
+                    <div class=\"error-message\">
+                        ";
+        // line 245
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 245, $this->source); })()), "nom", [], "any", false, false, false, 245), 'errors');
+        yield "
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 250
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 250, $this->source); })()), "email", [], "any", false, false, false, 250), 'label', ["label_attr" => ["class" => "form-label"], "label" => "Votre adresse email"]);
+        yield "
+                    ";
+        // line 251
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 251, $this->source); })()), "email", [], "any", false, false, false, 251), 'widget', ["attr" => ["class" => "form-control", "required" => true, "placeholder" => "exemple@domaine.com", "type" => "email"]]);
+        // line 258
+        yield "
+                    <div class=\"error-message\">
+                        ";
+        // line 260
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 260, $this->source); })()), "email", [], "any", false, false, false, 260), 'errors');
+        yield "
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    <label class=\"form-label\">Niveau de priorité</label>
+                    <div class=\"priority-selector\">
+                        <div class=\"priority-option low\" data-value=\"Basse\">
+                            <i class=\"fas fa-arrow-down\"></i>
+                            <div>Basse</div>
+                        </div>
+                        <div class=\"priority-option medium\" data-value=\"Moyenne\">
+                            <i class=\"fas fa-minus\"></i>
+                            <div>Moyenne</div>
+                        </div>
+                        <div class=\"priority-option high\" data-value=\"Haute\">
+                            <i class=\"fas fa-arrow-up\"></i>
+                            <div>Haute</div>
+                        </div>
+                        <div class=\"priority-option urgent\" data-value=\"Urgente\">
+                            <i class=\"fas fa-exclamation-triangle\"></i>
+                            <div>Urgente</div>
+                        </div>
+                    </div>
+                    ";
+        // line 284
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 284, $this->source); })()), "priorite", [], "any", false, false, false, 284), 'widget', ["attr" => ["class" => "d-none"]]);
+        yield "
+                    <div class=\"error-message\">
+                        ";
+        // line 286
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 286, $this->source); })()), "priorite", [], "any", false, false, false, 286), 'errors');
+        yield "
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 291
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 291, $this->source); })()), "message", [], "any", false, false, false, 291), 'label', ["label_attr" => ["class" => "form-label"], "label" => "Décrivez votre problème"]);
+        yield "
+                    ";
+        // line 292
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 292, $this->source); })()), "message", [], "any", false, false, false, 292), 'widget', ["attr" => ["class" => "form-control", "required" => true, "rows" => 5, "placeholder" => "Décrivez votre problème en détail...", "maxlength" => "1000"]]);
+        // line 300
+        yield "
+                    <div class=\"character-counter\" id=\"charCounter\">0/1000 caractères</div>
+                    <div class=\"error-message\">
+                        ";
+        // line 303
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 303, $this->source); })()), "message", [], "any", false, false, false, 303), 'errors');
+        yield "
+                    </div>
+                </div>
+
+                <div class=\"preview-container hidden\">
+                    <h6 class=\"mb-3\">Aperçu de votre message</h6>
+                    <p id=\"messagePreview\" class=\"mb-0\"></p>
+                </div>
+
+                <button type=\"submit\" class=\"btn btn-primary btn-submit\" id=\"submitButton\">
+                    <i class=\"fas fa-paper-plane me-2\"></i>Envoyer la réclamation
+                </button>
+
+            ";
+        // line 316
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 316, $this->source); })()), 'form_end');
+        yield "
+        </div>
+    </div>
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        yield from [];
+    }
+
+    // line 321
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_javascripts(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 322
+        yield "    ";
+        yield from $this->yieldParentBlock("javascripts", $context, $blocks);
+        yield "
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Priority selector
+            const priorityOptions = document.querySelectorAll('.priority-option');
+            const priorityInput = document.querySelector('#reclamation_priorite');
+
+            // Set default priority to \"Moyenne\"
+            const defaultPriority = document.querySelector('.priority-option.medium');
+            defaultPriority.classList.add('selected');
+            priorityInput.value = 'Moyenne';
+
+            priorityOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    priorityOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    priorityInput.value = this.dataset.value;
+                });
+            });
+
+            // Character counter for message
+            const messageTextarea = document.querySelector('#reclamation_message');
+            const charCounter = document.querySelector('#charCounter');
+            const maxLength = 1000;
+
+            messageTextarea.addEventListener('input', function() {
+                const remaining = maxLength - this.value.length;
+                charCounter.textContent = `\${this.value.length}/\${maxLength} caractères`;
+                
+                if (this.value.length > maxLength) {
+                    charCounter.style.color = '#dc3545';
+                } else {
+                    charCounter.style.color = '#6c757d';
+                }
+
+                // Update preview
+                const previewContainer = document.querySelector('.preview-container');
+                const messagePreview = document.querySelector('#messagePreview');
+                
+                if (this.value.trim() !== '') {
+                    previewContainer.classList.remove('hidden');
+                    messagePreview.textContent = this.value;
+                } else {
+                    previewContainer.classList.add('hidden');
+                }
+            });
+
+            // Form validation and loading state
+            const form = document.querySelector('form');
+            const submitButton = document.querySelector('#submitButton');
+
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    submitButton.classList.add('loading');
+                    submitButton.disabled = true;
+                }
+                form.classList.add('was-validated');
+            });
+        });
+    </script>
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        yield from [];
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getTemplateName(): string
+    {
+        return "reclamation/new.html.twig";
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function isTraitable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getDebugInfo(): array
+    {
+        return array (  460 => 322,  450 => 321,  438 => 316,  422 => 303,  417 => 300,  415 => 292,  411 => 291,  403 => 286,  398 => 284,  371 => 260,  367 => 258,  365 => 251,  361 => 250,  353 => 245,  349 => 243,  347 => 237,  343 => 236,  335 => 231,  331 => 229,  329 => 223,  325 => 222,  319 => 219,  310 => 212,  300 => 211,  87 => 6,  77 => 5,  60 => 3,  43 => 1,);
+    }
+
+    public function getSourceContext(): Source
+    {
+        return new Source("{% extends 'base_public.html.twig' %}
+
+{% block title %}Soumettre une Réclamation - NovaLearn{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h1 {
+            color: #0d6efd;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: #6c757d;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #344767;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            border: 1px solid #e9ecef;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        .form-select {
+            height: 45px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 0 12px;
+        }
+
+        .priority-selector {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .priority-option {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .priority-option:hover {
+            transform: translateY(-2px);
+        }
+
+        .priority-option.selected {
+            transform: translateY(-2px);
+        }
+
+        .priority-option i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .priority-option.urgent {
+            color: #dc3545;
+        }
+
+        .priority-option.urgent.selected {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .priority-option.high {
+            color: #ffc107;
+        }
+
+        .priority-option.high.selected {
+            background-color: #ffc107;
+            color: white;
+            border-color: #ffc107;
+        }
+
+        .priority-option.medium {
+            color: #0dcaf0;
+        }
+
+        .priority-option.medium.selected {
+            background-color: #0dcaf0;
+            color: white;
+            border-color: #0dcaf0;
+        }
+
+        .priority-option.low {
+            color: #198754;
+        }
+
+        .priority-option.low.selected {
+            background-color: #198754;
+            color: white;
+            border-color: #198754;
+        }
+
+        .character-counter {
+            font-size: 0.8rem;
+            color: #6c757d;
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        .btn-submit {
+            background-color: #0d6efd;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-2px);
+        }
+
+        .preview-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+
+        .preview-container.hidden {
+            display: none;
+        }
+
+        #messagePreview {
+            white-space: pre-wrap;
+            color: #495057;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        /* Animation de chargement */
+        .loading {
+            position: relative;
+        }
+
+        .loading:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            right: 10px;
+            margin-top: -10px;
+            border: 2px solid #fff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: loading 0.6s linear infinite;
+        }
+
+        @keyframes loading {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class=\"container\">
+        <div class=\"form-container\">
+            <div class=\"form-header\">
+                <h1>Soumettre une Réclamation</h1>
+                <p>Nous sommes là pour vous aider. Décrivez votre problème et nous y répondrons dans les plus brefs délais.</p>
+            </div>
+
+            {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+                
+                <div class=\"form-group\">
+                    {{ form_label(form.category, 'Catégorie de la réclamation', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.category, {
+                        'attr': {
+                            'class': 'form-select',
+                            'required': true,
+                            'placeholder': 'Choisissez une catégorie'
+                        }
+                    }) }}
+                    <div class=\"error-message\">
+                        {{ form_errors(form.category) }}
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(form.nom, 'Votre nom complet', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.nom, {
+                        'attr': {
+                            'class': 'form-control',
+                            'required': true,
+                            'placeholder': 'Entrez votre nom complet'
+                        }
+                    }) }}
+                    <div class=\"error-message\">
+                        {{ form_errors(form.nom) }}
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(form.email, 'Votre adresse email', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.email, {
+                        'attr': {
+                            'class': 'form-control',
+                            'required': true,
+                            'placeholder': 'exemple@domaine.com',
+                            'type': 'email'
+                        }
+                    }) }}
+                    <div class=\"error-message\">
+                        {{ form_errors(form.email) }}
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    <label class=\"form-label\">Niveau de priorité</label>
+                    <div class=\"priority-selector\">
+                        <div class=\"priority-option low\" data-value=\"Basse\">
+                            <i class=\"fas fa-arrow-down\"></i>
+                            <div>Basse</div>
+                        </div>
+                        <div class=\"priority-option medium\" data-value=\"Moyenne\">
+                            <i class=\"fas fa-minus\"></i>
+                            <div>Moyenne</div>
+                        </div>
+                        <div class=\"priority-option high\" data-value=\"Haute\">
+                            <i class=\"fas fa-arrow-up\"></i>
+                            <div>Haute</div>
+                        </div>
+                        <div class=\"priority-option urgent\" data-value=\"Urgente\">
+                            <i class=\"fas fa-exclamation-triangle\"></i>
+                            <div>Urgente</div>
+                        </div>
+                    </div>
+                    {{ form_widget(form.priorite, {'attr': {'class': 'd-none'}}) }}
+                    <div class=\"error-message\">
+                        {{ form_errors(form.priorite) }}
+                    </div>
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(form.message, 'Décrivez votre problème', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.message, {
+                        'attr': {
+                            'class': 'form-control',
+                            'required': true,
+                            'rows': 5,
+                            'placeholder': 'Décrivez votre problème en détail...',
+                            'maxlength': '1000'
+                        }
+                    }) }}
+                    <div class=\"character-counter\" id=\"charCounter\">0/1000 caractères</div>
+                    <div class=\"error-message\">
+                        {{ form_errors(form.message) }}
+                    </div>
+                </div>
+
+                <div class=\"preview-container hidden\">
+                    <h6 class=\"mb-3\">Aperçu de votre message</h6>
+                    <p id=\"messagePreview\" class=\"mb-0\"></p>
+                </div>
+
+                <button type=\"submit\" class=\"btn btn-primary btn-submit\" id=\"submitButton\">
+                    <i class=\"fas fa-paper-plane me-2\"></i>Envoyer la réclamation
+                </button>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Priority selector
+            const priorityOptions = document.querySelectorAll('.priority-option');
+            const priorityInput = document.querySelector('#reclamation_priorite');
+
+            // Set default priority to \"Moyenne\"
+            const defaultPriority = document.querySelector('.priority-option.medium');
+            defaultPriority.classList.add('selected');
+            priorityInput.value = 'Moyenne';
+
+            priorityOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    priorityOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    priorityInput.value = this.dataset.value;
+                });
+            });
+
+            // Character counter for message
+            const messageTextarea = document.querySelector('#reclamation_message');
+            const charCounter = document.querySelector('#charCounter');
+            const maxLength = 1000;
+
+            messageTextarea.addEventListener('input', function() {
+                const remaining = maxLength - this.value.length;
+                charCounter.textContent = `\${this.value.length}/\${maxLength} caractères`;
+                
+                if (this.value.length > maxLength) {
+                    charCounter.style.color = '#dc3545';
+                } else {
+                    charCounter.style.color = '#6c757d';
+                }
+
+                // Update preview
+                const previewContainer = document.querySelector('.preview-container');
+                const messagePreview = document.querySelector('#messagePreview');
+                
+                if (this.value.trim() !== '') {
+                    previewContainer.classList.remove('hidden');
+                    messagePreview.textContent = this.value;
+                } else {
+                    previewContainer.classList.add('hidden');
+                }
+            });
+
+            // Form validation and loading state
+            const form = document.querySelector('form');
+            const submitButton = document.querySelector('#submitButton');
+
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    submitButton.classList.add('loading');
+                    submitButton.disabled = true;
+                }
+                form.classList.add('was-validated');
+            });
+        });
+    </script>
+{% endblock %}", "reclamation/new.html.twig", "C:\\xampp\\htdocs\\Novalearn-reclamation\\templates\\reclamation\\new.html.twig");
+    }
+}

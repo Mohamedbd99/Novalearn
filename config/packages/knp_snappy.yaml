@@ -1,0 +1,17 @@
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     '%env(WKHTMLTOPDF_PATH)%'
+        options:    
+            - { name: 'encoding', value: 'UTF-8' }
+            - { name: 'margin-top', value: 10 }
+            - { name: 'margin-right', value: 10 }
+            - { name: 'margin-bottom', value: 10 }
+            - { name: 'margin-left', value: 10 }
+            - { name: 'page-size', value: 'A4' }
+            - { name: 'footer-right', value: '[page]/[topage]' }
+            - { name: 'footer-font-size', value: 8 }
+    image:
+        enabled:    true
+        binary:     '%env(WKHTMLTOIMAGE_PATH)%'
+        options:    []

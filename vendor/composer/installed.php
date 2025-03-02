@@ -163,6 +163,117 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+<<<<<<< HEAD
+=======
+        'dompdf/dompdf' => array(
+            'pretty_version' => 'v3.1.0',
+            'version' => '3.1.0.0',
+            'reference' => 'a51bd7a063a65499446919286fb18b518177155a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../dompdf/dompdf',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'dompdf/php-font-lib' => array(
+            'pretty_version' => '1.0.1',
+            'version' => '1.0.1.0',
+            'reference' => '6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../dompdf/php-font-lib',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'dompdf/php-svg-lib' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'reference' => 'eb045e518185298eb6ff8d80d0d0c6b17aecd9af',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../dompdf/php-svg-lib',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'easycorp/easyadmin-bundle' => array(
+            'pretty_version' => 'v4.24.3',
+            'version' => '4.24.3.0',
+            'reference' => '3eeb8f1dc94c991423a386f3fc334f6caadc8054',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../easycorp/easyadmin-bundle',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'guzzlehttp/guzzle' => array(
+            'pretty_version' => '7.9.2',
+            'version' => '7.9.2.0',
+            'reference' => 'd281ed313b989f213357e3be1a179f02196ac99b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/guzzle',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'guzzlehttp/promises' => array(
+            'pretty_version' => '2.0.4',
+            'version' => '2.0.4.0',
+            'reference' => 'f9c436286ab2892c7db7be8c8da4ef61ccf7b455',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/promises',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'guzzlehttp/psr7' => array(
+            'pretty_version' => '2.7.0',
+            'version' => '2.7.0.0',
+            'reference' => 'a70f5c95fb43bc83f07c9c948baa0dc1829bf201',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/psr7',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'knplabs/knp-components' => array(
+            'pretty_version' => 'v5.1.0',
+            'version' => '5.1.0.0',
+            'reference' => 'a1ccc001fd243670ca1e970356027a53d6fca2af',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../knplabs/knp-components',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'knplabs/knp-paginator-bundle' => array(
+            'pretty_version' => 'v6.6.1',
+            'version' => '6.6.1.0',
+            'reference' => '1a00f88149d25418bd99d8954eba951f04cc3acf',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../knplabs/knp-paginator-bundle',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'knplabs/knp-snappy' => array(
+            'pretty_version' => 'v1.5.1',
+            'version' => '1.5.1.0',
+            'reference' => '3dd138e9e47de91cd2e056c5e6e1a0dd72547ee7',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../knplabs/knp-snappy',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'knplabs/knp-snappy-bundle' => array(
+            'pretty_version' => 'v1.10.4',
+            'version' => '1.10.4.0',
+            'reference' => 'df217e5deed3397de88b7eb96de1d7c0cd7ed9e9',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../knplabs/knp-snappy-bundle',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'masterminds/html5' => array(
+            'pretty_version' => '2.9.0',
+            'version' => '2.9.0.0',
+            'reference' => 'f5ac2c0b0a2eefca70b2ce32a5809992227e75a6',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../masterminds/html5',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+>>>>>>> 50bad6b7 (projet)
         'nikic/php-parser' => array(
             'pretty_version' => 'v5.4.0',
             'version' => '5.4.0.0',
@@ -172,6 +283,21 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+<<<<<<< HEAD
+=======
+        'php-http/async-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '*',
+            ),
+        ),
+        'php-http/client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '*',
+            ),
+        ),
+>>>>>>> 50bad6b7 (projet)
         'psr/cache' => array(
             'pretty_version' => '3.0.0',
             'version' => '3.0.0.0',
@@ -232,6 +358,54 @@
                 0 => '1.0',
             ),
         ),
+<<<<<<< HEAD
+=======
+        'psr/http-client' => array(
+            'pretty_version' => '1.0.3',
+            'version' => '1.0.3.0',
+            'reference' => 'bb5906edc1c324c9a05aa0873d40117941e5fa90',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/http-client',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'psr/http-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
+        ),
+        'psr/http-factory' => array(
+            'pretty_version' => '1.1.0',
+            'version' => '1.1.0.0',
+            'reference' => '2b4765fddfe3b508ac62f829e852b1501d3f6e8a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/http-factory',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'psr/http-factory-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
+        ),
+        'psr/http-message' => array(
+            'pretty_version' => '2.0',
+            'version' => '2.0.0.0',
+            'reference' => '402d35bcb92c70c026d1a6a9883f06b2ead23d71',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/http-message',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'psr/http-message-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
+        ),
+>>>>>>> 50bad6b7 (projet)
         'psr/log' => array(
             'pretty_version' => '3.0.2',
             'version' => '3.0.2.0',
@@ -253,6 +427,36 @@
                 0 => '1.0|2.0|3.0',
             ),
         ),
+<<<<<<< HEAD
+=======
+        'ralouphie/getallheaders' => array(
+            'pretty_version' => '3.0.3',
+            'version' => '3.0.3.0',
+            'reference' => '120b605dfeb996808c31b6477290a714d356e822',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ralouphie/getallheaders',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'sabberworm/php-css-parser' => array(
+            'pretty_version' => 'v8.7.0',
+            'version' => '8.7.0.0',
+            'reference' => 'f414ff953002a9b18e3a116f5e462c56f21237cf',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../sabberworm/php-css-parser',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'select2/select2' => array(
+            'pretty_version' => '4.0.13',
+            'version' => '4.0.13.0',
+            'reference' => '45f2b83ceed5231afa7b3d5b12b58ad335edd82e',
+            'type' => 'component',
+            'install_path' => __DIR__ . '/../select2/select2',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+>>>>>>> 50bad6b7 (projet)
         'symfony/asset' => array(
             'pretty_version' => 'v6.4.13',
             'version' => '6.4.13.0',
@@ -427,6 +631,33 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+<<<<<<< HEAD
+=======
+        'symfony/http-client' => array(
+            'pretty_version' => 'v6.4.18',
+            'version' => '6.4.18.0',
+            'reference' => '394b440934056b8d9d6ba250001458e9d7998b7f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/http-client',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/http-client-contracts' => array(
+            'pretty_version' => 'v3.5.2',
+            'version' => '3.5.2.0',
+            'reference' => 'ee8d807ab20fcb51267fdace50fbe3494c31e645',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/http-client-contracts',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/http-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '3.0',
+            ),
+        ),
+>>>>>>> 50bad6b7 (projet)
         'symfony/http-foundation' => array(
             'pretty_version' => 'v6.4.18',
             'version' => '6.4.18.0',
@@ -445,6 +676,18 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+<<<<<<< HEAD
+=======
+        'symfony/intl' => array(
+            'pretty_version' => 'v6.4.15',
+            'version' => '6.4.15.0',
+            'reference' => 'b1d5e8d82615b60f229216edfee0b59e2ef66da6',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/intl',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+>>>>>>> 50bad6b7 (projet)
         'symfony/maker-bundle' => array(
             'pretty_version' => 'v1.62.1',
             'version' => '1.62.1.0',
@@ -454,6 +697,18 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+<<<<<<< HEAD
+=======
+        'symfony/mime' => array(
+            'pretty_version' => 'v6.4.18',
+            'version' => '6.4.18.0',
+            'reference' => '917d77981eb1ea963608d5cda4d9c0cf72eaa68e',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/mime',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+>>>>>>> 50bad6b7 (projet)
         'symfony/options-resolver' => array(
             'pretty_version' => 'v6.4.16',
             'version' => '6.4.16.0',
@@ -502,6 +757,18 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+<<<<<<< HEAD
+=======
+        'symfony/polyfill-intl-idn' => array(
+            'pretty_version' => 'v1.31.0',
+            'version' => '1.31.0.0',
+            'reference' => 'c36586dcf89a12315939e00ec9b4474adcb1d773',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-intl-idn',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+>>>>>>> 50bad6b7 (projet)
         'symfony/polyfill-intl-normalizer' => array(
             'pretty_version' => 'v1.31.0',
             'version' => '1.31.0.0',
@@ -559,6 +826,18 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+<<<<<<< HEAD
+=======
+        'symfony/polyfill-uuid' => array(
+            'pretty_version' => 'v1.31.0',
+            'version' => '1.31.0.0',
+            'reference' => '21533be36c24be3f4b1669c4725c7d1d2bab4ae2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-uuid',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+>>>>>>> 50bad6b7 (projet)
         'symfony/process' => array(
             'pretty_version' => 'v6.4.15',
             'version' => '6.4.15.0',
@@ -566,7 +845,11 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/process',
             'aliases' => array(),
+<<<<<<< HEAD
             'dev_requirement' => true,
+=======
+            'dev_requirement' => false,
+>>>>>>> 50bad6b7 (projet)
         ),
         'symfony/property-access' => array(
             'pretty_version' => 'v6.4.18',
@@ -673,6 +956,18 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+<<<<<<< HEAD
+=======
+        'symfony/translation' => array(
+            'pretty_version' => 'v6.4.13',
+            'version' => '6.4.13.0',
+            'reference' => 'bee9bfabfa8b4045a66bf82520e492cddbaffa66',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/translation',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+>>>>>>> 50bad6b7 (projet)
         'symfony/translation-contracts' => array(
             'pretty_version' => 'v3.5.1',
             'version' => '3.5.1.0',
@@ -682,6 +977,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+<<<<<<< HEAD
+=======
+        'symfony/translation-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '2.3|3.0',
+            ),
+        ),
+>>>>>>> 50bad6b7 (projet)
         'symfony/twig-bridge' => array(
             'pretty_version' => 'v6.4.17',
             'version' => '6.4.17.0',
@@ -700,6 +1004,27 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+<<<<<<< HEAD
+=======
+        'symfony/uid' => array(
+            'pretty_version' => 'v6.4.13',
+            'version' => '6.4.13.0',
+            'reference' => '18eb207f0436a993fffbdd811b5b8fa35fa5e007',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/uid',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/ux-twig-component' => array(
+            'pretty_version' => 'v2.23.0',
+            'version' => '2.23.0.0',
+            'reference' => 'f29033b95e93aea2d498dc40eac185ed14b07800',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfony/ux-twig-component',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+>>>>>>> 50bad6b7 (projet)
         'symfony/validator' => array(
             'pretty_version' => 'v6.4.18',
             'version' => '6.4.18.0',
@@ -754,6 +1079,18 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+<<<<<<< HEAD
+=======
+        'twig/html-extra' => array(
+            'pretty_version' => 'v3.20.0',
+            'version' => '3.20.0.0',
+            'reference' => 'f7d54d4de1b64182af745cfb66777f699b599734',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twig/html-extra',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+>>>>>>> 50bad6b7 (projet)
         'twig/twig' => array(
             'pretty_version' => 'v3.19.0',
             'version' => '3.19.0.0',

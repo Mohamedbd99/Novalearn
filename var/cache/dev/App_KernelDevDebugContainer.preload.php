@@ -10,6 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
+<<<<<<< HEAD
 (require __DIR__.'/App_KernelDevDebugContainer.php')->set(\ContainerIPDa1Sl\App_KernelDevDebugContainer::class, null);
 require __DIR__.'/ContainerIPDa1Sl/EntityManagerGhostEbeb667.php';
 require __DIR__.'/ContainerIPDa1Sl/RequestPayloadValueResolverGhost3590451.php';
@@ -153,6 +154,239 @@ require __DIR__.'/ContainerIPDa1Sl/get_Debug_ValueResolver_ArgumentResolver_Date
 require __DIR__.'/ContainerIPDa1Sl/get_Debug_ValueResolver_ArgumentResolver_BackedEnumResolverService.php';
 require __DIR__.'/ContainerIPDa1Sl/get_Debug_Security_Voter_Security_Access_SimpleRoleVoterService.php';
 require __DIR__.'/ContainerIPDa1Sl/get_Debug_Security_Voter_Security_Access_AuthenticatedVoterService.php';
+=======
+(require __DIR__.'/App_KernelDevDebugContainer.php')->set(\ContainerY0JamuC\App_KernelDevDebugContainer::class, null);
+require __DIR__.'/ContainerY0JamuC/PaginatorProxy9cc2a8f.php';
+require __DIR__.'/ContainerY0JamuC/EntityManagerGhostEbeb667.php';
+require __DIR__.'/ContainerY0JamuC/RequestPayloadValueResolverGhost3590451.php';
+require __DIR__.'/ContainerY0JamuC/getWebpackEncore_TagRendererService.php';
+require __DIR__.'/ContainerY0JamuC/getWebpackEncore_ExceptionListenerService.php';
+require __DIR__.'/ContainerY0JamuC/getWebpackEncore_EntrypointLookupDefaultService.php';
+require __DIR__.'/ContainerY0JamuC/getValidator_WhenService.php';
+require __DIR__.'/ContainerY0JamuC/getValidator_NotCompromisedPasswordService.php';
+require __DIR__.'/ContainerY0JamuC/getValidator_NoSuspiciousCharactersService.php';
+require __DIR__.'/ContainerY0JamuC/getValidator_ExpressionService.php';
+require __DIR__.'/ContainerY0JamuC/getValidator_EmailService.php';
+require __DIR__.'/ContainerY0JamuC/getValidator_BuilderService.php';
+require __DIR__.'/ContainerY0JamuC/getValidatorService.php';
+require __DIR__.'/ContainerY0JamuC/getUx_TwigComponent_Twig_ComponentRuntimeService.php';
+require __DIR__.'/ContainerY0JamuC/getUx_TwigComponent_ComponentRendererService.php';
+require __DIR__.'/ContainerY0JamuC/getUx_TwigComponent_ComponentPropertiesService.php';
+require __DIR__.'/ContainerY0JamuC/getUx_TwigComponent_ComponentFactoryService.php';
+require __DIR__.'/ContainerY0JamuC/getTwig_Runtime_SecurityCsrfService.php';
+require __DIR__.'/ContainerY0JamuC/getTwig_Runtime_HttpkernelService.php';
+require __DIR__.'/ContainerY0JamuC/getTwig_Loader_NativeFilesystemService.php';
+require __DIR__.'/ContainerY0JamuC/getTwig_Form_RendererService.php';
+require __DIR__.'/ContainerY0JamuC/getTwig_Form_EngineService.php';
+require __DIR__.'/ContainerY0JamuC/getTwigService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslatorService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslation_LocaleSwitcherService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslation_Loader_YmlService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslation_Loader_XliffService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslation_Loader_ResService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslation_Loader_QtService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslation_Loader_PoService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslation_Loader_PhpService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslation_Loader_MoService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslation_Loader_JsonService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslation_Loader_IniService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslation_Loader_DatService.php';
+require __DIR__.'/ContainerY0JamuC/getTranslation_Loader_CsvService.php';
+require __DIR__.'/ContainerY0JamuC/getSession_Handler_NativeService.php';
+require __DIR__.'/ContainerY0JamuC/getSession_FactoryService.php';
+require __DIR__.'/ContainerY0JamuC/getServicesResetterService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Validator_UserPasswordService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_User_Provider_Concrete_AppUserProviderService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_RouteLoader_LogoutService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_PasswordHasherFactoryService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Logout_Listener_Default_MainService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Logout_Listener_CsrfTokenClearingService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Listener_UserProviderService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Listener_UserChecker_MainService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Listener_Session_MainService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Listener_RememberMe_MainService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Listener_PasswordMigratingService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Listener_Main_UserProviderService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Listener_CsrfProtectionService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Listener_CheckRememberMeConditions_MainService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Listener_CheckAuthenticatorCredentialsService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_HttpUtilsService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Firewall_Map_Context_MainService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Firewall_Map_Context_DevService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_ChannelListenerService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Authenticator_RememberMeHandler_MainService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_Authenticator_RememberMe_MainService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_AuthenticationUtilsService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurity_AccessListenerService.php';
+require __DIR__.'/ContainerY0JamuC/getSecrets_VaultService.php';
+require __DIR__.'/ContainerY0JamuC/getRouting_LoaderService.php';
+require __DIR__.'/ContainerY0JamuC/getPropertyAccessorService.php';
+require __DIR__.'/ContainerY0JamuC/getKnpSnappy_PdfService.php';
+require __DIR__.'/ContainerY0JamuC/getKnpSnappy_ImageService.php';
+require __DIR__.'/ContainerY0JamuC/getKnpPaginatorService.php';
+require __DIR__.'/ContainerY0JamuC/getHttpClient_UriTemplateService.php';
+require __DIR__.'/ContainerY0JamuC/getHttpClient_TransportService.php';
+require __DIR__.'/ContainerY0JamuC/getFragment_Renderer_InlineService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_TypeGuesser_ValidatorService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_TypeGuesser_DoctrineService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_TypeExtension_Upload_ValidatorService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_TypeExtension_Password_PasswordHasherService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_TypeExtension_Form_ValidatorService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_TypeExtension_Form_TransformationFailureHandlingService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_TypeExtension_Form_PasswordHasherService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_TypeExtension_Form_HttpFoundationService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_TypeExtension_CsrfService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_Type_FormService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_Type_FileService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_Type_EntityService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_Type_ColorService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_Type_ChoiceService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_ServerParamsService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_RegistryService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_Listener_PasswordHasherService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_FactoryService.php';
+require __DIR__.'/ContainerY0JamuC/getForm_ChoiceListFactory_CachedService.php';
+require __DIR__.'/ContainerY0JamuC/getErrorControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getDoctrine_UuidGeneratorService.php';
+require __DIR__.'/ContainerY0JamuC/getDoctrine_UlidGeneratorService.php';
+require __DIR__.'/ContainerY0JamuC/getDoctrine_Orm_Validator_UniqueService.php';
+require __DIR__.'/ContainerY0JamuC/getDoctrine_Orm_Listeners_PdoSessionHandlerSchemaListenerService.php';
+require __DIR__.'/ContainerY0JamuC/getDoctrine_Orm_Listeners_LockStoreSchemaListenerService.php';
+require __DIR__.'/ContainerY0JamuC/getDoctrine_Orm_Listeners_DoctrineTokenProviderSchemaListenerService.php';
+require __DIR__.'/ContainerY0JamuC/getDoctrine_Orm_Listeners_DoctrineDbalCacheAdapterSchemaListenerService.php';
+require __DIR__.'/ContainerY0JamuC/getDoctrine_Orm_DefaultListeners_AttachEntityListenersService.php';
+require __DIR__.'/ContainerY0JamuC/getDoctrine_Orm_DefaultEntityManager_PropertyInfoExtractorService.php';
+require __DIR__.'/ContainerY0JamuC/getDoctrine_Orm_DefaultEntityManagerService.php';
+require __DIR__.'/ContainerY0JamuC/getDoctrine_Dbal_DefaultConnection_EventManagerService.php';
+require __DIR__.'/ContainerY0JamuC/getDoctrine_Dbal_DefaultConnectionService.php';
+require __DIR__.'/ContainerY0JamuC/getDebug_Security_Voter_VoteListenerService.php';
+require __DIR__.'/ContainerY0JamuC/getDebug_Security_Firewall_Authenticator_MainService.php';
+require __DIR__.'/ContainerY0JamuC/getDebug_ErrorHandlerConfiguratorService.php';
+require __DIR__.'/ContainerY0JamuC/getController_TemplateAttributeListenerService.php';
+require __DIR__.'/ContainerY0JamuC/getContainer_GetRoutingConditionServiceService.php';
+require __DIR__.'/ContainerY0JamuC/getContainer_EnvVarProcessorsLocatorService.php';
+require __DIR__.'/ContainerY0JamuC/getContainer_EnvVarProcessorService.php';
+require __DIR__.'/ContainerY0JamuC/getCache_ValidatorExpressionLanguageService.php';
+require __DIR__.'/ContainerY0JamuC/getCache_Ux_TwigComponentService.php';
+require __DIR__.'/ContainerY0JamuC/getCache_SystemClearerService.php';
+require __DIR__.'/ContainerY0JamuC/getCache_SystemService.php';
+require __DIR__.'/ContainerY0JamuC/getCache_SecurityIsGrantedAttributeExpressionLanguageService.php';
+require __DIR__.'/ContainerY0JamuC/getCache_GlobalClearerService.php';
+require __DIR__.'/ContainerY0JamuC/getCache_AppClearerService.php';
+require __DIR__.'/ContainerY0JamuC/getCache_AppService.php';
+require __DIR__.'/ContainerY0JamuC/getAssets_PackagesService.php';
+require __DIR__.'/ContainerY0JamuC/getTemplateControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getRedirectControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getPaginationRuntimeService.php';
+require __DIR__.'/ContainerY0JamuC/getIconService.php';
+require __DIR__.'/ContainerY0JamuC/getFlagService.php';
+require __DIR__.'/ContainerY0JamuC/getAlertService.php';
+require __DIR__.'/ContainerY0JamuC/getFieldProviderService.php';
+require __DIR__.'/ContainerY0JamuC/getEntityUpdaterService.php';
+require __DIR__.'/ContainerY0JamuC/getEntityRepositoryService.php';
+require __DIR__.'/ContainerY0JamuC/getFiltersFormTypeService.php';
+require __DIR__.'/ContainerY0JamuC/getFileUploadTypeService.php';
+require __DIR__.'/ContainerY0JamuC/getCrudFormTypeService.php';
+require __DIR__.'/ContainerY0JamuC/getEaCrudFormTypeExtensionService.php';
+require __DIR__.'/ContainerY0JamuC/getPercentConfiguratorService.php';
+require __DIR__.'/ContainerY0JamuC/getNumberConfiguratorService.php';
+require __DIR__.'/ContainerY0JamuC/getMoneyConfiguratorService.php';
+require __DIR__.'/ContainerY0JamuC/getDateTimeConfiguratorService.php';
+require __DIR__.'/ContainerY0JamuC/getCountryConfiguratorService.php';
+require __DIR__.'/ContainerY0JamuC/getCommonPreConfiguratorService.php';
+require __DIR__.'/ContainerY0JamuC/getCommonPostConfiguratorService.php';
+require __DIR__.'/ContainerY0JamuC/getCollectionConfiguratorService.php';
+require __DIR__.'/ContainerY0JamuC/getBooleanConfiguratorService.php';
+require __DIR__.'/ContainerY0JamuC/getAssociationConfiguratorService.php';
+require __DIR__.'/ContainerY0JamuC/getPaginatorFactoryService.php';
+require __DIR__.'/ContainerY0JamuC/getFormFactoryService.php';
+require __DIR__.'/ContainerY0JamuC/getFilterFactoryService.php';
+require __DIR__.'/ContainerY0JamuC/getExceptionListenerService.php';
+require __DIR__.'/ContainerY0JamuC/getCrudResponseListenerService.php';
+require __DIR__.'/ContainerY0JamuC/getAssetPackageService.php';
+require __DIR__.'/ContainerY0JamuC/getPdfServiceService.php';
+require __DIR__.'/ContainerY0JamuC/getChatbotServiceService.php';
+require __DIR__.'/ContainerY0JamuC/getBadWordsFilterService.php';
+require __DIR__.'/ContainerY0JamuC/getLoginControllerAuthenticatorService.php';
+require __DIR__.'/ContainerY0JamuC/getUserRepositoryService.php';
+require __DIR__.'/ContainerY0JamuC/getReclamationRepositoryService.php';
+require __DIR__.'/ContainerY0JamuC/getCategoryRepositoryService.php';
+require __DIR__.'/ContainerY0JamuC/getUserTypeService.php';
+require __DIR__.'/ContainerY0JamuC/getReclamationTypeService.php';
+require __DIR__.'/ContainerY0JamuC/getFormParTypeService.php';
+require __DIR__.'/ContainerY0JamuC/getFormMedTypeService.php';
+require __DIR__.'/ContainerY0JamuC/getFormEnsTypeService.php';
+require __DIR__.'/ContainerY0JamuC/getUserStoriesControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getUserReclamationControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getUserControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getSignupControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getReclamationController2Service.php';
+require __DIR__.'/ContainerY0JamuC/getProfileControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getLoginContControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getHomeControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getDefaultControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getChatbotControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getReclamationCrudControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getReclamationControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getDashboardControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getCategoryCrudControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getAdminUserControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getAdminReclamationControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getAdminDashboardControllerService.php';
+require __DIR__.'/ContainerY0JamuC/getAdminControllerService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_ZVpJtSIService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_YR6jqeDService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_Y4Zrx_Service.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_WvbCcwLService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_WXsvx99Service.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_VMUOjiqService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_T9B7cZ4Service.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_T7nLwyXService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_RSTd_NAService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_LHS823dService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_LDw5jggService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_Kud45L1Service.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_KPUOGb8Service.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_JwjltqService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_JG5xrFjService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_J5BianAService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_A1S6hbfService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_UrOEf8rService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_TQmlIbTService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_SY0zWOwService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_Rr47d2BService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_QMCHEYService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_PqWloHbService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_O2p6Lk7Service.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_NjUBG3vService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_Nb584vpService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_Hz5btgeService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_EfDsDhCService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_CsMkqUaService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_9NAVfdrService.php';
+require __DIR__.'/ContainerY0JamuC/get_ServiceLocator_3YFBJbtService.php';
+require __DIR__.'/ContainerY0JamuC/get_Security_RequestMatcher_KLbKLHaService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_Security_UserValueResolverService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_Security_SecurityTokenValueResolverService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_Doctrine_Orm_EntityValueResolverService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_ArgumentResolver_VariadicService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_ArgumentResolver_UidService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_ArgumentResolver_SessionService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_ArgumentResolver_ServiceService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_ArgumentResolver_RequestPayloadService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_ArgumentResolver_RequestAttributeService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_ArgumentResolver_RequestService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_ArgumentResolver_QueryParameterValueResolverService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_ArgumentResolver_NotTaggedControllerService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_ArgumentResolver_DefaultService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_ArgumentResolver_DatetimeService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_ValueResolver_ArgumentResolver_BackedEnumResolverService.php';
+require __DIR__.'/ContainerY0JamuC/getBatchActionDtoResolverService.php';
+require __DIR__.'/ContainerY0JamuC/getAdminContextResolverService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_Security_Voter_Security_Access_SimpleRoleVoterService.php';
+require __DIR__.'/ContainerY0JamuC/get_Debug_Security_Voter_Security_Access_AuthenticatedVoterService.php';
+require __DIR__.'/ContainerY0JamuC/getSecurityVoterService.php';
+>>>>>>> 50bad6b7 (projet)
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -164,10 +398,24 @@ $classes[] = 'Symfony\WebpackEncoreBundle\WebpackEncoreBundle';
 $classes[] = 'Symfony\Bundle\MakerBundle\MakerBundle';
 $classes[] = 'Symfony\Bundle\SecurityBundle\SecurityBundle';
 $classes[] = 'Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle';
+<<<<<<< HEAD
 $classes[] = 'Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter';
 $classes[] = 'Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter';
 $classes[] = 'Symfony\Component\Security\Core\Authorization\Voter\RoleVoter';
 $classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver';
+=======
+$classes[] = 'Symfony\UX\TwigComponent\TwigComponentBundle';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle';
+$classes[] = 'Knp\Bundle\PaginatorBundle\KnpPaginatorBundle';
+$classes[] = 'Knp\Bundle\SnappyBundle\KnpSnappyBundle';
+$classes[] = 'Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Security\SecurityVoter';
+$classes[] = 'Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter';
+$classes[] = 'Symfony\Component\Security\Core\Authorization\Voter\RoleVoter';
+$classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver';
 $classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver\DateTimeValueResolver';
 $classes[] = 'Symfony\Component\Clock\Clock';
@@ -178,6 +426,10 @@ $classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestVa
 $classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestAttributeValueResolver';
 $classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver';
 $classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver';
+<<<<<<< HEAD
+=======
+$classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver\UidValueResolver';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver';
 $classes[] = 'Symfony\Bridge\Doctrine\ArgumentResolver\EntityValueResolver';
 $classes[] = 'Symfony\Component\Security\Http\Controller\SecurityTokenValueResolver';
@@ -186,7 +438,18 @@ $classes[] = 'Symfony\Component\HttpFoundation\ChainRequestMatcher';
 $classes[] = 'Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
 $classes[] = 'App\Controller\AdminController';
+<<<<<<< HEAD
 $classes[] = 'App\Controller\AdminReclamationController';
+=======
+$classes[] = 'App\Controller\AdminDashboardController';
+$classes[] = 'App\Controller\AdminReclamationController';
+$classes[] = 'App\Controller\AdminUserController';
+$classes[] = 'App\Controller\Admin\CategoryCrudController';
+$classes[] = 'App\Controller\Admin\DashboardController';
+$classes[] = 'App\Controller\Admin\ReclamationController';
+$classes[] = 'App\Controller\Admin\ReclamationCrudController';
+$classes[] = 'App\Controller\ChatbotController';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'App\Controller\DefaultController';
 $classes[] = 'App\Controller\HomeController';
 $classes[] = 'App\Controller\LoginContController';
@@ -194,6 +457,11 @@ $classes[] = 'App\Controller\ProfileController';
 $classes[] = 'App\Controller\ReclamationController';
 $classes[] = 'App\Controller\SignupController';
 $classes[] = 'App\Controller\UserController';
+<<<<<<< HEAD
+=======
+$classes[] = 'App\Controller\UserReclamationController';
+$classes[] = 'App\Controller\UserStoriesController';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'App\Form\FormEnsType';
 $classes[] = 'App\Form\FormMedType';
 $classes[] = 'App\Form\FormParType';
@@ -203,6 +471,82 @@ $classes[] = 'App\Repository\CategoryRepository';
 $classes[] = 'App\Repository\ReclamationRepository';
 $classes[] = 'App\Repository\UserRepository';
 $classes[] = 'App\Security\LoginControllerAuthenticator';
+<<<<<<< HEAD
+=======
+$classes[] = 'App\Service\BadWordsFilter';
+$classes[] = 'App\Service\ChatbotService';
+$classes[] = 'App\Service\PdfService';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Asset\AssetPackage';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\EventListener\AdminRouterSubscriber';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Factory\AdminContextFactory';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Factory\MenuFactory';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Menu\MenuItemMatcher';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\EventListener\CrudResponseListener';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\EventListener\ExceptionListener';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Factory\ActionFactory';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Factory\FieldFactory';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Factory\FormLayoutFactory';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Factory\FilterFactory';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Factory\FormFactory';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Factory\PaginatorFactory';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Orm\EntityPaginator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Form\Extension\CollectionTypeExtension';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EaCrudFormTypeExtension';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Intl\IntlFormatter';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Orm\EntityUpdater';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Provider\FieldProvider';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Router\AdminRouteGenerator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Twig\Component\Alert';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Twig\Component\Flag';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Twig\Component\Icon';
+$classes[] = 'Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime';
+$classes[] = 'Knp\Bundle\PaginatorBundle\Helper\Processor';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\RedirectController';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\TemplateController';
 $classes[] = 'Symfony\WebpackEncoreBundle\EventListener\ResetAssetsEventListener';
@@ -217,10 +561,19 @@ $classes[] = 'Symfony\Component\Cache\Adapter\ArrayAdapter';
 $classes[] = 'Symfony\Component\Cache\Adapter\AdapterInterface';
 $classes[] = 'Symfony\Component\Cache\Adapter\AbstractAdapter';
 $classes[] = 'Symfony\Component\Config\Resource\SelfCheckingResourceChecker';
+<<<<<<< HEAD
+=======
+$classes[] = 'Symfony\Component\Config\ResourceCheckerConfigCacheFactory';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Component\DependencyInjection\EnvVarProcessor';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\CacheAttributeListener';
 $classes[] = 'Symfony\Component\Security\Http\EventListener\IsGrantedAttributeListener';
 $classes[] = 'Symfony\Bridge\Twig\EventListener\TemplateAttributeListener';
+<<<<<<< HEAD
+=======
+$classes[] = 'Symfony\Component\HttpKernel\Controller\TraceableControllerResolver';
+$classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\DebugHandlersListener';
 $classes[] = 'Symfony\Component\HttpKernel\Debug\ErrorHandlerConfigurator';
 $classes[] = 'Symfony\Component\ErrorHandler\ErrorRenderer\FileLinkFormatter';
@@ -267,12 +620,22 @@ $classes[] = 'Symfony\Bridge\Doctrine\SchemaListener\LockStoreSchemaListener';
 $classes[] = 'Symfony\Bridge\Doctrine\SchemaListener\PdoSessionHandlerSchemaListener';
 $classes[] = 'Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator';
 $classes[] = 'Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator';
+<<<<<<< HEAD
 $classes[] = 'Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator';
+=======
+$classes[] = 'Symfony\Component\Uid\Factory\UlidFactory';
+$classes[] = 'Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator';
+$classes[] = 'Symfony\Component\Uid\Factory\UuidFactory';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Component\HttpKernel\Controller\ErrorController';
 $classes[] = 'Symfony\Bridge\Twig\ErrorRenderer\TwigErrorRenderer';
 $classes[] = 'Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer';
 $classes[] = 'Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\ErrorListener';
+<<<<<<< HEAD
+=======
+$classes[] = 'Symfony\Component\Filesystem\Filesystem';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Component\Form\ChoiceList\Factory\CachingFactoryDecorator';
 $classes[] = 'Symfony\Component\Form\ChoiceList\Factory\PropertyAccessDecorator';
 $classes[] = 'Symfony\Component\Form\ChoiceList\Factory\DefaultChoiceListFactory';
@@ -297,19 +660,44 @@ $classes[] = 'Symfony\Component\Form\Extension\Validator\Type\FormTypeValidatorE
 $classes[] = 'Symfony\Component\Form\Extension\PasswordHasher\Type\PasswordTypePasswordHasherExtension';
 $classes[] = 'Symfony\Component\Form\Extension\Validator\Type\RepeatedTypeValidatorExtension';
 $classes[] = 'Symfony\Component\Form\Extension\Validator\Type\SubmitTypeValidatorExtension';
+<<<<<<< HEAD
 $classes[] = 'Symfony\Bridge\Doctrine\Form\DoctrineOrmTypeGuesser';
 $classes[] = 'Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser';
 $classes[] = 'Symfony\Component\HttpKernel\Fragment\InlineFragmentRenderer';
+=======
+$classes[] = 'Symfony\Component\Form\Extension\Validator\Type\UploadValidatorExtension';
+$classes[] = 'Symfony\Bridge\Doctrine\Form\DoctrineOrmTypeGuesser';
+$classes[] = 'Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser';
+$classes[] = 'Symfony\Component\HttpKernel\Fragment\InlineFragmentRenderer';
+$classes[] = 'Symfony\Contracts\HttpClient\HttpClientInterface';
+$classes[] = 'Symfony\Component\HttpClient\HttpClient';
+$classes[] = 'Symfony\Component\HttpClient\UriTemplateHttpClient';
+$classes[] = 'current';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Component\Runtime\Runner\Symfony\HttpKernelRunner';
 $classes[] = 'Symfony\Component\Runtime\Runner\Symfony\ResponseRunner';
 $classes[] = 'Symfony\Component\Runtime\SymfonyRuntime';
 $classes[] = 'Symfony\Component\HttpKernel\HttpKernel';
+<<<<<<< HEAD
 $classes[] = 'Symfony\Component\HttpKernel\Controller\TraceableControllerResolver';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver';
+=======
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Component\HttpKernel\Controller\TraceableArgumentResolver';
 $classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver';
 $classes[] = 'Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory';
 $classes[] = 'App\Kernel';
+<<<<<<< HEAD
+=======
+$classes[] = 'Knp\Component\Pager\Paginator';
+$classes[] = 'Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess';
+$classes[] = 'Knp\Component\Pager\Event\Subscriber\Filtration\FiltrationSubscriber';
+$classes[] = 'Knp\Component\Pager\Event\Subscriber\Paginate\PaginationSubscriber';
+$classes[] = 'Knp\Bundle\PaginatorBundle\Subscriber\SlidingPaginationSubscriber';
+$classes[] = 'Knp\Component\Pager\Event\Subscriber\Sortable\SortableSubscriber';
+$classes[] = 'Knp\Snappy\Image';
+$classes[] = 'Knp\Snappy\Pdf';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\LocaleAwareListener';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\LocaleListener';
 $classes[] = 'Symfony\Component\HttpKernel\Log\Logger';
@@ -319,7 +707,10 @@ $classes[] = 'Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor';
 $classes[] = 'Symfony\Component\HttpFoundation\RequestStack';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\ResponseListener';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Routing\Router';
+<<<<<<< HEAD
 $classes[] = 'Symfony\Component\Config\ResourceCheckerConfigCacheFactory';
+=======
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Component\Routing\RequestContext';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\RouterListener';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Routing\DelegatingLoader';
@@ -331,6 +722,10 @@ $classes[] = 'Symfony\Component\Routing\Loader\PhpFileLoader';
 $classes[] = 'Symfony\Component\Routing\Loader\GlobFileLoader';
 $classes[] = 'Symfony\Component\Routing\Loader\DirectoryLoader';
 $classes[] = 'Symfony\Component\Routing\Loader\ContainerLoader';
+<<<<<<< HEAD
+=======
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Router\AdminRouteLoader';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Routing\AttributeRouteControllerLoader';
 $classes[] = 'Symfony\Component\Routing\Loader\AttributeDirectoryLoader';
 $classes[] = 'Symfony\Component\Routing\Loader\AttributeFileLoader';
@@ -386,6 +781,24 @@ $classes[] = 'Symfony\Component\HttpFoundation\Session\Storage\MetadataBag';
 $classes[] = 'Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\SessionListener';
 $classes[] = 'Symfony\Component\String\Slugger\AsciiSlugger';
+<<<<<<< HEAD
+=======
+$classes[] = 'Symfony\Component\Translation\Loader\CsvFileLoader';
+$classes[] = 'Symfony\Component\Translation\Loader\IcuDatFileLoader';
+$classes[] = 'Symfony\Component\Translation\Loader\IniFileLoader';
+$classes[] = 'Symfony\Component\Translation\Loader\JsonFileLoader';
+$classes[] = 'Symfony\Component\Translation\Loader\MoFileLoader';
+$classes[] = 'Symfony\Component\Translation\Loader\PhpFileLoader';
+$classes[] = 'Symfony\Component\Translation\Loader\PoFileLoader';
+$classes[] = 'Symfony\Component\Translation\Loader\QtFileLoader';
+$classes[] = 'Symfony\Component\Translation\Loader\IcuResFileLoader';
+$classes[] = 'Symfony\Component\Translation\Loader\XliffFileLoader';
+$classes[] = 'Symfony\Component\Translation\Loader\YamlFileLoader';
+$classes[] = 'Symfony\Component\Translation\LocaleSwitcher';
+$classes[] = 'Symfony\Bundle\FrameworkBundle\Translation\Translator';
+$classes[] = 'Symfony\Component\Translation\Formatter\MessageFormatter';
+$classes[] = 'Symfony\Component\Translation\IdentityTranslator';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Twig\Cache\FilesystemCache';
 $classes[] = 'Twig\Extension\CoreExtension';
 $classes[] = 'Twig\Extension\EscaperExtension';
@@ -395,7 +808,10 @@ $classes[] = 'Twig\ExtensionSet';
 $classes[] = 'Twig\Template';
 $classes[] = 'Twig\TemplateWrapper';
 $classes[] = 'Twig\Environment';
+<<<<<<< HEAD
 $classes[] = 'Twig\Loader\FilesystemLoader';
+=======
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Bridge\Twig\Extension\CsrfExtension';
 $classes[] = 'Symfony\Bridge\Twig\Extension\ProfilerExtension';
 $classes[] = 'Twig\Profiler\Profile';
@@ -412,6 +828,7 @@ $classes[] = 'Symfony\Bridge\Twig\Extension\FormExtension';
 $classes[] = 'Symfony\Bridge\Twig\Extension\LogoutUrlExtension';
 $classes[] = 'Symfony\Bridge\Twig\Extension\SecurityExtension';
 $classes[] = 'Symfony\Component\Security\Http\Impersonate\ImpersonateUrlGenerator';
+<<<<<<< HEAD
 $classes[] = 'Twig\Extension\DebugExtension';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension';
 $classes[] = 'Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension';
@@ -421,11 +838,40 @@ $classes[] = 'Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor';
 $classes[] = 'Symfony\Bundle\TwigBundle\DependencyInjection\Configurator\EnvironmentConfigurator';
 $classes[] = 'Symfony\Bridge\Twig\Form\TwigRendererEngine';
 $classes[] = 'Symfony\Component\Form\FormRenderer';
+=======
+$classes[] = 'App\Twig\BadWordsFilterExtension';
+$classes[] = 'App\Twig\ReclamationExtension';
+$classes[] = 'Twig\Extension\DebugExtension';
+$classes[] = 'Twig\Extra\Html\HtmlExtension';
+$classes[] = 'Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension';
+$classes[] = 'Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension';
+$classes[] = 'Symfony\UX\TwigComponent\Twig\ComponentExtension';
+$classes[] = 'EasyCorp\Bundle\EasyAdminBundle\Twig\EasyAdminTwigExtension';
+$classes[] = 'Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension';
+$classes[] = 'Symfony\Bridge\Twig\AppVariable';
+$classes[] = 'Twig\RuntimeLoader\ContainerRuntimeLoader';
+$classes[] = 'Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor';
+$classes[] = 'Symfony\UX\TwigComponent\Twig\TwigEnvironmentConfigurator';
+$classes[] = 'Symfony\Bundle\TwigBundle\DependencyInjection\Configurator\EnvironmentConfigurator';
+$classes[] = 'Symfony\Bridge\Twig\Form\TwigRendererEngine';
+$classes[] = 'Symfony\Component\Form\FormRenderer';
+$classes[] = 'Twig\Loader\FilesystemLoader';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Bridge\Twig\Extension\HttpKernelRuntime';
 $classes[] = 'Symfony\Component\HttpKernel\DependencyInjection\LazyLoadingFragmentHandler';
 $classes[] = 'Symfony\Component\HttpKernel\Fragment\FragmentUriGenerator';
 $classes[] = 'Symfony\Component\HttpFoundation\UriSigner';
 $classes[] = 'Symfony\Bridge\Twig\Extension\CsrfRuntime';
+<<<<<<< HEAD
+=======
+$classes[] = 'Symfony\UX\TwigComponent\ComponentFactory';
+$classes[] = 'Symfony\UX\TwigComponent\ComponentTemplateFinder';
+$classes[] = 'Symfony\UX\TwigComponent\EventListener\TwigComponentLoggerListener';
+$classes[] = 'Symfony\UX\TwigComponent\ComponentProperties';
+$classes[] = 'Symfony\UX\TwigComponent\ComponentRenderer';
+$classes[] = 'Symfony\UX\TwigComponent\ComponentStack';
+$classes[] = 'Symfony\UX\TwigComponent\Twig\ComponentRuntime';
+>>>>>>> 50bad6b7 (projet)
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\ValidateRequestListener';
 $classes[] = 'Symfony\Component\Validator\Validator\ValidatorInterface';
 $classes[] = 'Symfony\Component\Validator\ValidatorBuilder';

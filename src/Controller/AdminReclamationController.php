@@ -4,20 +4,66 @@ namespace App\Controller;
 
 use App\Entity\Reclamation;
 use App\Repository\ReclamationRepository;
+<<<<<<< HEAD
+=======
+use App\Service\BadWordsFilter;
+use App\Service\PdfService;
+use Doctrine\ORM\EntityManagerInterface;
+>>>>>>> 50bad6b7 (projet)
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+<<<<<<< HEAD
+=======
+use Knp\Component\Pager\PaginatorInterface;
+>>>>>>> 50bad6b7 (projet)
 
 #[Route('/admin/reclamation')]
 class AdminReclamationController extends AbstractController
 {
     #[Route('/', name: 'admin_reclamation_index', methods: ['GET'])]
+<<<<<<< HEAD
     public function index(ReclamationRepository $reclamationRepository): Response
     {
         return $this->render('admin/reclamation/index.html.twig', [
             'reclamations' => $reclamationRepository->findAll(),
+=======
+    public function index(
+        ReclamationRepository $reclamationRepository,
+        BadWordsFilter $badWordsFilter,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response {
+        $query = $reclamationRepository->createQueryBuilder('r')
+            ->orderBy('r.createdAt', 'DESC')
+            ->getQuery();
+
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            10
+        );
+
+        $emailCounts = [];
+        foreach ($reclamationRepository->countReclamationsByEmail() as $result) {
+            $emailCounts[$result['email']] = $result['count'];
+        }
+
+        if ($request->isXmlHttpRequest()) {
+            return $this->render('admin/reclamation/_reclamations_table.html.twig', [
+                'pagination' => $pagination,
+                'emailCounts' => $emailCounts,
+                'badWordsFilter' => $badWordsFilter,
+            ]);
+        }
+
+        return $this->render('admin/reclamation/index.html.twig', [
+            'pagination' => $pagination,
+            'emailCounts' => $emailCounts,
+            'badWordsFilter' => $badWordsFilter,
+>>>>>>> 50bad6b7 (projet)
         ]);
     }
 
@@ -30,7 +76,11 @@ class AdminReclamationController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'admin_reclamation_edit', methods: ['GET', 'POST'])]
+<<<<<<< HEAD
     public function edit(Request $request, Reclamation $reclamation, ReclamationRepository $reclamationRepository): Response
+=======
+    public function edit(Request $request, Reclamation $reclamation, ReclamationRepository $reclamationRepository, EntityManagerInterface $entityManager): Response
+>>>>>>> 50bad6b7 (projet)
     {
         $form = $this->createFormBuilder($reclamation)
             ->add('statut', ChoiceType::class, [
@@ -48,6 +98,10 @@ class AdminReclamationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $reclamationRepository->save($reclamation, true);
             $this->addFlash('success', 'Le statut de la réclamation a été mis à jour.');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 50bad6b7 (projet)
             return $this->redirectToRoute('admin_reclamation_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -67,4 +121,13 @@ class AdminReclamationController extends AbstractController
 
         return $this->redirectToRoute('admin_reclamation_index', [], Response::HTTP_SEE_OTHER);
     }
+<<<<<<< HEAD
+=======
+
+    #[Route('/reclamation/{id}/pdf', name: 'app_reclamation_pdf')]
+    public function generatePdf(Reclamation $reclamation, PdfService $pdfService): Response
+    {
+        return $pdfService->generateReclamationPdf($reclamation);
+    }
+>>>>>>> 50bad6b7 (projet)
 }
