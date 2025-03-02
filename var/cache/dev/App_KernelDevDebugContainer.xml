@@ -25,6 +25,7 @@
       <parameter key="SymfonyCastsResetPasswordBundle">SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="KnpUOAuth2ClientBundle">KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle</parameter>
+      <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -75,6 +76,10 @@
         <parameter key="path">C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knpuniversity\oauth2-client-bundle\src</parameter>
         <parameter key="namespace">KnpU\OAuth2ClientBundle</parameter>
       </parameter>
+      <parameter key="KnpPaginatorBundle" type="collection">
+        <parameter key="path">C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle</parameter>
+        <parameter key="namespace">Knp\Bundle\PaginatorBundle</parameter>
+      </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
@@ -112,6 +117,8 @@
     <parameter key="debug.file_link_format">%env(default::SYMFONY_IDE)%</parameter>
     <parameter key="asset.request_context.base_path">null</parameter>
     <parameter key="asset.request_context.secure">null</parameter>
+    <parameter key="translator.logging">false</parameter>
+    <parameter key="translator.default_path">C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master/translations</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
     <parameter key="debug.container.dump">C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\var\cache\dev/App_KernelDevDebugContainer.xml</parameter>
     <parameter key="router.request_context.host">localhost</parameter>
@@ -224,6 +231,14 @@
     <parameter key="security.logout_uris" type="collection"/>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
+    <parameter key="knp_paginator.template.pagination">@KnpPaginator/Pagination/sliding.html.twig</parameter>
+    <parameter key="knp_paginator.template.rel_links">@KnpPaginator/Pagination/rel_links.html.twig</parameter>
+    <parameter key="knp_paginator.template.filtration">@KnpPaginator/Pagination/filtration.html.twig</parameter>
+    <parameter key="knp_paginator.template.sortable">@KnpPaginator/Pagination/sortable_link.html.twig</parameter>
+    <parameter key="knp_paginator.page_range">5</parameter>
+    <parameter key="knp_paginator.page_limit">null</parameter>
+    <parameter key="knp_paginator.page_name">page</parameter>
+    <parameter key="knp_paginator.remove_first_page_param">false</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -273,6 +288,10 @@
         <parameter>cache</parameter>
         <parameter>@WebProfiler/Collector/cache.html.twig</parameter>
       </parameter>
+      <parameter key="data_collector.translation" type="collection">
+        <parameter>translation</parameter>
+        <parameter>@WebProfiler/Collector/translation.html.twig</parameter>
+      </parameter>
       <parameter key="data_collector.security" type="collection">
         <parameter>security</parameter>
         <parameter>@Security/Collector/security.html.twig</parameter>
@@ -320,6 +339,14 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\AdminController"/>
       </call>
     </service>
+    <service id="App\Controller\CommentaireController" class="App\Controller\CommentaireController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Repository\UserRepository"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\CommentaireController"/>
+      </call>
+    </service>
     <service id="App\Controller\DefaultController" class="App\Controller\DefaultController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -332,6 +359,16 @@
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\LoginContController"/>
+      </call>
+    </service>
+    <service id="App\Controller\PostController" class="App\Controller\PostController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="parameter_bag"/>
+      <argument type="service" id="App\Repository\UserRepository"/>
+      <argument type="service" id="App\Repository\CommentaireRepository"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\PostController"/>
       </call>
     </service>
     <service id="App\Controller\ProfileController" class="App\Controller\ProfileController" public="true" autowire="true" autoconfigure="true">
@@ -368,6 +405,9 @@
     <service id="App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\CommentaireType" class="App\Form\CommentaireType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\FormEnsType" class="App\Form\FormEnsType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -377,11 +417,22 @@
     <service id="App\Form\FormParType" class="App\Form\FormParType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\PostType" class="App\Form\PostType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\ResetPasswordRequestFormType" class="App\Form\ResetPasswordRequestFormType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
+    </service>
+    <service id="App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\PostRepository" class="App\Repository\PostRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\ResetPasswordRequestRepository" class="App\Repository\ResetPasswordRequestRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -418,7 +469,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.Kh68_C1"/>
+      <argument type="service" id=".service_locator.8vo.NOl"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -551,6 +602,7 @@
         <argument key="http_client.transport" type="service" id="http_client.transport" on-invalid="ignore_uninitialized"/>
         <argument key="http_client" type="service" id=".debug.http_client" on-invalid="ignore_uninitialized"/>
         <argument key="mailer.message_logger_listener" type="service" id="mailer.message_logger_listener" on-invalid="ignore_uninitialized"/>
+        <argument key="translation.locale_switcher" type="service" id="translation.locale_switcher" on-invalid="ignore_uninitialized"/>
         <argument key="debug.stopwatch" type="service" id="debug.stopwatch" on-invalid="ignore_uninitialized"/>
         <argument key="debug.event_dispatcher" type="service" id="debug.event_dispatcher" on-invalid="ignore_uninitialized"/>
         <argument key="session_listener" type="service" id="session_listener" on-invalid="ignore_uninitialized"/>
@@ -607,6 +659,9 @@
           <argument>?reset</argument>
         </argument>
         <argument key="mailer.message_logger_listener" type="collection">
+          <argument>reset</argument>
+        </argument>
+        <argument key="translation.locale_switcher" type="collection">
           <argument>reset</argument>
         </argument>
         <argument key="debug.stopwatch" type="collection">
@@ -691,6 +746,8 @@
       <tag name="container.hot_path"/>
       <argument type="iterator">
         <argument type="service" id="slugger"/>
+        <argument type="service" id="translator.default"/>
+        <argument type="service" id="translation.locale_switcher"/>
       </argument>
       <argument type="service" id="request_stack"/>
     </service>
@@ -1143,6 +1200,61 @@
         <argument>Help debug routes by simulating a path info match</argument>
       </call>
     </service>
+    <service id="console.command.translation_debug" class="Symfony\Bundle\FrameworkBundle\Command\TranslationDebugCommand">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="translator.data_collector"/>
+      <argument type="service" id="translation.reader"/>
+      <argument type="service" id="translation.extractor"/>
+      <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master/translations</argument>
+      <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master/templates</argument>
+      <argument type="collection">
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations</argument>
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations</argument>
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations</argument>
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations</argument>
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations</argument>
+      </argument>
+      <argument type="collection">
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\twig-bridge/Resources/views/Email</argument>
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\twig-bridge/Resources/views/Form</argument>
+      </argument>
+      <argument type="collection"/>
+      <call method="setName">
+        <argument>debug:translation</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Display translation messages information</argument>
+      </call>
+    </service>
+    <service id="console.command.translation_extract" class="Symfony\Bundle\FrameworkBundle\Command\TranslationUpdateCommand">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="translation.writer"/>
+      <argument type="service" id="translation.reader"/>
+      <argument type="service" id="translation.extractor"/>
+      <argument>en</argument>
+      <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master/translations</argument>
+      <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master/templates</argument>
+      <argument type="collection">
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations</argument>
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations</argument>
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations</argument>
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations</argument>
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations</argument>
+      </argument>
+      <argument type="collection">
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\twig-bridge/Resources/views/Email</argument>
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\twig-bridge/Resources/views/Form</argument>
+      </argument>
+      <argument type="collection"/>
+      <call method="setName">
+        <argument>translation:extract</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Extract missing translations keys from code to translation files</argument>
+      </call>
+    </service>
     <service id="console.command.validator_debug" class="Symfony\Component\Validator\Command\DebugCommand">
       <tag name="console.command"/>
       <tag name="container.no_preload"/>
@@ -1152,6 +1264,46 @@
       </call>
       <call method="setDescription">
         <argument>Display validation constraints for classes</argument>
+      </call>
+    </service>
+    <service id="console.command.translation_pull" class="Symfony\Component\Translation\Command\TranslationPullCommand">
+      <tag name="console.command" command="translation:pull"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="translation.provider_collection"/>
+      <argument type="service" id="translation.writer"/>
+      <argument type="service" id="translation.reader"/>
+      <argument>en</argument>
+      <argument type="collection"/>
+      <argument type="collection"/>
+      <call method="setName">
+        <argument>translation:pull</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Pull translations from a given provider.</argument>
+      </call>
+    </service>
+    <service id="console.command.translation_push" class="Symfony\Component\Translation\Command\TranslationPushCommand">
+      <tag name="console.command" command="translation:push"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="translation.provider_collection"/>
+      <argument type="service" id="translation.reader"/>
+      <argument type="collection"/>
+      <argument type="collection"/>
+      <call method="setName">
+        <argument>translation:push</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Push translations to a given provider.</argument>
+      </call>
+    </service>
+    <service id="console.command.xliff_lint" class="Symfony\Component\Translation\Command\XliffLintCommand">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <call method="setName">
+        <argument>lint:xliff</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Lint an XLIFF file and outputs encountered errors</argument>
       </call>
     </service>
     <service id="console.command.yaml_lint" class="Symfony\Bundle\FrameworkBundle\Command\YamlLintCommand">
@@ -1175,9 +1327,11 @@
       </argument>
       <argument type="collection">
         <argument>App\Form\ChangePasswordFormType</argument>
+        <argument>App\Form\CommentaireType</argument>
         <argument>App\Form\FormEnsType</argument>
         <argument>App\Form\FormMedType</argument>
         <argument>App\Form\FormParType</argument>
+        <argument>App\Form\PostType</argument>
         <argument>App\Form\ResetPasswordRequestFormType</argument>
         <argument>App\Form\UserType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -1192,6 +1346,7 @@
         <argument>Symfony\Component\Form\Extension\Validator\Type\FormTypeValidatorExtension</argument>
         <argument>Symfony\Component\Form\Extension\Validator\Type\RepeatedTypeValidatorExtension</argument>
         <argument>Symfony\Component\Form\Extension\Validator\Type\SubmitTypeValidatorExtension</argument>
+        <argument>Symfony\Component\Form\Extension\Validator\Type\UploadValidatorExtension</argument>
         <argument>Symfony\Component\Form\Extension\Csrf\Type\FormTypeCsrfExtension</argument>
         <argument>Symfony\Component\Form\Extension\DataCollector\Type\DataCollectorTypeExtension</argument>
         <argument>Symfony\Component\Form\Extension\PasswordHasher\Type\FormTypePasswordHasherExtension</argument>
@@ -1477,6 +1632,7 @@
         <argument key="cache.security_token_verifier" type="service" id="cache.security_token_verifier" on-invalid="ignore_uninitialized"/>
       </argument>
     </service>
+    <service id="identity_translator" class="Symfony\Component\Translation\IdentityTranslator"/>
     <service id="assets.packages" class="Symfony\Component\Asset\Packages">
       <argument type="service" id="assets._default_package"/>
       <argument type="tagged_iterator" tag="assets.package" index-by="package" default-index-method="getDefaultPackageName" default-priority-method="getDefaultPackagePriority"/>
@@ -1661,6 +1817,750 @@
       <argument type="service" id=".debug.http_client" on-invalid="ignore"/>
       <argument type="service" id="logger" on-invalid="ignore"/>
     </service>
+    <service id="translator.default" class="Symfony\Bundle\FrameworkBundle\Translation\Translator">
+      <tag name="kernel.locale_aware"/>
+      <argument type="service" id=".service_locator.yY.p4P7"/>
+      <argument type="service" id="translator.formatter.default"/>
+      <argument>en</argument>
+      <argument type="collection">
+        <argument key="translation.loader.php" type="collection">
+          <argument>php</argument>
+        </argument>
+        <argument key="translation.loader.yml" type="collection">
+          <argument>yaml</argument>
+          <argument>yml</argument>
+        </argument>
+        <argument key="translation.loader.xliff" type="collection">
+          <argument>xlf</argument>
+          <argument>xliff</argument>
+        </argument>
+        <argument key="translation.loader.po" type="collection">
+          <argument>po</argument>
+        </argument>
+        <argument key="translation.loader.mo" type="collection">
+          <argument>mo</argument>
+        </argument>
+        <argument key="translation.loader.qt" type="collection">
+          <argument>ts</argument>
+        </argument>
+        <argument key="translation.loader.csv" type="collection">
+          <argument>csv</argument>
+        </argument>
+        <argument key="translation.loader.res" type="collection">
+          <argument>res</argument>
+        </argument>
+        <argument key="translation.loader.dat" type="collection">
+          <argument>dat</argument>
+        </argument>
+        <argument key="translation.loader.ini" type="collection">
+          <argument>ini</argument>
+        </argument>
+        <argument key="translation.loader.json" type="collection">
+          <argument>json</argument>
+        </argument>
+      </argument>
+      <argument type="collection">
+        <argument key="cache_dir">C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\var\cache\dev/translations</argument>
+        <argument key="debug">true</argument>
+        <argument key="resource_files" type="collection">
+          <argument key="af" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.af.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.af.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.af.xlf</argument>
+          </argument>
+          <argument key="ar" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.ar.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.ar.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.ar.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.ar.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ar.xliff</argument>
+          </argument>
+          <argument key="az" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.az.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.az.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.az.xlf</argument>
+          </argument>
+          <argument key="be" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.be.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.be.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.be.xlf</argument>
+          </argument>
+          <argument key="bg" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.bg.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.bg.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.bg.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.bg.xliff</argument>
+          </argument>
+          <argument key="bs" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.bs.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.bs.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.bs.xlf</argument>
+          </argument>
+          <argument key="ca" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.ca.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.ca.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.ca.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.ca.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ca.xliff</argument>
+          </argument>
+          <argument key="cs" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.cs.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.cs.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.cs.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.cs.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.cs.xliff</argument>
+          </argument>
+          <argument key="cy" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.cy.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.cy.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.cy.xlf</argument>
+          </argument>
+          <argument key="da" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.da.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.da.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.da.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.da.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.da.xliff</argument>
+          </argument>
+          <argument key="de" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.de.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.de.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.de.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.de.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.de.xliff</argument>
+          </argument>
+          <argument key="el" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.el.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.el.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.el.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.el.xlf</argument>
+          </argument>
+          <argument key="en" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.en.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.en.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.en.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.en.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.en.xliff</argument>
+          </argument>
+          <argument key="es" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.es.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.es.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.es.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.es.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.es.xliff</argument>
+          </argument>
+          <argument key="et" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.et.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.et.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.et.xlf</argument>
+          </argument>
+          <argument key="eu" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.eu.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.eu.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.eu.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.eu.xliff</argument>
+          </argument>
+          <argument key="fa" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.fa.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.fa.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.fa.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.fa.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fa.xliff</argument>
+          </argument>
+          <argument key="fi" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.fi.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.fi.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.fi.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.fi.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fi.xliff</argument>
+          </argument>
+          <argument key="fr" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.fr.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.fr.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.fr.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.fr.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fr.xliff</argument>
+          </argument>
+          <argument key="gl" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.gl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.gl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.gl.xlf</argument>
+          </argument>
+          <argument key="he" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.he.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.he.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.he.xlf</argument>
+          </argument>
+          <argument key="hr" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.hr.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.hr.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.hr.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.hr.xliff</argument>
+          </argument>
+          <argument key="hu" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.hu.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.hu.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.hu.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.hu.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.hu.xliff</argument>
+          </argument>
+          <argument key="hy" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.hy.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.hy.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.hy.xlf</argument>
+          </argument>
+          <argument key="id" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.id.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.id.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.id.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.id.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.id.xliff</argument>
+          </argument>
+          <argument key="it" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.it.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.it.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.it.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.it.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.it.xliff</argument>
+          </argument>
+          <argument key="ja" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.ja.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.ja.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.ja.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.ja.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ja.xliff</argument>
+          </argument>
+          <argument key="lb" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.lb.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.lb.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.lb.xlf</argument>
+          </argument>
+          <argument key="lt" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.lt.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.lt.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.lt.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.lt.xliff</argument>
+          </argument>
+          <argument key="lv" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.lv.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.lv.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.lv.xlf</argument>
+          </argument>
+          <argument key="mk" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.mk.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.mk.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.mk.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.mk.xlf</argument>
+          </argument>
+          <argument key="mn" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.mn.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.mn.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.mn.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.mn.xlf</argument>
+          </argument>
+          <argument key="my" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.my.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.my.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.my.xlf</argument>
+          </argument>
+          <argument key="nb" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.nb.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.nb.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.nb.xlf</argument>
+          </argument>
+          <argument key="nl" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.nl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.nl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.nl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle+intl-icu.nl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.nl.xliff</argument>
+          </argument>
+          <argument key="nn" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.nn.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.nn.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.nn.xlf</argument>
+          </argument>
+          <argument key="no" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.no.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.no.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.no.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.no.xliff</argument>
+          </argument>
+          <argument key="pl" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.pl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.pl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.pl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.pl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pl.xliff</argument>
+          </argument>
+          <argument key="pt" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.pt.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.pt.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.pt.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.pt.xlf</argument>
+          </argument>
+          <argument key="pt_BR" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.pt_BR.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.pt_BR.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.pt_BR.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pt_BR.xliff</argument>
+          </argument>
+          <argument key="ro" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.ro.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.ro.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.ro.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.ro.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ro.xliff</argument>
+          </argument>
+          <argument key="ru" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.ru.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.ru.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.ru.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.ru.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ru.xliff</argument>
+          </argument>
+          <argument key="sk" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.sk.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.sk.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.sk.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.sk.xlf</argument>
+          </argument>
+          <argument key="sl" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.sl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.sl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.sl.xlf</argument>
+          </argument>
+          <argument key="sq" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.sq.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.sq.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.sq.xlf</argument>
+          </argument>
+          <argument key="sr_Cyrl" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.sr_Cyrl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.sr_Cyrl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.sr_Cyrl.xlf</argument>
+          </argument>
+          <argument key="sr_Latn" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.sr_Latn.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.sr_Latn.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.sr_Latn.xlf</argument>
+          </argument>
+          <argument key="sv" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.sv.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.sv.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.sv.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.sv.xliff</argument>
+          </argument>
+          <argument key="th" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.th.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.th.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.th.xlf</argument>
+          </argument>
+          <argument key="tl" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.tl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.tl.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.tl.xlf</argument>
+          </argument>
+          <argument key="tr" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.tr.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.tr.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.tr.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.tr.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.tr.xliff</argument>
+          </argument>
+          <argument key="uk" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.uk.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.uk.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.uk.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.uk.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.uk.xliff</argument>
+          </argument>
+          <argument key="ur" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.ur.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.ur.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.ur.xlf</argument>
+          </argument>
+          <argument key="uz" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.uz.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.uz.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.uz.xlf</argument>
+          </argument>
+          <argument key="vi" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.vi.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.vi.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.vi.xlf</argument>
+          </argument>
+          <argument key="zh_CN" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.zh_CN.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.zh_CN.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.zh_CN.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.zh_CN.xliff</argument>
+          </argument>
+          <argument key="zh_TW" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations\validators.zh_TW.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations\validators.zh_TW.xlf</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations\security.zh_TW.xlf</argument>
+          </argument>
+          <argument key="sr" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.sr.xlf</argument>
+          </argument>
+          <argument key="ky" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ky.xliff</argument>
+          </argument>
+          <argument key="sw" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.sw.xliff</argument>
+          </argument>
+        </argument>
+        <argument key="scanned_directories" type="collection">
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\framework-bundle/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\twig-bundle/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\twig\extra-bundle/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\doctrine\doctrine-bundle/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\doctrine\doctrine-migrations-bundle/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\webpack-encore-bundle\src/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\maker-bundle/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-bundle/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\web-profiler-bundle/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\sensio\framework-extra-bundle\src/translations</argument>
+          <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knpuniversity\oauth2-client-bundle\src/translations</argument>
+        </argument>
+        <argument key="cache_vary" type="collection">
+          <argument key="scanned_directories" type="collection">
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\validator/Resources/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\form/Resources/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-core/Resources/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfonycasts\reset-password-bundle\src/Resources/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/translations</argument>
+            <argument>translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\framework-bundle/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\twig-bundle/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\twig\extra-bundle/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\doctrine\doctrine-bundle/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\doctrine\doctrine-migrations-bundle/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\webpack-encore-bundle\src/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\maker-bundle/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\security-bundle/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\symfony\web-profiler-bundle/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\sensio\framework-extra-bundle\src/translations</argument>
+            <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knpuniversity\oauth2-client-bundle\src/translations</argument>
+          </argument>
+        </argument>
+      </argument>
+      <argument type="collection"/>
+      <call method="setConfigCacheFactory">
+        <argument type="service" id="config_cache_factory"/>
+      </call>
+      <call method="setFallbackLocales">
+        <argument type="collection">
+          <argument>en</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="translator.logging" class="Symfony\Component\Translation\LoggingTranslator">
+      <tag name="monolog.logger" channel="translation"/>
+      <argument type="service" id="translator.logging.inner"/>
+      <argument type="service" id="logger"/>
+    </service>
+    <service id="translator.formatter.default" class="Symfony\Component\Translation\Formatter\MessageFormatter">
+      <argument type="service" id="identity_translator"/>
+    </service>
+    <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
+      <tag name="translation.loader" alias="php"/>
+    </service>
+    <service id="translation.loader.yml" class="Symfony\Component\Translation\Loader\YamlFileLoader">
+      <tag name="translation.loader" alias="yaml" legacy-alias="yml"/>
+    </service>
+    <service id="translation.loader.xliff" class="Symfony\Component\Translation\Loader\XliffFileLoader">
+      <tag name="translation.loader" alias="xlf" legacy-alias="xliff"/>
+    </service>
+    <service id="translation.loader.po" class="Symfony\Component\Translation\Loader\PoFileLoader">
+      <tag name="translation.loader" alias="po"/>
+    </service>
+    <service id="translation.loader.mo" class="Symfony\Component\Translation\Loader\MoFileLoader">
+      <tag name="translation.loader" alias="mo"/>
+    </service>
+    <service id="translation.loader.qt" class="Symfony\Component\Translation\Loader\QtFileLoader">
+      <tag name="translation.loader" alias="ts"/>
+    </service>
+    <service id="translation.loader.csv" class="Symfony\Component\Translation\Loader\CsvFileLoader">
+      <tag name="translation.loader" alias="csv"/>
+    </service>
+    <service id="translation.loader.res" class="Symfony\Component\Translation\Loader\IcuResFileLoader">
+      <tag name="translation.loader" alias="res"/>
+    </service>
+    <service id="translation.loader.dat" class="Symfony\Component\Translation\Loader\IcuDatFileLoader">
+      <tag name="translation.loader" alias="dat"/>
+    </service>
+    <service id="translation.loader.ini" class="Symfony\Component\Translation\Loader\IniFileLoader">
+      <tag name="translation.loader" alias="ini"/>
+    </service>
+    <service id="translation.loader.json" class="Symfony\Component\Translation\Loader\JsonFileLoader">
+      <tag name="translation.loader" alias="json"/>
+    </service>
+    <service id="translation.dumper.php" class="Symfony\Component\Translation\Dumper\PhpFileDumper">
+      <tag name="translation.dumper" alias="php"/>
+    </service>
+    <service id="translation.dumper.xliff" class="Symfony\Component\Translation\Dumper\XliffFileDumper">
+      <tag name="translation.dumper" alias="xlf"/>
+    </service>
+    <service id="translation.dumper.xliff.xliff" class="Symfony\Component\Translation\Dumper\XliffFileDumper">
+      <tag name="translation.dumper" alias="xliff"/>
+      <argument>xliff</argument>
+    </service>
+    <service id="translation.dumper.po" class="Symfony\Component\Translation\Dumper\PoFileDumper">
+      <tag name="translation.dumper" alias="po"/>
+    </service>
+    <service id="translation.dumper.mo" class="Symfony\Component\Translation\Dumper\MoFileDumper">
+      <tag name="translation.dumper" alias="mo"/>
+    </service>
+    <service id="translation.dumper.yml" class="Symfony\Component\Translation\Dumper\YamlFileDumper">
+      <tag name="translation.dumper" alias="yml"/>
+    </service>
+    <service id="translation.dumper.yaml" class="Symfony\Component\Translation\Dumper\YamlFileDumper">
+      <tag name="translation.dumper" alias="yaml"/>
+      <argument>yaml</argument>
+    </service>
+    <service id="translation.dumper.qt" class="Symfony\Component\Translation\Dumper\QtFileDumper">
+      <tag name="translation.dumper" alias="ts"/>
+    </service>
+    <service id="translation.dumper.csv" class="Symfony\Component\Translation\Dumper\CsvFileDumper">
+      <tag name="translation.dumper" alias="csv"/>
+    </service>
+    <service id="translation.dumper.ini" class="Symfony\Component\Translation\Dumper\IniFileDumper">
+      <tag name="translation.dumper" alias="ini"/>
+    </service>
+    <service id="translation.dumper.json" class="Symfony\Component\Translation\Dumper\JsonFileDumper">
+      <tag name="translation.dumper" alias="json"/>
+    </service>
+    <service id="translation.dumper.res" class="Symfony\Component\Translation\Dumper\IcuResFileDumper">
+      <tag name="translation.dumper" alias="res"/>
+    </service>
+    <service id="translation.extractor.php_ast" class="Symfony\Component\Translation\Extractor\PhpAstExtractor">
+      <tag name="translation.extractor" alias="php"/>
+      <argument type="tagged_iterator" tag="translation.extractor.visitor"/>
+    </service>
+    <service id="translation.extractor.visitor.trans_method" class="Symfony\Component\Translation\Extractor\Visitor\TransMethodVisitor">
+      <tag name="translation.extractor.visitor"/>
+    </service>
+    <service id="translation.extractor.visitor.translatable_message" class="Symfony\Component\Translation\Extractor\Visitor\TranslatableMessageVisitor">
+      <tag name="translation.extractor.visitor"/>
+    </service>
+    <service id="translation.extractor.visitor.constraint" class="Symfony\Component\Translation\Extractor\Visitor\ConstraintVisitor">
+      <tag name="translation.extractor.visitor"/>
+      <argument type="collection">
+        <argument>All</argument>
+        <argument>AtLeastOneOf</argument>
+        <argument>Bic</argument>
+        <argument>Blank</argument>
+        <argument>Callback</argument>
+        <argument>CardScheme</argument>
+        <argument>Choice</argument>
+        <argument>Cidr</argument>
+        <argument>Collection</argument>
+        <argument>Compound</argument>
+        <argument>Count</argument>
+        <argument>Country</argument>
+        <argument>CssColor</argument>
+        <argument>Currency</argument>
+        <argument>DateTime</argument>
+        <argument>Date</argument>
+        <argument>DivisibleBy</argument>
+        <argument>Email</argument>
+        <argument>EqualTo</argument>
+        <argument>ExpressionSyntax</argument>
+        <argument>Expression</argument>
+        <argument>File</argument>
+        <argument>GreaterThanOrEqual</argument>
+        <argument>GreaterThan</argument>
+        <argument>Hostname</argument>
+        <argument>Iban</argument>
+        <argument>IdenticalTo</argument>
+        <argument>Image</argument>
+        <argument>Ip</argument>
+        <argument>IsFalse</argument>
+        <argument>IsNull</argument>
+        <argument>IsTrue</argument>
+        <argument>Isbn</argument>
+        <argument>Isin</argument>
+        <argument>Issn</argument>
+        <argument>Json</argument>
+        <argument>Language</argument>
+        <argument>Length</argument>
+        <argument>LessThanOrEqual</argument>
+        <argument>LessThan</argument>
+        <argument>Locale</argument>
+        <argument>Luhn</argument>
+        <argument>NoSuspiciousCharacters</argument>
+        <argument>NotBlank</argument>
+        <argument>NotCompromisedPassword</argument>
+        <argument>NotEqualTo</argument>
+        <argument>NotIdenticalTo</argument>
+        <argument>NotNull</argument>
+        <argument>PasswordStrength</argument>
+        <argument>Range</argument>
+        <argument>Regex</argument>
+        <argument>Sequentially</argument>
+        <argument>Time</argument>
+        <argument>Timezone</argument>
+        <argument>Type</argument>
+        <argument>Ulid</argument>
+        <argument>Unique</argument>
+        <argument>Url</argument>
+        <argument>Uuid</argument>
+        <argument>Valid</argument>
+        <argument>When</argument>
+        <argument>Expression</argument>
+        <argument>Email</argument>
+        <argument>NotCompromisedPassword</argument>
+        <argument>When</argument>
+        <argument>NoSuspiciousCharacters</argument>
+        <argument>UniqueEntity</argument>
+        <argument>UserPassword</argument>
+      </argument>
+    </service>
+    <service id="translation.reader" class="Symfony\Component\Translation\Reader\TranslationReader">
+      <call method="addLoader">
+        <argument>php</argument>
+        <argument type="service" id="translation.loader.php"/>
+      </call>
+      <call method="addLoader">
+        <argument>yaml</argument>
+        <argument type="service" id="translation.loader.yml"/>
+      </call>
+      <call method="addLoader">
+        <argument>yml</argument>
+        <argument type="service" id="translation.loader.yml"/>
+      </call>
+      <call method="addLoader">
+        <argument>xlf</argument>
+        <argument type="service" id="translation.loader.xliff"/>
+      </call>
+      <call method="addLoader">
+        <argument>xliff</argument>
+        <argument type="service" id="translation.loader.xliff"/>
+      </call>
+      <call method="addLoader">
+        <argument>po</argument>
+        <argument type="service" id="translation.loader.po"/>
+      </call>
+      <call method="addLoader">
+        <argument>mo</argument>
+        <argument type="service" id="translation.loader.mo"/>
+      </call>
+      <call method="addLoader">
+        <argument>ts</argument>
+        <argument type="service" id="translation.loader.qt"/>
+      </call>
+      <call method="addLoader">
+        <argument>csv</argument>
+        <argument type="service" id="translation.loader.csv"/>
+      </call>
+      <call method="addLoader">
+        <argument>res</argument>
+        <argument type="service" id="translation.loader.res"/>
+      </call>
+      <call method="addLoader">
+        <argument>dat</argument>
+        <argument type="service" id="translation.loader.dat"/>
+      </call>
+      <call method="addLoader">
+        <argument>ini</argument>
+        <argument type="service" id="translation.loader.ini"/>
+      </call>
+      <call method="addLoader">
+        <argument>json</argument>
+        <argument type="service" id="translation.loader.json"/>
+      </call>
+    </service>
+    <service id="translation.extractor" class="Symfony\Component\Translation\Extractor\ChainExtractor">
+      <call method="addExtractor">
+        <argument>php</argument>
+        <argument type="service" id="translation.extractor.php_ast"/>
+      </call>
+      <call method="addExtractor">
+        <argument>twig</argument>
+        <argument type="service" id="twig.translation.extractor"/>
+      </call>
+    </service>
+    <service id="translation.writer" class="Symfony\Component\Translation\Writer\TranslationWriter">
+      <call method="addDumper">
+        <argument>php</argument>
+        <argument type="service" id="translation.dumper.php"/>
+      </call>
+      <call method="addDumper">
+        <argument>xlf</argument>
+        <argument type="service" id="translation.dumper.xliff"/>
+      </call>
+      <call method="addDumper">
+        <argument>xliff</argument>
+        <argument type="service" id="translation.dumper.xliff.xliff"/>
+      </call>
+      <call method="addDumper">
+        <argument>po</argument>
+        <argument type="service" id="translation.dumper.po"/>
+      </call>
+      <call method="addDumper">
+        <argument>mo</argument>
+        <argument type="service" id="translation.dumper.mo"/>
+      </call>
+      <call method="addDumper">
+        <argument>yml</argument>
+        <argument type="service" id="translation.dumper.yml"/>
+      </call>
+      <call method="addDumper">
+        <argument>yaml</argument>
+        <argument type="service" id="translation.dumper.yaml"/>
+      </call>
+      <call method="addDumper">
+        <argument>ts</argument>
+        <argument type="service" id="translation.dumper.qt"/>
+      </call>
+      <call method="addDumper">
+        <argument>csv</argument>
+        <argument type="service" id="translation.dumper.csv"/>
+      </call>
+      <call method="addDumper">
+        <argument>ini</argument>
+        <argument type="service" id="translation.dumper.ini"/>
+      </call>
+      <call method="addDumper">
+        <argument>json</argument>
+        <argument type="service" id="translation.dumper.json"/>
+      </call>
+      <call method="addDumper">
+        <argument>res</argument>
+        <argument type="service" id="translation.dumper.res"/>
+      </call>
+    </service>
+    <service id="translation.warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TranslationsCacheWarmer">
+      <tag name="container.service_subscriber" id="translator"/>
+      <tag name="kernel.cache_warmer"/>
+      <argument type="service" id=".service_locator.fuYM_Z..translation.warmer"/>
+    </service>
+    <service id="translation.locale_switcher" class="Symfony\Component\Translation\LocaleSwitcher">
+      <tag name="kernel.reset" method="reset"/>
+      <tag name="kernel.locale_aware"/>
+      <argument>en</argument>
+      <argument type="tagged_iterator" tag="kernel.locale_aware" exclude="translation.locale_switcher"/>
+      <argument type="service" id="router.request_context" on-invalid="ignore"/>
+    </service>
+    <service id="translation.provider_collection" class="Symfony\Component\Translation\Provider\TranslationProviderCollection">
+      <argument type="collection"/>
+      <factory service="translation.provider_collection_factory" method="fromConfig"/>
+    </service>
+    <service id="translation.provider_collection_factory" class="Symfony\Component\Translation\Provider\TranslationProviderCollectionFactory">
+      <argument type="tagged_iterator" tag="translation.provider_factory"/>
+      <argument type="collection"/>
+    </service>
+    <service id="translation.provider_factory.null" class="Symfony\Component\Translation\Provider\NullProviderFactory">
+      <tag name="translation.provider_factory"/>
+    </service>
     <service id="debug.error_handler_configurator" class="Symfony\Component\HttpKernel\Debug\ErrorHandlerConfigurator" public="true">
       <tag name="monolog.logger" channel="php"/>
       <argument type="service" id="logger" on-invalid="null"/>
@@ -1733,6 +2633,14 @@
         <argument type="collection">
           <argument type="service_closure" id="security.context_listener.0"/>
           <argument>onKernelResponse</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>onKernelRequest</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -2257,6 +3165,46 @@
         <argument>0</argument>
       </call>
       <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.paginate"/>
+          <argument>before</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.paginate"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.sortable"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.filtration"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
         <argument>Symfony\Component\Security\Http\Event\CheckPassportEvent</argument>
         <argument type="collection">
           <argument type="service_closure" id="security.listener.csrf_protection"/>
@@ -2286,7 +3234,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.Kh68_C1"/>
+      <argument type="service" id=".service_locator.8vo.NOl"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -2634,12 +3582,13 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.1.At4H1"/>
+      <argument type="service" id=".service_locator.gFB_kDU"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
           <argument type="service" id="form.type_extension.form.http_foundation"/>
           <argument type="service" id="form.type_extension.form.validator"/>
+          <argument type="service" id="form.type_extension.upload.validator"/>
           <argument type="service" id="form.type_extension.csrf"/>
           <argument type="service" id="form.type_extension.form.data_collector"/>
           <argument type="service" id="form.type_extension.form.password_hasher"/>
@@ -2679,19 +3628,19 @@
     <service id="form.type.choice" class="Symfony\Component\Form\Extension\Core\Type\ChoiceType">
       <tag name="form.type"/>
       <argument type="service" id="form.choice_list_factory.cached"/>
-      <argument>null</argument>
+      <argument type="service" id="translator.data_collector" on-invalid="ignore"/>
     </service>
     <service id="form.type.file" class="Symfony\Component\Form\Extension\Core\Type\FileType">
       <tag name="form.type"/>
-      <argument>null</argument>
+      <argument type="service" id="translator.data_collector" on-invalid="ignore"/>
     </service>
     <service id="form.type.color" class="Symfony\Component\Form\Extension\Core\Type\ColorType">
       <tag name="form.type"/>
-      <argument>null</argument>
+      <argument type="service" id="translator.data_collector" on-invalid="ignore"/>
     </service>
     <service id="form.type_extension.form.transformation_failure_handling" class="Symfony\Component\Form\Extension\Core\Type\TransformationFailureExtension">
       <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
-      <argument>null</argument>
+      <argument type="service" id="translator.data_collector" on-invalid="ignore"/>
     </service>
     <service id="form.type_extension.form.http_foundation" class="Symfony\Component\Form\Extension\HttpFoundation\Type\FormTypeHttpFoundationExtension">
       <tag name="form.type_extension"/>
@@ -2708,7 +3657,7 @@
       <argument type="service" id="debug.validator"/>
       <argument>false</argument>
       <argument type="service" id="twig.form.renderer" on-invalid="ignore"/>
-      <argument>null</argument>
+      <argument type="service" id="translator.data_collector" on-invalid="ignore"/>
     </service>
     <service id="form.type_extension.repeated.validator" class="Symfony\Component\Form\Extension\Validator\Type\RepeatedTypeValidatorExtension">
       <tag name="form.type_extension"/>
@@ -2716,12 +3665,17 @@
     <service id="form.type_extension.submit.validator" class="Symfony\Component\Form\Extension\Validator\Type\SubmitTypeValidatorExtension">
       <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\SubmitType"/>
     </service>
+    <service id="form.type_extension.upload.validator" class="Symfony\Component\Form\Extension\Validator\Type\UploadValidatorExtension">
+      <tag name="form.type_extension"/>
+      <argument type="service" id="translator.data_collector"/>
+      <argument>validators</argument>
+    </service>
     <service id="form.type_extension.csrf" class="Symfony\Component\Form\Extension\Csrf\Type\FormTypeCsrfExtension">
       <tag name="form.type_extension"/>
       <argument type="service" id="security.csrf.token_manager"/>
       <argument>true</argument>
       <argument>_token</argument>
-      <argument>null</argument>
+      <argument type="service" id="translator.data_collector" on-invalid="null"/>
       <argument>validators</argument>
       <argument type="service" id="form.server_params"/>
     </service>
@@ -2731,6 +3685,9 @@
       </call>
       <call method="setGroupProviderLocator">
         <argument type="service" id=".service_locator.Xbsa8iG"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.data_collector" on-invalid="ignore"/>
       </call>
       <call method="setTranslationDomain">
         <argument>validators</argument>
@@ -3241,6 +4198,9 @@
         <argument type="service" id="data_collector.cache"/>
       </call>
       <call method="add">
+        <argument type="service" id="data_collector.translation"/>
+      </call>
+      <call method="add">
         <argument type="service" id="data_collector.security"/>
       </call>
       <call method="add">
@@ -3432,6 +4392,13 @@
       <tag name="data_collector" template="@WebProfiler/Collector/validator.html.twig" id="validator" priority="320"/>
       <argument type="service" id="debug.validator"/>
     </service>
+    <service id="translator.data_collector" class="Symfony\Component\Translation\DataCollectorTranslator">
+      <argument type="service" id="translator.default"/>
+    </service>
+    <service id="data_collector.translation" class="Symfony\Component\Translation\DataCollector\TranslationDataCollector">
+      <tag name="data_collector" template="@WebProfiler/Collector/translation.html.twig" id="translation" priority="275"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
     <service id="data_collector.messenger" class="Symfony\Component\Messenger\DataCollector\MessengerDataCollector">
       <tag name="data_collector" template="@WebProfiler/Collector/messenger.html.twig" id="messenger" priority="100"/>
       <call method="registerBus">
@@ -3524,6 +4491,9 @@
       <call method="addExtension">
         <argument type="service" id="twig.extension.webprofiler"/>
       </call>
+      <call method="addExtension">
+        <argument type="service" id="knp_paginator.twig.extension.pagination"/>
+      </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="twig.app_variable"/>
@@ -3563,6 +4533,9 @@
       </call>
       <call method="setRequestStack">
         <argument type="service" id="request_stack" on-invalid="ignore"/>
+      </call>
+      <call method="setLocaleSwitcher">
+        <argument type="service" id="translation.locale_switcher" on-invalid="ignore"/>
       </call>
       <call method="setEnabledLocales">
         <argument type="collection"/>
@@ -3628,6 +4601,14 @@
         <argument>!WebProfiler</argument>
       </call>
       <call method="addPath">
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/templates</argument>
+        <argument>KnpPaginator</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master\vendor\knplabs\knp-paginator-bundle/templates</argument>
+        <argument>!KnpPaginator</argument>
+      </call>
+      <call method="addPath">
         <argument>C:\Users\yassi\Downloads\Novalearn-master\Novalearn-master/templates</argument>
       </call>
       <call method="addPath">
@@ -3656,7 +4637,7 @@
     </service>
     <service id="twig.extension.trans" class="Symfony\Bridge\Twig\Extension\TranslationExtension">
       <tag name="twig.extension"/>
-      <argument>null</argument>
+      <argument type="service" id="translator.data_collector" on-invalid="null"/>
     </service>
     <service id="twig.extension.assets" class="Symfony\Bridge\Twig\Extension\AssetExtension">
       <tag name="twig.extension"/>
@@ -3701,6 +4682,10 @@
     <service id="twig.extension.weblink" class="Symfony\Bridge\Twig\Extension\WebLinkExtension">
       <argument type="service" id="request_stack"/>
     </service>
+    <service id="twig.translation.extractor" class="Symfony\Bridge\Twig\Translation\TwigExtractor">
+      <tag name="translation.extractor" alias="twig"/>
+      <argument type="service" id="twig"/>
+    </service>
     <service id="twig.configurator.environment" class="Symfony\Bundle\TwigBundle\DependencyInjection\Configurator\EnvironmentConfigurator">
       <argument>F j, Y H:i</argument>
       <argument>%d days</argument>
@@ -3710,7 +4695,7 @@
       <argument>,</argument>
     </service>
     <service id="twig.runtime_loader" class="Twig\RuntimeLoader\ContainerRuntimeLoader">
-      <argument type="service" id=".service_locator.L1OAKmd"/>
+      <argument type="service" id=".service_locator.hI.F3rU"/>
     </service>
     <service id="twig.error_renderer.html" class="Symfony\Bridge\Twig\ErrorRenderer\TwigErrorRenderer">
       <argument type="service" id="twig"/>
@@ -3733,7 +4718,7 @@
     </service>
     <service id="twig.extension.form" class="Symfony\Bridge\Twig\Extension\FormExtension">
       <tag name="twig.extension"/>
-      <argument>null</argument>
+      <argument type="service" id="translator.data_collector" on-invalid="null"/>
     </service>
     <service id="twig.form.engine" class="Symfony\Bridge\Twig\Form\TwigRendererEngine">
       <tag name="kernel.reset" method="reset"/>
@@ -3780,7 +4765,8 @@
       <argument type="service" id="twig.mime_body_renderer"/>
     </service>
     <service id="twig.mime_body_renderer" class="Symfony\Bridge\Twig\Mime\BodyRenderer">
-      <argument type="service" id="twig"/>
+      <argument key="0" type="service" id="twig"/>
+      <argument key="localeSwitcher" type="service" id="translation.locale_switcher" on-invalid="ignore"/>
     </service>
     <service id="twig.missing_extension_suggestor" class="Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor"/>
     <service id="data_collector.doctrine" class="Doctrine\Bundle\DoctrineBundle\DataCollector\DoctrineDataCollector">
@@ -4019,7 +5005,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.N41nchi"/>
+      <argument type="service" id=".service_locator.Dd.sgIA"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5148,7 +6134,7 @@
       <argument type="abstract">options</argument>
       <argument type="service" id="property_accessor" on-invalid="null"/>
       <call method="setTranslator">
-        <argument type="service" id="translator" on-invalid="ignore"/>
+        <argument type="service" id="translator.data_collector" on-invalid="ignore"/>
       </call>
     </service>
     <service id="security.authenticator.x509" class="Symfony\Component\Security\Http\Authenticator\X509Authenticator" abstract="true">
@@ -5753,15 +6739,77 @@
       <argument type="collection"/>
     </service>
     <service id="knpu.oauth2.user_provider" class="KnpU\OAuth2ClientBundle\Security\User\OAuthUserProvider"/>
+    <service id="knp_paginator" class="Knp\Component\Pager\Paginator" public="true" lazy="true">
+      <tag name="proxy" interface="Knp\Component\Pager\PaginatorInterface"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess"/>
+      <argument type="service" id="doctrine.dbal.default_connection" on-invalid="null"/>
+      <call method="setDefaultPaginatorOptions">
+        <argument type="collection">
+          <argument key="pageParameterName">page</argument>
+          <argument key="sortFieldParameterName">sort</argument>
+          <argument key="sortDirectionParameterName">direction</argument>
+          <argument key="filterFieldParameterName">filterField</argument>
+          <argument key="filterValueParameterName">filterValue</argument>
+          <argument key="distinct">true</argument>
+          <argument key="pageOutOfRange">ignore</argument>
+          <argument key="defaultLimit">10</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess" class="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess">
+      <argument type="service" id="request_stack"/>
+    </service>
+    <service id="knp_paginator.subscriber.paginate" class="Knp\Component\Pager\Event\Subscriber\Paginate\PaginationSubscriber">
+      <tag name="kernel.event_subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sortable" class="Knp\Component\Pager\Event\Subscriber\Sortable\SortableSubscriber">
+      <tag name="kernel.event_subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.filtration" class="Knp\Component\Pager\Event\Subscriber\Filtration\FiltrationSubscriber">
+      <tag name="kernel.event_subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sliding_pagination" class="Knp\Bundle\PaginatorBundle\Subscriber\SlidingPaginationSubscriber">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <tag name="container.hot_path"/>
+      <argument type="collection">
+        <argument key="defaultPaginationTemplate">@KnpPaginator/Pagination/sliding.html.twig</argument>
+        <argument key="defaultRelLinksTemplate">@KnpPaginator/Pagination/rel_links.html.twig</argument>
+        <argument key="defaultSortableTemplate">@KnpPaginator/Pagination/sortable_link.html.twig</argument>
+        <argument key="defaultFiltrationTemplate">@KnpPaginator/Pagination/filtration.html.twig</argument>
+        <argument key="defaultPageRange">5</argument>
+        <argument key="defaultPageLimit">null</argument>
+      </argument>
+    </service>
+    <service id="knp_paginator.helper.processor" class="Knp\Bundle\PaginatorBundle\Helper\Processor">
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="knp_paginator.twig.extension.pagination" class="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime" class="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime">
+      <tag name="twig.runtime"/>
+      <argument type="service" id="knp_paginator.helper.processor"/>
+      <argument>page</argument>
+      <argument>false</argument>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CommentaireController" class="App\Controller\CommentaireController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CommentaireController" class="App\Controller\CommentaireController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CommentaireController" class="App\Controller\CommentaireController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\DefaultController" class="App\Controller\DefaultController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\DefaultController" class="App\Controller\DefaultController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\DefaultController" class="App\Controller\DefaultController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LoginContController" class="App\Controller\LoginContController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LoginContController" class="App\Controller\LoginContController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LoginContController" class="App\Controller\LoginContController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\PostController" class="App\Controller\PostController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\PostController" class="App\Controller\PostController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\PostController" class="App\Controller\PostController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProfileController" class="App\Controller\ProfileController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProfileController" class="App\Controller\ProfileController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ProfileController" class="App\Controller\ProfileController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5776,16 +6824,24 @@
     <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CommentaireType" class="App\Form\CommentaireType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CommentaireType" class="App\Form\CommentaireType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FormEnsType" class="App\Form\FormEnsType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\FormEnsType" class="App\Form\FormEnsType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FormMedType" class="App\Form\FormMedType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\FormMedType" class="App\Form\FormMedType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FormParType" class="App\Form\FormParType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\FormParType" class="App\Form\FormParType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PostType" class="App\Form\PostType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\PostType" class="App\Form\PostType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ResetPasswordRequestFormType" class="App\Form\ResetPasswordRequestFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ResetPasswordRequestFormType" class="App\Form\ResetPasswordRequestFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserType" class="App\Form\UserType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PostRepository" class="App\Repository\PostRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\PostRepository" class="App\Repository\PostRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ResetPasswordRequestRepository" class="App\Repository\ResetPasswordRequestRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ResetPasswordRequestRepository" class="App\Repository\ResetPasswordRequestRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
@@ -6232,10 +7288,39 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
+    <service id=".service_locator.HrDCg3Q" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="commentaire" type="service_closure" id=".errored..service_locator.HrDCg3Q.App\Entity\Commentaire"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
     <service id=".service_locator.rSTd.nA" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
+      </argument>
+    </service>
+    <service id=".service_locator.m5yDm5v" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="comRepository" type="service_closure" id="App\Repository\CommentaireRepository"/>
+        <argument key="paginator" type="service_closure" id="knp_paginator"/>
+        <argument key="postRepository" type="service_closure" id="App\Repository\PostRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.9fKbSLg" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="postRepository" type="service_closure" id="App\Repository\PostRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.LNwsF6h" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="slugger" type="service_closure" id="slugger"/>
       </argument>
     </service>
     <service id=".service_locator.uVvF4gL" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -6265,7 +7350,7 @@
         <argument key="mailer" type="service_closure" id="mailer.mailer"/>
       </argument>
     </service>
-    <service id=".service_locator.Kh68_C1" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.8vo.NOl" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::admin" type="service_closure" id=".service_locator.kPUOGb8"/>
@@ -6273,7 +7358,15 @@
         <argument key="App\Controller\AdminController::deleteUser" type="service_closure" id=".service_locator.NjUBG3v"/>
         <argument key="App\Controller\AdminController::editUser" type="service_closure" id=".service_locator.NjUBG3v"/>
         <argument key="App\Controller\AdminController::editUsers" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CommentaireController::ajouterCommentaire" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CommentaireController::deleteComment" type="service_closure" id=".service_locator.HrDCg3Q"/>
+        <argument key="App\Controller\CommentaireController::updateComment" type="service_closure" id=".service_locator.HrDCg3Q"/>
         <argument key="App\Controller\LoginContController::login" type="service_closure" id=".service_locator.rSTd.nA"/>
+        <argument key="App\Controller\PostController::addComment" type="service_closure" id=".service_locator.9fKbSLg"/>
+        <argument key="App\Controller\PostController::addPost" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\PostController::delete" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\PostController::listAllPosts" type="service_closure" id=".service_locator.m5yDm5v"/>
+        <argument key="App\Controller\PostController::update" type="service_closure" id=".service_locator.LNwsF6h"/>
         <argument key="App\Controller\ResetPasswordController::request" type="service_closure" id=".service_locator.uVvF4gL"/>
         <argument key="App\Controller\ResetPasswordController::reset" type="service_closure" id=".service_locator.Mhqdd2r"/>
         <argument key="App\Controller\SignupController::signup" type="service_closure" id=".service_locator.dziv6uF"/>
@@ -6292,7 +7385,15 @@
         <argument key="App\Controller\AdminController:deleteUser" type="service_closure" id=".service_locator.NjUBG3v"/>
         <argument key="App\Controller\AdminController:editUser" type="service_closure" id=".service_locator.NjUBG3v"/>
         <argument key="App\Controller\AdminController:editUsers" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CommentaireController:ajouterCommentaire" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CommentaireController:deleteComment" type="service_closure" id=".service_locator.HrDCg3Q"/>
+        <argument key="App\Controller\CommentaireController:updateComment" type="service_closure" id=".service_locator.HrDCg3Q"/>
         <argument key="App\Controller\LoginContController:login" type="service_closure" id=".service_locator.rSTd.nA"/>
+        <argument key="App\Controller\PostController:addComment" type="service_closure" id=".service_locator.9fKbSLg"/>
+        <argument key="App\Controller\PostController:addPost" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\PostController:delete" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\PostController:listAllPosts" type="service_closure" id=".service_locator.m5yDm5v"/>
+        <argument key="App\Controller\PostController:update" type="service_closure" id=".service_locator.LNwsF6h"/>
         <argument key="App\Controller\ResetPasswordController:request" type="service_closure" id=".service_locator.uVvF4gL"/>
         <argument key="App\Controller\ResetPasswordController:reset" type="service_closure" id=".service_locator.Mhqdd2r"/>
         <argument key="App\Controller\SignupController:signup" type="service_closure" id=".service_locator.dziv6uF"/>
@@ -6383,13 +7484,15 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.1.At4H1" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.gFB_kDU" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\ChangePasswordFormType" type="service_closure" id="App\Form\ChangePasswordFormType"/>
+        <argument key="App\Form\CommentaireType" type="service_closure" id="App\Form\CommentaireType"/>
         <argument key="App\Form\FormEnsType" type="service_closure" id="App\Form\FormEnsType"/>
         <argument key="App\Form\FormMedType" type="service_closure" id="App\Form\FormMedType"/>
         <argument key="App\Form\FormParType" type="service_closure" id="App\Form\FormParType"/>
+        <argument key="App\Form\PostType" type="service_closure" id="App\Form\PostType"/>
         <argument key="App\Form\ResetPasswordRequestFormType" type="service_closure" id="App\Form\ResetPasswordRequestFormType"/>
         <argument key="App\Form\UserType" type="service_closure" id="App\Form\UserType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
@@ -6493,9 +7596,11 @@
         <argument key="doctrine.orm.messenger.doctrine_schema_listener" type="service_closure" id="doctrine.orm.messenger.doctrine_schema_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.N41nchi" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Dd.sgIA" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\CommentaireRepository" type="service_closure" id="App\Repository\CommentaireRepository"/>
+        <argument key="App\Repository\PostRepository" type="service_closure" id="App\Repository\PostRepository"/>
         <argument key="App\Repository\ResetPasswordRequestRepository" type="service_closure" id="App\Repository\ResetPasswordRequestRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
@@ -6549,6 +7654,22 @@
       <argument>null</argument>
       <argument type="service" id="request_stack"/>
       <argument>%env(bool:default::key:web:default:kernel.runtime_mode:)%</argument>
+    </service>
+    <service id=".service_locator.yY.p4P7" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="translation.loader.csv" type="service_closure" id="translation.loader.csv"/>
+        <argument key="translation.loader.dat" type="service_closure" id="translation.loader.dat"/>
+        <argument key="translation.loader.ini" type="service_closure" id="translation.loader.ini"/>
+        <argument key="translation.loader.json" type="service_closure" id="translation.loader.json"/>
+        <argument key="translation.loader.mo" type="service_closure" id="translation.loader.mo"/>
+        <argument key="translation.loader.php" type="service_closure" id="translation.loader.php"/>
+        <argument key="translation.loader.po" type="service_closure" id="translation.loader.po"/>
+        <argument key="translation.loader.qt" type="service_closure" id="translation.loader.qt"/>
+        <argument key="translation.loader.res" type="service_closure" id="translation.loader.res"/>
+        <argument key="translation.loader.xliff" type="service_closure" id="translation.loader.xliff"/>
+        <argument key="translation.loader.yml" type="service_closure" id="translation.loader.yml"/>
+      </argument>
     </service>
     <service id="debug.security.event_dispatcher.main" class="Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher">
       <tag name="security.event_dispatcher.main">event_dispatcher.dispatcher</tag>
@@ -6706,6 +7827,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\CommentaireController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CommentaireController"/>
+      <argument>App\Controller\CommentaireController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\DefaultController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\DefaultController"/>
       <argument>App\Controller\DefaultController</argument>
@@ -6715,6 +7842,12 @@
     <service id=".service_locator.O2p6Lk7.App\Controller\LoginContController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\LoginContController"/>
       <argument>App\Controller\LoginContController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\PostController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\PostController"/>
+      <argument>App\Controller\PostController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
@@ -6741,6 +7874,18 @@
       <argument>App\Controller\UserController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.fuYM_Z." class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="translator" type="service_closure" id="translator.data_collector"/>
+      </argument>
+    </service>
+    <service id=".service_locator.fuYM_Z..translation.warmer" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="translation.warmer"/>
+      <argument>translation.warmer</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.fuYM_Z." method="withContext"/>
     </service>
     <service id=".service_locator.PvoQzFT" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -6892,8 +8037,10 @@
         <argument type="collection">
           <argument>App\Kernel</argument>
           <argument>App\Controller\AdminController</argument>
+          <argument>App\Controller\CommentaireController</argument>
           <argument>App\Controller\DefaultController</argument>
           <argument>App\Controller\LoginContController</argument>
+          <argument>App\Controller\PostController</argument>
           <argument>App\Controller\ProfileController</argument>
           <argument>App\Controller\ResetPasswordController</argument>
           <argument>App\Controller\SignupController</argument>
@@ -6957,6 +8104,9 @@
     <service id="debug.security.event_dispatcher.main.inner" class="Symfony\Component\EventDispatcher\EventDispatcher"/>
     <service id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.y4_Zrx.&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
+    </service>
+    <service id=".errored..service_locator.HrDCg3Q.App\Entity\Commentaire" class="App\Entity\Commentaire">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.HrDCg3Q&quot;: it needs an instance of &quot;App\Entity\Commentaire&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
@@ -7119,12 +8269,47 @@
       <argument>false</argument>
       <argument type="service_closure" id="console.command.router_match"/>
     </service>
+    <service id=".console.command.translation_debug.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>debug:translation</argument>
+      <argument type="collection"/>
+      <argument>Display translation messages information</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="console.command.translation_debug"/>
+    </service>
+    <service id=".console.command.translation_extract.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>translation:extract</argument>
+      <argument type="collection"/>
+      <argument>Extract missing translations keys from code to translation files</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="console.command.translation_extract"/>
+    </service>
     <service id=".console.command.validator_debug.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>debug:validator</argument>
       <argument type="collection"/>
       <argument>Display validation constraints for classes</argument>
       <argument>false</argument>
       <argument type="service_closure" id="console.command.validator_debug"/>
+    </service>
+    <service id=".console.command.translation_pull.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>translation:pull</argument>
+      <argument type="collection"/>
+      <argument>Pull translations from a given provider.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="console.command.translation_pull"/>
+    </service>
+    <service id=".console.command.translation_push.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>translation:push</argument>
+      <argument type="collection"/>
+      <argument>Push translations to a given provider.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="console.command.translation_push"/>
+    </service>
+    <service id=".console.command.xliff_lint.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>lint:xliff</argument>
+      <argument type="collection"/>
+      <argument>Lint an XLIFF file and outputs encountered errors</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="console.command.xliff_lint"/>
     </service>
     <service id=".console.command.yaml_lint.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>lint:yaml</argument>
@@ -7504,7 +8689,7 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator._7pU_Hi"/>
+      <argument type="service" id=".service_locator.562w4Iv"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -7529,7 +8714,12 @@
         <argument key="messenger:stats">console.command.messenger_stats</argument>
         <argument key="debug:router">console.command.router_debug</argument>
         <argument key="router:match">console.command.router_match</argument>
+        <argument key="debug:translation">console.command.translation_debug</argument>
+        <argument key="translation:extract">console.command.translation_extract</argument>
         <argument key="debug:validator">console.command.validator_debug</argument>
+        <argument key="translation:pull">console.command.translation_pull</argument>
+        <argument key="translation:push">console.command.translation_push</argument>
+        <argument key="lint:xliff">console.command.xliff_lint</argument>
         <argument key="lint:yaml">console.command.yaml_lint</argument>
         <argument key="debug:form">console.command.form_debug</argument>
         <argument key="secrets:set">console.command.secrets_set</argument>
@@ -7605,7 +8795,7 @@
         <argument key="make:webhook">maker.auto_command.make_webhook</argument>
       </argument>
     </service>
-    <service id=".service_locator._7pU_Hi" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.562w4Iv" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
@@ -7631,7 +8821,12 @@
         <argument key="console.command.messenger_stats" type="service_closure" id=".console.command.messenger_stats.lazy"/>
         <argument key="console.command.router_debug" type="service_closure" id=".console.command.router_debug.lazy"/>
         <argument key="console.command.router_match" type="service_closure" id=".console.command.router_match.lazy"/>
+        <argument key="console.command.translation_debug" type="service_closure" id=".console.command.translation_debug.lazy"/>
+        <argument key="console.command.translation_extract" type="service_closure" id=".console.command.translation_extract.lazy"/>
         <argument key="console.command.validator_debug" type="service_closure" id=".console.command.validator_debug.lazy"/>
+        <argument key="console.command.translation_pull" type="service_closure" id=".console.command.translation_pull.lazy"/>
+        <argument key="console.command.translation_push" type="service_closure" id=".console.command.translation_push.lazy"/>
+        <argument key="console.command.xliff_lint" type="service_closure" id=".console.command.xliff_lint.lazy"/>
         <argument key="console.command.yaml_lint" type="service_closure" id=".console.command.yaml_lint.lazy"/>
         <argument key="console.command.form_debug" type="service_closure" id=".console.command.form_debug.lazy"/>
         <argument key="console.command.secrets_set" type="service_closure" id=".console.command.secrets_set.lazy"/>
@@ -7804,12 +8999,13 @@
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
-    <service id=".service_locator.L1OAKmd" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.hI.F3rU" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="Symfony\Bridge\Twig\Extension\CsrfRuntime" type="service_closure" id="twig.runtime.security_csrf"/>
         <argument key="Symfony\Bridge\Twig\Extension\HttpKernelRuntime" type="service_closure" id="twig.runtime.httpkernel"/>
         <argument key="Symfony\Component\Form\FormRenderer" type="service_closure" id="twig.form.renderer"/>
+        <argument key="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime" type="service_closure" id="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime"/>
       </argument>
     </service>
     <service id="App\Kernel" alias="kernel" public="true"/>
@@ -7842,12 +9038,20 @@
     <service id="Psr\Cache\CacheItemPoolInterface" alias="cache.app"/>
     <service id="Symfony\Contracts\Cache\CacheInterface" alias="cache.app"/>
     <service id="Symfony\Contracts\Cache\TagAwareCacheInterface" alias="cache.app.taggable"/>
+    <service id="Symfony\Contracts\Translation\TranslatorInterface" alias="translator.data_collector"/>
     <service id="Symfony\Component\Asset\Packages" alias="assets.packages"/>
     <service id="Symfony\Contracts\HttpClient\HttpClientInterface" alias=".debug.http_client"/>
     <service id="Psr\Http\Client\ClientInterface" alias="psr18.http_client"/>
     <service id="mailer" alias="mailer.mailer"/>
     <service id="Symfony\Component\Mailer\MailerInterface" alias="mailer.mailer"/>
     <service id="Symfony\Component\Mailer\Transport\TransportInterface" alias="mailer.default_transport"/>
+    <service id="Symfony\Component\Translation\Reader\TranslationReaderInterface" alias="translation.reader"/>
+    <service id="Symfony\Component\Translation\Extractor\ExtractorInterface" alias="translation.extractor"/>
+    <service id="Symfony\Component\Translation\Writer\TranslationWriterInterface" alias="translation.writer"/>
+    <service id="Symfony\Contracts\Translation\LocaleAwareInterface" alias="translation.locale_switcher"/>
+    <service id="Symfony\Component\Translation\LocaleSwitcher" alias="translation.locale_switcher"/>
+    <service id="translator" alias="translator.data_collector" public="true"/>
+    <service id="translator.formatter" alias="translator.formatter.default"/>
     <service id="Symfony\Component\ErrorHandler\ErrorRenderer\FileLinkFormatter" alias="debug.file_link_formatter"/>
     <service id="Symfony\Component\Stopwatch\Stopwatch" alias="debug.stopwatch"/>
     <service id="routing.loader.annotation" alias="routing.loader.attribute">
@@ -7951,9 +9155,11 @@
     <service id="SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface" alias="symfonycasts.reset_password.helper"/>
     <service id="KnpU\OAuth2ClientBundle\Client\ClientRegistry" alias="knpu.oauth2.registry"/>
     <service id="oauth2.registry" alias="knpu.oauth2.registry" public="true"/>
+    <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
+    <service id="Knp\Component\Pager\ArgumentAccess\ArgumentAccessInterface" alias="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.Kh68_C1"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.8vo.NOl"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
@@ -7962,10 +9168,13 @@
     <service id=".service_locator.XDGmiR3" alias=".1_ServiceLocator~crV.Epe"/>
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
     <service id=".service_locator.8IbU9zc" alias=".service_locator.NjUBG3v"/>
-    <service id=".service_locator...9BVPo" alias=".service_locator.Kh68_C1"/>
+    <service id=".service_locator.La4G3W9" alias=".service_locator.m5yDm5v"/>
+    <service id=".service_locator.qbplyD2" alias=".service_locator.9fKbSLg"/>
+    <service id=".service_locator.j5xAFc4" alias=".service_locator.8vo.NOl"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.Ip1lGq8" alias=".service_locator.1.At4H1"/>
+    <service id=".service_locator.Ji0nvHF" alias=".service_locator.gFB_kDU"/>
     <service id=".service_locator.jij13qc" alias=".service_locator.PBToVFE"/>
+    <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
     <service id="validator" alias="debug.validator"/>
     <service id="http_client" alias=".debug.http_client"/>
@@ -7973,6 +9182,7 @@
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
     <service id="controller_resolver" alias="debug.controller_resolver"/>
     <service id="argument_resolver" alias="debug.argument_resolver"/>
+    <service id="translator.data_collector.inner" alias="translator.default"/>
     <service id="twig.error_renderer.html.inner" alias="error_handler.error_renderer.html"/>
     <service id="doctrine.migrations.migrations_factory" alias="doctrine.migrations.container_aware_migrations_factory"/>
     <service id="security.access.decision_manager" alias="debug.security.access.decision_manager"/>
@@ -7984,7 +9194,11 @@
     <service id=".service_locator.025Wi8b" alias=".service_locator.kPUOGb8"/>
     <service id=".service_locator.SPFAmCQ" alias=".service_locator.NjUBG3v"/>
     <service id=".service_locator.9e2t_lq" alias=".service_locator.CsMkqUa"/>
+    <service id=".service_locator.cSLnqKe" alias=".service_locator.HrDCg3Q"/>
     <service id=".service_locator.7NIAq8D" alias=".service_locator.rSTd.nA"/>
+    <service id=".service_locator.2PGQOvS" alias=".service_locator.m5yDm5v"/>
+    <service id=".service_locator.mgjAxXQ" alias=".service_locator.9fKbSLg"/>
+    <service id=".service_locator.lUJI3Z8" alias=".service_locator.LNwsF6h"/>
     <service id=".service_locator.OJmnvRJ" alias=".service_locator.uVvF4gL"/>
     <service id=".service_locator.W47vLMj" alias=".service_locator.Mhqdd2r"/>
     <service id=".service_locator.KSuikvr" alias=".service_locator.dziv6uF"/>

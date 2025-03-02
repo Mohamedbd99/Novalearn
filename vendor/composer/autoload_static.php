@@ -23,6 +23,7 @@ class ComposerStaticInit8f66db4088d9ef5cf7bd38e00ff367da
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
+        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -51,6 +52,7 @@ class ComposerStaticInit8f66db4088d9ef5cf7bd38e00ff367da
             'Symfony\\Component\\VarExporter\\' => 30,
             'Symfony\\Component\\VarDumper\\' => 28,
             'Symfony\\Component\\Validator\\' => 28,
+            'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\String\\' => 25,
             'Symfony\\Component\\Stopwatch\\' => 28,
             'Symfony\\Component\\Security\\Http\\' => 32,
@@ -111,6 +113,8 @@ class ComposerStaticInit8f66db4088d9ef5cf7bd38e00ff367da
         ),
         'K' => 
         array (
+            'Knp\\Component\\' => 14,
+            'Knp\\Bundle\\PaginatorBundle\\' => 27,
             'KnpU\\OAuth2ClientBundle\\' => 24,
         ),
         'G' => 
@@ -228,6 +232,10 @@ class ComposerStaticInit8f66db4088d9ef5cf7bd38e00ff367da
         'Symfony\\Component\\Validator\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/validator',
+        ),
+        'Symfony\\Component\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation',
         ),
         'Symfony\\Component\\String\\' => 
         array (
@@ -435,6 +443,14 @@ class ComposerStaticInit8f66db4088d9ef5cf7bd38e00ff367da
             0 => __DIR__ . '/..' . '/league/oauth2-client/src',
             1 => __DIR__ . '/..' . '/league/oauth2-facebook/src',
             2 => __DIR__ . '/..' . '/league/oauth2-google/src',
+        ),
+        'Knp\\Component\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-components/src/Knp/Component',
+        ),
+        'Knp\\Bundle\\PaginatorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle/src',
         ),
         'KnpU\\OAuth2ClientBundle\\' => 
         array (
