@@ -1,0 +1,82 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Détails de l'utilisateur{% endblock %}
+
+{% block admin_content %}
+    <div class="container-fluid">
+        <div class="row mb-4">
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="h3">Détails de l'utilisateur</h1>
+                    <a href="{{ path('admin_user_index') }}" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Retour à la liste
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Informations de l'utilisateur</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>ID</th>
+                                    <td>{{ user.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>{{ user.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Rôles</th>
+                                    <td>
+                                        {% for role in user.roles %}
+                                            <span class="badge bg-info">{{ role }}</span>
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Réclamations de l'utilisateur</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            {% for reclamation in user.reclamations|default([]) %}
+                                <a href="{{ path('admin_reclamation_show', {'id': reclamation.id}) }}" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">{{ reclamation.message|slice(0, 50) }}...</h6>
+                                        <small>{{ reclamation.createdAt|date('d/m/Y H:i') }}</small>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="badge {% if reclamation.priorite == 'Urgente' %}bg-danger{% elseif reclamation.priorite == 'Haute' %}bg-warning text-dark{% elseif reclamation.priorite == 'Moyenne' %}bg-info text-dark{% else %}bg-secondary{% endif %}">
+                                            {{ reclamation.priorite }}
+                                        </span>
+                                        <span class="badge {% if reclamation.statut == 'En attente' %}bg-warning text-dark{% elseif reclamation.statut == 'Traitée' %}bg-success{% else %}bg-info{% endif %}">
+                                            {{ reclamation.statut }}
+                                        </span>
+                                    </div>
+                                </a>
+                            {% else %}
+                                <div class="list-group-item">
+                                    Aucune réclamation trouvée pour cet utilisateur.
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

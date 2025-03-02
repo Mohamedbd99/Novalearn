@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .admin-sidebar {
+            min-height: 100vh;
+            background-color: #343a40;
+        }
+        .admin-sidebar .nav-link {
+            color: rgba(255,255,255,.8);
+            padding: 0.5rem 1rem;
+        }
+        .admin-sidebar .nav-link:hover {
+            color: #fff;
+            background-color: rgba(255,255,255,.1);
+        }
+        .admin-sidebar .nav-link.active {
+            color: #fff;
+            background-color: rgba(255,255,255,.2);
+        }
+        .admin-sidebar .nav-link i {
+            width: 20px;
+            margin-right: 0.5rem;
+        }
+        .admin-content {
+            padding: 20px;
+        }
+        .table-header {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+        }
+        .badge-count {
+            font-size: 0.8em;
+            padding: 0.35em 0.65em;
+            margin-right: 0.5em;
+        }
+        .action-buttons .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            margin: 0 2px;
+        }
+        .card {
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 px-0 admin-sidebar">
+                <div class="py-4 px-3">
+                    <h5 class="text-white">Administration</h5>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') starts with 'admin_reclamation' %}active{% endif %}" 
+                           href="{{ path('admin_reclamation_index') }}">
+                            <i class="fas fa-envelope"></i> Réclamations
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') starts with 'admin_user' %}active{% endif %}" 
+                           href="{{ path('admin_user_index') }}">
+                            <i class="fas fa-users"></i> Utilisateurs
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_home') }}">
+                            <i class="fas fa-arrow-left"></i> Retour au site
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Main content -->
+            <div class="col-md-10 admin-content">
+                {% block admin_content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

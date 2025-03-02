@@ -1,0 +1,16 @@
+{% for reclamation in reclamations %}
+    <tr>
+        <td>{{ reclamation.nom }}</td>
+        <td>{{ reclamation.message|slice(0, 50) }}{% if reclamation.message|length > 50 %}...{% endif %}</td>
+        <td>
+            <span class="badge bg-{{ reclamation.statut == 'En attente' ? 'warning' : (reclamation.statut == 'Traitée' ? 'success' : 'info') }}">
+                {{ reclamation.statut }}
+            </span>
+        </td>
+        <td>{{ reclamation.createdAt|date('d/m/Y H:i') }}</td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="4" class="text-center">Aucune réclamation trouvée</td>
+    </tr>
+{% endfor %}

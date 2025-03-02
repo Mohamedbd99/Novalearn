@@ -1,0 +1,59 @@
+{% for reclamation in reclamations %}
+    <div class="col-12 reclamation-item" 
+         data-status="{{ reclamation.statut }}"
+         data-priority="{{ reclamation.priorite }}"
+         data-category="{{ reclamation.category.id }}"
+         data-date="{{ reclamation.createdAt|date('Y-m-d H:i:s') }}">
+        <div class="card reclamation-card">
+            <div class="priority-indicator priority-{{ reclamation.priorite|lower }}"></div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h5 class="card-title">{{ reclamation.category.name }}</h5>
+                        <div class="reclamation-date">
+                            <i class="far fa-calendar-alt"></i>
+                            {{ reclamation.createdAt|date('d/m/Y H:i') }}
+                        </div>
+                        <div class="text-muted">
+                            <i class="far fa-envelope"></i> {{ reclamation.email }}
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <span class="badge status-badge bg-{{ reclamation.statut == 'En attente' ? 'warning' : (reclamation.statut == 'En cours' ? 'info' : 'success') }}">
+                            {{ reclamation.statut }}
+                        </span>
+                        <span class="badge status-badge bg-{{ reclamation.priorite == 'Urgente' ? 'danger' : (reclamation.priorite == 'Haute' ? 'warning' : (reclamation.priorite == 'Moyenne' ? 'info' : 'success')) }}">
+                            {{ reclamation.priorite }}
+                        </span>
+                    </div>
+                </div>
+                
+                <p class="reclamation-message">{{ reclamation.message }}</p>
+                
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-eye"></i> Voir détails
+                        </a>
+                        <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}" class="btn btn-sm btn-outline-secondary">
+                            <i class="fas fa-edit"></i> Modifier
+                        </a>
+                    </div>
+                    {% if reclamation.reponses|length > 0 %}
+                        <span class="badge bg-primary">
+                            <i class="fas fa-comments"></i> {{ reclamation.reponses|length }} réponse(s)
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="col-12">
+        <div class="empty-state">
+            <i class="fas fa-search"></i>
+            <h3>Aucun résultat</h3>
+            <p class="text-muted">Aucune réclamation ne correspond à vos critères de recherche.</p>
+        </div>
+    </div>
+{% endfor %}

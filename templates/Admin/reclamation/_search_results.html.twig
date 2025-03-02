@@ -1,0 +1,44 @@
+{% for reclamation in reclamations %}
+    <tr class="{% if reclamation.priorite == 'Urgente' %}table-danger{% elseif reclamation.priorite == 'Haute' %}table-warning{% elseif reclamation.priorite == 'Moyenne' %}table-info{% elseif reclamation.priorite == 'Basse' %}table-light{% endif %}">
+        <td>{{ reclamation.id }}</td>
+        <td>{{ reclamation.createdAt ? reclamation.createdAt|date('d/m/Y H:i') : '' }}</td>
+        <td>{{ reclamation.nom }}</td>
+        <td>
+            {% if emailCounts[reclamation.email] > 1 %}
+                <span class="badge bg-danger badge-count">{{ emailCounts[reclamation.email] }}</span>
+            {% endif %}
+            {{ reclamation.email }}
+        </td>
+        <td>{{ reclamation.message|slice(0, 50) }}{% if reclamation.message|length > 50 %}...{% endif %}</td>
+        <td>
+            <span class="badge bg-{{ reclamation.priorite == 'Urgente' ? 'danger' : (reclamation.priorite == 'Haute' ? 'warning' : (reclamation.priorite == 'Moyenne' ? 'info' : 'success')) }}">
+                {{ reclamation.priorite }}
+            </span>
+        </td>
+        <td>
+            <span class="badge bg-{{ reclamation.statut == 'En attente' ? 'warning' : (reclamation.statut == 'En cours' ? 'info' : 'success') }}">
+                {{ reclamation.statut }}
+            </span>
+        </td>
+        <td>
+            <div class="btn-group">
+                <a href="{{ path('admin_reclamation_show', {'id': reclamation.id}) }}" class="btn btn-sm btn-info" title="Voir">
+                    <i class="fas fa-eye"></i>
+                </a>
+                <a href="{{ path('admin_reclamation_edit', {'id': reclamation.id}) }}" class="btn btn-sm btn-warning" title="Modifier">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <form method="post" action="{{ path('admin_reclamation_delete', {'id': reclamation.id}) }}" class="d-inline" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette réclamation ?');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reclamation.id) }}">
+                    <button class="btn btn-sm btn-danger" title="Supprimer">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+            </div>
+        </td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="8" class="text-center">Aucune réclamation trouvée</td>
+    </tr>
+{% endfor %}
