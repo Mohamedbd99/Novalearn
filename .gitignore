@@ -45,3 +45,4 @@ PythonQuizcycy/myenv
 /var/cache/
 /vendor/composer/installed.json
 /vendor/composer/installed.php
+.DS_Store
