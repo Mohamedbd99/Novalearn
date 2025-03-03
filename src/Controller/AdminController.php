@@ -93,7 +93,7 @@ public function editUsers(Request $request, EntityManagerInterface $entityManage
         return $this->redirectToRoute('app_profile');
     }
 
-    return $this->render('user/ModifierProf.html.twig', [
+    return $this->render('User/ModifierProf.html.twig', [
         'form' => $form->createView(),
         'user' => $user, 
     ]);
