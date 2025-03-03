@@ -1,0 +1,15 @@
+framework:
+    assets:
+        version: 'v1'
+        version_strategy: 'Symfony\Component\Asset\VersionStrategy\StaticVersionStrategy'
+        base_path: '/'
+        json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
+        packages:
+            app:
+                base_path: '/assets'
+                version: 'v1'
+                version_format: '%%s?v=%%s'
+            images:
+                base_path: '/images'
+                version: 'v1'
+                version_format: '%%s?v=%%s'
