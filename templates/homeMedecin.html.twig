@@ -56,7 +56,7 @@
                 <li><a href="program-details.html">Program Details</a></li>
             </ul>
         </li>
-         <li><a class="nav-link" href="{{ path('app_post_all') }}">Blogs</a></li>
+         <li><a class="nav-link" href="{{ path('app_blog_index') }}">Dashboard</a></li>
 
         <li><a class="nav-link" href="contact.html">Contact</a></li>
 
@@ -67,7 +67,6 @@
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
         <li><a class="dropdown-item" href="{{ path('app_profile') }}">Gérer le profil</a></li>
-         <li><a class="dropdown-item" href="{{ path('app_post_add') }}">Ajouter Blog</a></li>
         <li><form action="{{ path('app_logout') }}" method="post">
                                      <button type="submit" class="dropdown-item">Se Déconnecter</button>
                                      </form>    </li>
