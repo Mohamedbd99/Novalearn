@@ -17,7 +17,7 @@ class ProfileController extends AbstractController
             return $this->redirectToRoute('app_home'); 
         }
 
-        return $this->render('user/UserGererProf.html.twig', [
+        return $this->render('User/UserGererProf.html.twig', [
             'user' => $user,
         ]);
     }
