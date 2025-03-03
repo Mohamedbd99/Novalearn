@@ -18,17 +18,18 @@ class FormParType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        
-        ->add('role', ChoiceType::class, [
-            'choices' => [
-                'Parent' => 'ROLE_PARENT',
-            ],
-            'required' => true,
-        ])
+        // src/Form/UserType.php
+->add('role', ChoiceType::class, [
+    'choices' => [
+        'Parent' => 'Parent',
+    ],
+    'required' => true,  // Le champ doit être rempli
+    'empty_data' => 'USER',  // Valeur par défaut si aucun choix n'est fait
+])
 
 ->add('nom', TextType::class, [
-    'required' => false,  
-    'empty_data' => null,  
+    'required' => false,  // Champ optionnel
+    'empty_data' => null,  // Si aucune valeur n'est envoyée, la valeur par défaut sera NULL
 ])
 
         ->add('prenom', TextType::class, [
@@ -56,22 +57,15 @@ class FormParType extends AbstractType
             'Femme' => 'femme',
             'Other' => 'other',
         ],
-        'required' => true,  
+        'required' => true,  // S'assurer que le champ est requis
     ])
-    
+    // src/Form/UserType.php
     ->add('id_fils', IntegerType::class, [
-        'required' => false,  
-        'empty_data' => null,  
-    ])
-    
-    ->add('niv_difficulte', IntegerType::class, [
-        'required' => false,
-        'data' => 1, // Assignation automatique de la valeur 1
-        'attr' => ['hidden' => true], // Caché dans le formulaire HTML
-    ]);
-    
-    
-                
+    'required' => false,  // Rendre le champ optionnel
+    'empty_data' => null,  // Si aucun ID n'est envoyé, la valeur par défaut sera NULL
+]);
+
+        
     }
 
     public function configureOptions(OptionsResolver $resolver): void

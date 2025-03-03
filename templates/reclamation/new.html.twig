@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Réclamation{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Créer une nouvelle Réclamation</h1>
+
+        {{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
+            <div class="mb-3">
+                {{ form_label(form.nom) }}
+                {{ form_widget(form.nom) }}
+                {{ form_errors(form.nom) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.message) }}
+                {{ form_widget(form.message) }}
+                {{ form_errors(form.message) }}
+            </div>
+
+            <button class="btn btn-primary">{{ button_label|default('Envoyer') }}</button>
+            <a href="{{ path('app_reclamation_index') }}" class="btn btn-secondary">Retour à la liste</a>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

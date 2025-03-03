@@ -18,20 +18,21 @@ class FormMedType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        
+        // src/Form/UserType.php
 ->add('role', ChoiceType::class, [
     'choices' => [
-        'Medecin' => 'ROLE_MEDECIN',
-        'Parent' => 'ROLE_PARENT',
-        'Eleve' => 'ROLE_ELEVE',
-        'Enseignant' => 'ROLE_ENSEIGNANT',
+        'Medecin' => 'Medecin',
+        'Parent' => 'Parent',
+        'User' => 'User',
+        'Enseignant' => 'Enseignant',
     ],
-    'required' => true,   
+    'required' => true,  // Le champ doit être rempli
+    'empty_data' => 'USER',  // Valeur par défaut si aucun choix n'est fait
 ])
 
 ->add('nom', TextType::class, [
-    'required' => false,  
-    'empty_data' => null,  
+    'required' => false,  // Champ optionnel
+    'empty_data' => null,  // Si aucune valeur n'est envoyée, la valeur par défaut sera NULL
 ])
 
         ->add('prenom', TextType::class, [
@@ -59,7 +60,7 @@ class FormMedType extends AbstractType
             'Femme' => 'femme',
             'Other' => 'other',
         ],
-        'required' => true,  
+        'required' => true,  // S'assurer que le champ est requis
         ])
         ->add('specialite', ChoiceType::class, [
             'choices' => [
@@ -70,7 +71,7 @@ class FormMedType extends AbstractType
                 'Psychomotricien' => 'Psychomotricien',
                 'Neuropsychologue' => 'Neuropsychologue',
             ],
-            'required' => true,  
+            'required' => true,  // S'assurer que le champ est requis
         ]);
     }
 

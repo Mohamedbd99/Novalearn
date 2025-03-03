@@ -57,18 +57,18 @@ class LoginControllerAuthenticator extends AbstractLoginFormAuthenticator
         $user = $token->getUser();
 
         // Vérifier le rôle et rediriger en fonction
-        if (in_array('ROLE_ELEVE', $user->getRoles(), true)) {
+        if (in_array('Eleve', $user->getRoles(), true)) {
             return new RedirectResponse($this->urlGenerator->generate('app_HomeUser'));
         }
 
-        if (in_array('ROLE_PARENT', $user->getRoles(), true)) {
+        if (in_array('Parent', $user->getRoles(), true)) {
             return new RedirectResponse($this->urlGenerator->generate('app_blogs'));
         }
 
-        if (in_array('ROLE_MEDECIN', $user->getRoles(), true)) {
-            return new RedirectResponse($this->urlGenerator->generate('app_post_add'));
+        if (in_array('Medecin', $user->getRoles(), true)) {
+            return new RedirectResponse($this->urlGenerator->generate('app_HomeMedecin'));
         }
-        if (in_array('ROLE_ENSEIGNANT', $user->getRoles(), true)) {
+        if (in_array('Enseignant', $user->getRoles(), true)) {
             return new RedirectResponse($this->urlGenerator->generate('app_cours'));
         }
 

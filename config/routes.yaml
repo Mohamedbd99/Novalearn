@@ -1,7 +1,3 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
-
-app_check_email:
-    path: /check-email
-    controller: App\Controller\ResetPasswordController::checkEmail

@@ -100,7 +100,7 @@ class UserController extends AbstractController
     #[Route('/DashboardPar', name: 'app_DashPar')]
     public function dashboardParent(): Response
     {
-        $user = $this->getUser(); 
+        $user = $this->getUser(); // Assurez-vous que l'utilisateur est connecté
     
         if (!$user) {
             throw $this->createNotFoundException('Utilisateur non trouvé');

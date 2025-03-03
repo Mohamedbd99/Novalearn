@@ -58,7 +58,7 @@
                                     <li class="has-dropdown">
                                         <a class="nav-link" href="#">Classes</a>
                                         <ul class="submenu">
-                                            <li><a href="Courses">Courses</a></li>
+                                            <li><a href="{{ path('app_course_user') }}">Courses</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -941,7 +941,7 @@
                             </div>
                             <div class="body">
                                 <ul class="menu">
-                                    <li><a href="course.html">Courses</a></li>
+                                    <li><a href="{{ path('app_course_user') }}">Courses</a></li>
                                     <li><a href="blog.html">Blog</a></li>
                                     <li><a href="program-details.html">Program</a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
@@ -1027,8 +1027,8 @@
                     <input type="password" name="password" id="password" placeholder="Password" required>
 
                     <div class="d-flex mb--20 align-items-center">
-                        <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
-                        
+                        <input type="checkbox" id="examplecheck-modal">
+                        <label for="examplecheck-modal">I agree to the terms of use and privacy policy.</label>
                     </div>
 
                     <button type="submit" class="rts-btn btn-primary">Sign In</button>
@@ -1217,6 +1217,7 @@
     </div>
 
     <!-- all scripts -->
+    
     <!-- jquery min js -->
     <script src="assets/js/vendor/jquery.min.js"></script>
     <!-- jquery ui js -->

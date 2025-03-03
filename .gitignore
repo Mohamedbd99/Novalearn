@@ -1,3 +1,8 @@
+node_modules
+var
+vendor
+public/build/
+
 # --- Symfony-specific ---
 /var/
 /vendor/
@@ -8,6 +13,15 @@
 # --- Python ---
 /venv/
 /__pycache__/
+
+
+
+
+/vendor/
+/var/
+
+vendor
+
 *.py[cod] 
 *.pyo
 
@@ -26,12 +40,13 @@ public/bundles/
 composer.phar
 
 
-# Ignore environment file in pythonQuiz
-pythonQuiz/.env
-pythonQuiz/.env.*
+# Ignore environment file in PythonQuizcycy
+PythonQuizcycy/.env
+PythonQuizcycy/.env.*
 .env
 .env.*
-pythonQuiz/myenv
+PythonQuizcycy/myenv
 /var/cache/
 /vendor/composer/installed.json
 /vendor/composer/installed.php
+.DS_Store

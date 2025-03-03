@@ -17,20 +17,21 @@ class FormEnsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        
+        // src/Form/UserType.php
 ->add('role', ChoiceType::class, [
     'choices' => [
-        'Enseignant' => 'ROLE_ENSEIGNANT',
-        'Parent' => 'ROLE_PARENT',
-        'Eleve' => 'ROLE_ELEVE',
-        'Medecin' => 'ROLE_MEDECIN',
+        'Enseignant' => 'Enseignant',
+        'Parent' => 'Parent',
+        'User' => 'User',
+        'Medecin' => 'Medecin',
     ],
-    'required' => true,    
+    'required' => true,  // Le champ doit être rempli
+    'empty_data' => 'USER',  // Valeur par défaut si aucun choix n'est fait
 ])
 
 ->add('nom', TextType::class, [
-    'required' => false,  
-    'empty_data' => null,  
+    'required' => false,  // Champ optionnel
+    'empty_data' => null,  // Si aucune valeur n'est envoyée, la valeur par défaut sera NULL
 ])
 
         ->add('prenom', TextType::class, [
@@ -58,7 +59,7 @@ class FormEnsType extends AbstractType
             'Femme' => 'femme',
             'Other' => 'other',
         ],
-        'required' => true,  
+        'required' => true,  // S'assurer que le champ est requis
         ])
         ->add('specialite', ChoiceType::class, [
             'choices' => [
@@ -69,7 +70,7 @@ class FormEnsType extends AbstractType
                 'Ecriture' => 'Ecriture',
                 
             ],
-            'required' => true,  
+            'required' => true,  // S'assurer que le champ est requis
         ]);
     }
 
