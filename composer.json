@@ -7,19 +7,37 @@
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
+<<<<<<< HEAD
+=======
+        "doctrine/annotations": "*",
+>>>>>>> Gharsallah_Ali_Hamma
         "doctrine/dbal": "^3",
         "doctrine/doctrine-bundle": "^2.13",
         "doctrine/doctrine-migrations-bundle": "^3.4",
         "doctrine/orm": "^3.3",
+<<<<<<< HEAD
         "dompdf/dompdf": "^2.0",
         "knplabs/knp-snappy-bundle": "^1.10",
         "symfony/console": "6.4.*",
+=======
+        "knplabs/knp-paginator-bundle": "^6.6",
+        "knpuniversity/oauth2-client-bundle": "*",
+        "league/oauth2-facebook": "^2.2",
+        "league/oauth2-google": "^4.0",
+        "symfony/console": "6.4.*",
+        "symfony/doctrine-messenger": "6.4.*",
+>>>>>>> Gharsallah_Ali_Hamma
         "symfony/dotenv": "6.4.*",
         "symfony/flex": "^2",
         "symfony/form": "6.4.*",
         "symfony/framework-bundle": "6.4.*",
         "symfony/http-client": "6.4.*",
+<<<<<<< HEAD
         "symfony/mime": "6.4.*",
+=======
+        "symfony/mailer": "6.4.*",
+        "symfony/polyfill-intl-idn": "*",
+>>>>>>> Gharsallah_Ali_Hamma
         "symfony/runtime": "6.4.*",
         "symfony/security-bundle": "6.4.*",
         "symfony/security-core": "6.4.*",
@@ -27,6 +45,10 @@
         "symfony/validator": "6.4.*",
         "symfony/webpack-encore-bundle": "*",
         "symfony/yaml": "6.4.*",
+<<<<<<< HEAD
+=======
+        "symfonycasts/reset-password-bundle": "*",
+>>>>>>> Gharsallah_Ali_Hamma
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
@@ -79,8 +101,13 @@
         }
     },
     "require-dev": {
+<<<<<<< HEAD
         "symfony/maker-bundle": "^1.62"
     },
     "repositories": {
+=======
+        "doctrine/doctrine-fixtures-bundle": "^4.0",
+        "symfony/maker-bundle": "^1.62"
+>>>>>>> Gharsallah_Ali_Hamma
     }
 }

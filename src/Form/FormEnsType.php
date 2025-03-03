@@ -17,6 +17,7 @@ class FormEnsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+<<<<<<< HEAD
         // src/Form/UserType.php
 ->add('role', ChoiceType::class, [
     'choices' => [
@@ -32,6 +33,22 @@ class FormEnsType extends AbstractType
 ->add('nom', TextType::class, [
     'required' => false,  // Champ optionnel
     'empty_data' => null,  // Si aucune valeur n'est envoyée, la valeur par défaut sera NULL
+=======
+        
+->add('role', ChoiceType::class, [
+    'choices' => [
+        'Enseignant' => 'ROLE_ENSEIGNANT',
+        'Parent' => 'ROLE_PARENT',
+        'Eleve' => 'ROLE_ELEVE',
+        'Medecin' => 'ROLE_MEDECIN',
+    ],
+    'required' => true,    
+])
+
+->add('nom', TextType::class, [
+    'required' => false,  
+    'empty_data' => null,  
+>>>>>>> Gharsallah_Ali_Hamma
 ])
 
         ->add('prenom', TextType::class, [
@@ -59,7 +76,11 @@ class FormEnsType extends AbstractType
             'Femme' => 'femme',
             'Other' => 'other',
         ],
+<<<<<<< HEAD
         'required' => true,  // S'assurer que le champ est requis
+=======
+        'required' => true,  
+>>>>>>> Gharsallah_Ali_Hamma
         ])
         ->add('specialite', ChoiceType::class, [
             'choices' => [
@@ -70,7 +91,11 @@ class FormEnsType extends AbstractType
                 'Ecriture' => 'Ecriture',
                 
             ],
+<<<<<<< HEAD
             'required' => true,  // S'assurer que le champ est requis
+=======
+            'required' => true,  
+>>>>>>> Gharsallah_Ali_Hamma
         ]);
     }
 

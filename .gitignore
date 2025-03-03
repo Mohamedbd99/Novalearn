@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 node_modules
 var
 vendor
 public/build/
 
+=======
+>>>>>>> Gharsallah_Ali_Hamma
 # --- Symfony-specific ---
 /var/
 /vendor/
@@ -13,6 +16,7 @@ public/build/
 # --- Python ---
 /venv/
 /__pycache__/
+<<<<<<< HEAD
 
 
 
@@ -22,6 +26,8 @@ public/build/
 
 vendor
 
+=======
+>>>>>>> Gharsallah_Ali_Hamma
 *.py[cod] 
 *.pyo
 
@@ -40,6 +46,7 @@ public/bundles/
 composer.phar
 
 
+<<<<<<< HEAD
 # Ignore environment file in PythonQuizcycy
 PythonQuizcycy/.env
 PythonQuizcycy/.env.*
@@ -50,3 +57,14 @@ PythonQuizcycy/myenv
 /vendor/composer/installed.json
 /vendor/composer/installed.php
 .DS_Store
+=======
+# Ignore environment file in pythonQuiz
+pythonQuiz/.env
+pythonQuiz/.env.*
+.env
+.env.*
+pythonQuiz/myenv
+/var/cache/
+/vendor/composer/installed.json
+/vendor/composer/installed.php
+>>>>>>> Gharsallah_Ali_Hamma

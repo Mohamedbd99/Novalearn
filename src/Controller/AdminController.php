@@ -16,11 +16,18 @@ class AdminController extends AbstractController
     #[Route('/admin', name: 'app_admin')]
     public function admin(UserRepository $userRepository): Response
     {
+<<<<<<< HEAD
         // Récupérer les utilisateurs triés par rôle
         $parents = $userRepository->findBy(['role' => 'parent']);
         $eleves = $userRepository->findBy(['role' => 'eleve']);
         $enseignants = $userRepository->findBy(['role' => 'enseignant']);
         $medecins = $userRepository->findBy(['role' => 'medecin']);
+=======
+        $parents = $userRepository->findBy(['role' => 'ROLE_PARENT']);
+        $eleves = $userRepository->findBy(['role' => 'ROLE_ELEVE']);
+        $enseignants = $userRepository->findBy(['role' => 'enseignant']);
+        $medecins = $userRepository->findBy(['role' => 'ROLE_MEDECIN']);
+>>>>>>> Gharsallah_Ali_Hamma
         
         return $this->render('Admin/admin.html.twig', [
             'parents' => $parents,
@@ -39,7 +46,10 @@ class AdminController extends AbstractController
             throw $this->createNotFoundException('Utilisateur non trouvé');
         }
 
+<<<<<<< HEAD
         // Création du formulaire
+=======
+>>>>>>> Gharsallah_Ali_Hamma
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -78,14 +88,20 @@ public function deleteUser($id, UserRepository $userRepository, EntityManagerInt
 #[Route('/user/edit', name: 'app_edit_users')]
 public function editUsers(Request $request, EntityManagerInterface $entityManager): Response
 {
+<<<<<<< HEAD
     // Récupérer l'utilisateur connecté
     $user = $this->getUser();
 
     // Si aucun utilisateur n'est connecté, rediriger vers la page de connexion
+=======
+    $user = $this->getUser();
+
+>>>>>>> Gharsallah_Ali_Hamma
     if (!$user) {
         return $this->redirectToRoute('app_home');
     }
 
+<<<<<<< HEAD
     // Créer le formulaire pour éditer l'utilisateur
     $form = $this->createForm(UserType::class, $user);
 
@@ -104,10 +120,45 @@ public function editUsers(Request $request, EntityManagerInterface $entityManage
     return $this->render('user/ModifierProf.html.twig', [
         'form' => $form->createView(),
         'user' => $user, // Passer l'utilisateur pour pré-remplir le formulaire
+=======
+    $form = $this->createForm(UserType::class, $user);
+
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_profile');
+    }
+
+    return $this->render('user/ModifierProf.html.twig', [
+        'form' => $form->createView(),
+        'user' => $user, 
+    ]);
+}
+
+#[Route('/admin/dashboard', name: 'app_admin_dashboard')]
+public function dashboard(UserRepository $userRepository): Response
+{
+    $counts = [
+        'eleves' => count($userRepository->findBy(['role' => 'ROLE_ELEVE'])),
+        'enseignants' => count($userRepository->findBy(['role' => 'enseignant'])),
+        'parents' => count($userRepository->findBy(['role' => 'ROLE_PARENT'])),
+        'medecins' => count($userRepository->findBy(['role' => 'ROLE_MEDECIN'])),
+    ];
+
+    return $this->render('admin/dashboard.html.twig', [
+        'counts' => $counts,
+>>>>>>> Gharsallah_Ali_Hamma
     ]);
 }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> Gharsallah_Ali_Hamma
 }
 
 
