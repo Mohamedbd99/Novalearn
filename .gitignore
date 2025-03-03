@@ -1,0 +1,37 @@
+# --- Symfony-specific ---
+/var/
+/vendor/
+
+# --- Node.js ---
+/node_modules/
+
+# --- Python ---
+/venv/
+/__pycache__/
+*.py[cod] 
+*.pyo
+
+# --- Build assets (if using Webpack Encore or similar) ---
+/public/build/
+public/bundles/
+
+# --- Environment Files ---
+.env.*
+!.env.example   # Uncomment if you keep an example env file in version control
+
+# --- Log Files ---
+*.log
+
+# --- Composer PHAR (if you have a local copy) ---
+composer.phar
+
+
+# Ignore environment file in pythonQuiz
+pythonQuiz/.env
+pythonQuiz/.env.*
+.env
+.env.*
+pythonQuiz/myenv
+/var/cache/
+/vendor/composer/installed.json
+/vendor/composer/installed.php
