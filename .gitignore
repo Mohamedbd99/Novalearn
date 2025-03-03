@@ -1,6 +1,8 @@
 node_modules
 var
 vendor
+public/build/
+
 # --- Symfony-specific ---
 /var/
 /vendor/
