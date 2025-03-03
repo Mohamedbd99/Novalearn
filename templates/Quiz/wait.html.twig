@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Ready for Fun Quizzes!</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+        }
+        .loader {
+            border: 16px solid rgba(255, 255, 255, 0.3);
+            border-top: 16px solid #fff;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <h1>Hang tight, fun quizzes are on their way!</h1>
+    
+    <script>
+        // Start quiz generation via AJAX.
+        // The generation endpoint takes the 'matiere' route parameter and 'userId' query parameter.
+        fetch("{{ path('quiz_generate_matiere_ajax', {'matiere': matiere}) }}?userId={{ userId }}")
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // After successful generation, redirect to the quiz listing page.
+                    // The listing route now requires both 'matiere' and 'userId' parameters.
+                    setTimeout(function() {
+                        window.location.href = "{{ path('quiz', {'matiere': matiere, 'userId': userId}) }}";
+                    }, 2000); // 2-second delay for smooth transition.
+                } else {
+                    alert("There was a problem generating the quizzes. Please try again.");
+                }
+            })
+            .catch(error => {
+                console.error("Error generating quizzes:", error);
+                alert("Error generating quizzes.");
+            });
+    </script>
+</body>
+</html>

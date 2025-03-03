@@ -1,0 +1,3 @@
+var/cache/* merge=ours
+vendor/composer/installed.json merge=ours
+vendor/composer/installed.php merge=ours
