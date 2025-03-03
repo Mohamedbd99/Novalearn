@@ -1,0 +1,116 @@
+
+{% block body %}
+    <style>
+        /* Style général du corps */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        h1 {
+            text-align: center;
+            color: #0066cc;
+            padding: 20px 0;
+        }
+
+        /* Tableau des blogs */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        .table th {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        .table td {
+            background-color: #fafafa;
+        }
+
+        .table a {
+            color: #0066cc;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            background-color: #f1faff;
+            margin-right: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .table a:hover {
+            background-color: #004b8d;
+            color: white;
+        }
+
+        /* Style du lien "Create new" */
+        .create-btn {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-btn:hover {
+            background-color: #218838;
+        }
+
+    </style>
+
+    <h1>Blog index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Content</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Created_at</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for blog in blogs %}
+            <tr>
+                <td>{{ blog.id }}</td>
+                <td>{{ blog.description }}</td>
+                <td>{{ blog.content }}</td>
+                <td>{{ blog.image }}</td>
+                <td>{{ blog.category }}</td>
+                <td>{{ blog.createdAt ? blog.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_blog_show', {'id': blog.id}) }}">Show</a>
+                    <a href="{{ path('app_blog_edit', {'id': blog.id}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Bouton pour créer un nouveau blog -->
+    <a href="{{ path('app_blog_new') }}" class="create-btn">Create new</a>
+     <a href="{{ path('app_HomeMedecin') }}" class="create-btn">Retour</a>
+{% endblock %}

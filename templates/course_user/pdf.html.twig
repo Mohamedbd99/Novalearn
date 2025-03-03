@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ course.titre }}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 40px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: rgb(131, 141, 127);
+            margin-bottom: 20px;
+        }
+
+     .description, .content {
+    padding: 20px;
+    border-left: 5px solid #3498db;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: none; /* Supprimer la couleur grise */
+}
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ course.titre }}</h1>
+
+        <div class="description">
+            <p><strong>Description :</strong> {{ course.description | nl2br }}</p>
+        </div>
+
+        <div class="content">
+            <p><strong>Contenu :</strong> {{ course.contenu | nl2br }}</p>
+        </div>
+
+        <div class="footer">
+            <p>Généré le {{ "now"|date("d/m/Y") }} à {{ "now"|date("H:i") }}</p>
+        </div>
+    </div>
+</body>
+</html>

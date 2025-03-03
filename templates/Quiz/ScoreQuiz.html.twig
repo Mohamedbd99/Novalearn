@@ -176,7 +176,7 @@
                                 <li class="has-dropdown">
                                     <a class="nav-link" href="#">Classes</a>
                                     <ul class="submenu">
-                                        <li><a href="course.html">Courses</a></li>
+                                        <li><a href="course.html">{{ quiz.matiere }}</a></li>
                                         <li><a href="course-details.html">Course Details</a></li>
                                     </ul>
                                 </li>
@@ -228,10 +228,10 @@
                         <div class="pagination-wrapper">
                             <a href="index.html">Home</a>
                             <i class="fa-regular fa-chevron-right"></i>
-                            <a class="active" href="course.html">Courses</a>
+                            <a class="active" href="course.html">{{ quiz.matiere }}</a>
                         </div>
                         <!-- breadcrumb pagination area -->
-                        <h2 class="title">Courses</h2>
+                        <h2 class="title">{{ quiz.matiere }}</h2>
                         <!-- breadcrumb pagination area end -->
                     </div>
                 </div>
@@ -248,14 +248,17 @@
 
 <!-- course area end -->
 
-  <div class="score-container">
-    <h1>Quiz Completed!</h1>
-    <p>
-      You already completed this quiz with a score of 
-      <strong>{{ submission.score }}</strong> out of 
-      <strong>{{ quiz.getQuestions()|length }}</strong>.
-    </p>
-  </div>
+<div class="score-container">
+  <h1>Quiz Completed!</h1>
+  <p>
+    Subject: <strong>{{ quiz.matiere }} {{ quiz.difficulty }}</strong>
+  </p>
+  <p>
+    You already completed this quiz with a score of 
+    <strong>{{ submission.score }}</strong> out of 
+    <strong>{{ quiz.getQuestions()|length }}</strong>.
+  </p>
+</div>
 
     <!-- footer call to action area start -->
 
@@ -317,7 +320,7 @@
                             </div>
                             <div class="body">
                                 <ul class="menu">
-                                    <li><a href="course.html">Courses</a></li>
+                                    <li><a href="course.html">{{ quiz.matiere }}</a></li>
                                     <li><a href="blog.html">Blog</a></li>
                                     <li><a href="program-details.html">Program</a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
@@ -449,7 +452,7 @@
                     <li class="has-droupdown">
                         <a href="#" class="main">Class</a>
                         <ul class="submenu mm-collapse">
-                            <li><a class="mobile-menu-link" href="course.html">Courses</a></li>
+                            <li><a class="mobile-menu-link" href="course.html">{{ quiz.matiere }}</a></li>
                             <li><a class="mobile-menu-link" href="course-details.html">Course Details</a></li>
                         </ul>
                     </li>
