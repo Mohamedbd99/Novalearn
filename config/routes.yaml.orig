@@ -1,0 +1,10 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+<<<<<<< HEAD
+=======
+
+app_check_email:
+    path: /check-email
+    controller: App\Controller\ResetPasswordController::checkEmail
+>>>>>>> Gharsallah_Ali_Hamma
