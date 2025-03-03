@@ -174,81 +174,61 @@
         <div class="header-main">
             <div class="container">
                 <div class="header-one-wrapper">
-                    <div class="left-side-header">
-                        <a href="index.html" class="logo-area">
-                            <img src="assets/images/logo/logo-1.svg" alt="logo">
-                        </a>
-                    </div>
-
-                    <div class="main-nav-one">
-                        <nav>
-                            <ul>
-                                <li class="has-dropdown" style="position: static;">
-                                    <a class="nav-link" href="#">Home</a>
-
-                                    <ul class="submenu">
-                                        <li>
-                                            <a href="index.html">Home 01</a>
-                                        </li>
-                                        <li>
-                                            <a href="index-two.html">Home 02</a>
-                                        </li>
-                                        <li>
-                                            <a href="index-three.html">Home 03</a>
-                                        </li>
-                                        <li>
-                                            <a href="index-four.html">Home 04</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="has-dropdown">
-                                    <a class="nav-link" href="#">Pages</a>
-                                    <ul class="submenu">
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="team.html">Team</a></li>
-                                        <li><a href="team-details.html">Team Details</a></li>
-                                        <li><a href="event.html">Event</a></li>
-                                        <li><a href="event-details.html">Event Details</a></li>
-                                        <li><a href="program-details.html">Program Details</a></li>
-                                        <li><a href="pricing.html">Pricing</a></li>
-                                        <li><a href="pricing-two.html">Pricing Two</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-dropdown">
-                                    <a class="nav-link" href="#">Classes</a>
-                                    <ul class="submenu">
-                                        <li><a href="course.html">Courses</a></li>
-                                        <li><a href="course-details.html">Course Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-dropdown">
-                                    <a class="nav-link" href="#">Blog</a>
-                                    <ul class="submenu">
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-grid.html">Blog Grid</a></li>
-                                        <li><a href="blog-list.html">Blog List</a></li>
-                                        <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                        <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="contact.html">Contact</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-
-                    <div class="header-right-area-one">
-                        <div class="buttons-area">
-                            <a href="registration.html" class="rts-btn btn-primary">View More</a>
+                   <div class="left-side-header">
+                            <a href="home" class="logo-area">
+                                <img src="assets/images/logo/logo-1.png" alt="logo" width="280" height="auto">
+                            </a>
                         </div>
-                        <div class="menu-btn" id="menu-btn">
-                            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect y="14" width="20" height="2" fill="#1F1F25"></rect>
-                                <rect y="7" width="20" height="2" fill="#1F1F25"></rect>
-                                <rect width="20" height="2" fill="#1F1F25"></rect>
-                            </svg>
+
+                        <div class="main-nav-one">
+                        
+                           <nav>
+    <ul>
+        <li><a class="nav-link" href="#">Home</a></li>
+
+        <li class="has-dropdown">
+            <a class="nav-link" href="#">Pages</a>
+            <ul class="submenu">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="Team">Team</a></li>
+                <li><a href="#">Team Details</a></li>
+                <li><a href="event.html">Event</a></li>
+                <li><a href="event-details.html">Event Details</a></li>
+                <li><a href="program-details.html">Program Details</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+            </ul>
+        </li>
+
+        <li class="has-dropdown">
+            <a class="nav-link" href="#">Classes</a>
+            <ul class="submenu">
+                <li><a href="course.html">Courses</a></li>
+                <li><a href="course-details.html">Course Details</a></li>
+                <li><a href="AllQuiz">Quiz</a></li>
+            </ul>
+        </li>
+
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+
+            <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-user"></i> <!-- Icône utilisateur -->
+        <i class="fas fa-chevron-down"></i> <!-- Flèche déroulante -->
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+        <li><a class="dropdown-item" href="{{ path('app_profile') }}">Gérer le profil</a></li>
+        <li>
+            <form action="{{ path('app_logout') }}" method="post">
+                <button type="submit" class="dropdown-item">Se Déconnecter</button>
+            </form>
+        </li>
+    </ul>
+</li>
+
+    
+    </ul>
+</nav>
+
                         </div>
                     </div>
                 </div>

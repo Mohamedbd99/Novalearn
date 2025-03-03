@@ -32,10 +32,10 @@ class DefaultController extends AbstractController
         return $this->render('home/Team.html.twig');
     }
 
-    #[Route('/Courses', name: 'app_Courses')]
+    #[Route('/HomeParent', name: 'app_Parent')]
     public function couses(): Response
     {
-        return $this->render('home/Courses.html.twig');
+        return $this->render('Parent/HomeParent.html.twig');
     }
 
     #[Route('/HomeMedecin', name: 'app_HomeMedecin')]

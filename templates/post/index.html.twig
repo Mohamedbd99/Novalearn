@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block body %}
+
     <style>
         .feed-container {
             max-width: 750px;
@@ -341,6 +342,33 @@
         <div class="pagination-container">
             {{ knp_pagination_render(pagination) }}
         </div>
+    </div>
+     <style>
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <div class="feed-container">
+        <!-- Votre contenu existant... -->
+
+        <!-- Ajouter le bouton retour -->
+        <div class="back-button-container">
+            <a href="{{ path('app_HomeMedecin') }}">
+                <button class="back-btn">Retour</button>
+            </a>
+        </div>
+
+        <!-- Votre contenu existant... -->
     </div>
 
     <!-- Bootstrap JS (inclut Popper pour les dropdown) -->
