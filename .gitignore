@@ -1,4 +1,6 @@
 node_modules
+var
+vendor
 # --- Symfony-specific ---
 /var/
 /vendor/
