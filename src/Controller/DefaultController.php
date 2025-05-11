@@ -19,6 +19,12 @@ class DefaultController extends AbstractController
     {
         return $this->render('User/homeUser.html.twig');
     }
+    #[Route('/HomeEnseignant', name: 'app_HomeEnseignant')]
+    public function homeEns(): Response
+    {
+        return $this->render('homeEnseignant.html.twig');
+    }
+
 
     #[Route('/TeamDetails', name: 'app_TeamDetails')]
     public function teamdet(): Response

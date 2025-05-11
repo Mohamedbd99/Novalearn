@@ -58,13 +58,45 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $specialite = null;
 
-    #[ORM\Column(type: "boolean")]
-    private bool $isVerified = false;
+    #[ORM\Column(name: "isVerified", type: "boolean", nullable: false)]
+private bool $isVerified = false;
+    
+#[ORM\Column(name: "verificationToken", type: "string", length: 255, nullable: false)]
+private string $verificationToken;
 
-    #[ORM\Column(type: "string", nullable: true)]
-    private ?string $verificationToken = null;
+    #[ORM\Column(type: 'integer', nullable: true)]
+private ?int $verification_code = null;
+
+#[ORM\Column(type: 'boolean')]
+private bool $isActive = true;
+
+
 
     // Getters and Setters
+
+    
+    public function getVerificationCode(): ?int
+{
+    return $this->verification_code;
+}
+
+public function setVerificationCode(?int $verification_code): static
+{
+    $this->verification_code = $verification_code;
+    return $this;
+}
+
+public function getIsActive(): bool
+{
+    return $this->isActive;
+}
+
+public function setIsActive(bool $isActive): static
+{
+    $this->isActive = $isActive;
+    return $this;
+}
+
 
     public function getId(): ?int
     {

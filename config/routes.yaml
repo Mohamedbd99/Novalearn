@@ -5,3 +5,11 @@ controllers:
 app_check_email:
     path: /check-email
     controller: App\Controller\ResetPasswordController::checkEmail
+login:
+    path: /login
+    controller: App\Controller\LoginContController::login
+
+home:
+    path: /home
+    controller: App\Controller\DefaultController::index
+

@@ -27,3 +27,6 @@ security:
         - { path: ^/HomeUser, roles: ROLE_ELEVE }
         - { path: ^/blogsUser, roles: ROLE_PARENT }
         - { path: ^/HomeMedecin, roles: ROLE_MEDECIN }
+        - { path: ^/login$,       roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/HomeParent,   roles: ROLE_PARENT }
+        - { path: ^/HomeEnseignant, roles: ROLE_ENSEIGNANT }

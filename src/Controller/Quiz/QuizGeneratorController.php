@@ -34,7 +34,7 @@ class QuizGeneratorController extends AbstractController
         }
 
         // Construction de l'URL de l'API de génération de quiz
-        $endpoint = 'http://localhost:1312/generate/' . $matiere;
+        $endpoint = 'http://localhost:8001/generate/' . $matiere;
         $response = $httpClient->request('GET', $endpoint);
         $data = $response->toArray();
 
@@ -68,7 +68,7 @@ class QuizGeneratorController extends AbstractController
                         . ' Option C: ' . $questionData['c'];
 
                     // Appel de l'API TTS
-                    $ttsResponse = $httpClient->request('POST', 'http://localhost:1313/tts', [
+                    $ttsResponse = $httpClient->request('POST', 'http://localhost:8002/tts', [
                         'json' => [
                             'text' => $ttsText,
                             'lang' => 'en'
