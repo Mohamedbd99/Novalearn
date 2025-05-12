@@ -1,0 +1,32 @@
+security:
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            lazy: true
+            provider: app_user_provider
+            custom_authenticator: App\Security\LoginControllerAuthenticator
+            logout:
+                path: app_logout
+                target: app_home
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/HomeUser, roles: ROLE_ELEVE }
+        - { path: ^/blogsUser, roles: ROLE_PARENT }
+        - { path: ^/HomeMedecin, roles: ROLE_MEDECIN }
+        - { path: ^/login$,       roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/HomeParent,   roles: ROLE_PARENT }
+        - { path: ^/HomeEnseignant, roles: ROLE_ENSEIGNANT }

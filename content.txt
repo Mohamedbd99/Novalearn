@@ -1,0 +1,103 @@
+SCHÉMA SIMPLIFIÉ DU COMPTE DE RÉSULTAT
+-------------------------------------------------------
+             CHARGES                          PRODUITS
+-------------------------------------------------------
+Charges d’exploitation          Produits d’exploitation
+  • Achats consommés              • Ventes de marchandises/produits finis
+  • Charges de personnel          • Production stockée / immobilisée
+  • Dotations aux amortissements  • Subventions d’exploitation
+    et provisions d’exploitation • Reprises sur provisions
+  • Autres charges d’exploitation
+-------------------------------------------------------
+Charges financières             Produits financiers
+  • Intérêts sur emprunts         • Dividendes, intérêts, plus-values, 
+  • Moins-value sur titres         escomptes obtenus, gains de change,
+    de placement                  • Reprise sur provisions financières
+  • Escomptes accordés
+  • Perte de change
+  • Dotation aux provisions
+    financières
+-------------------------------------------------------
+Charges exceptionnelles         Produits exceptionnels
+  • Perte sur cession             • Gain sur cession d’immobilisations
+    d’immobilisations             • Dons, subventions d’équilibre,
+  • Amendes, pénalités              autres produits exceptionnels
+-------------------------------------------------------
+= RÉSULTAT (BÉNÉFICE OU PERTE)
+
+-------------------------------------------------------
+
+1. CHARGES D’EXPLOITATION
+-----------------------------------
+• Achats consommés :
+  - Ex : Une boulangerie achète de la farine pour fabriquer du pain.
+• Charges du personnel :
+  - Ex : Salaires + charges sociales versés aux employés.
+• Dotations aux amortissements et provisions :
+  - Ex : Amortissement d’une machine (ex : 10 000 € sur un an) 
+    et provision de 2 000 € pour créances douteuses.
+• Autres charges d’exploitation :
+  - Ex : Loyers, assurances, honoraires, frais de déplacement, impôts et taxes.
+
+2. PRODUITS D’EXPLOITATION
+-----------------------------------
+• Ventes de marchandises et produits finis :
+  - Ex : Un magasin vend des vêtements ; une usine vend des voitures.
+• Production stockée / immobilisée :
+  - Production stockée : Variation de stocks (ex : 20 unités non vendues valorisées à 200 €).
+  - Production immobilisée : Création d’un logiciel pour usage interne, valorisé à 50 000 €.
+• Subventions d’exploitation :
+  - Ex : Subvention de 10 000 € pour favoriser l’embauche.
+• Reprises sur provisions d’exploitation :
+  - Ex : Reprise d’une provision de 5 000 € initialement constituée pour créances douteuses.
+
+3. CHARGES FINANCIÈRES
+-----------------------------------
+• Intérêts sur emprunts :
+  - Ex : 2 000 € d’intérêts pour un prêt de 50 000 €.
+• Moins-value sur cessions de titres :
+  - Ex : Achat d’actions pour 1 000 €, revente pour 900 € → perte de 100 €.
+• Escomptes accordés :
+  - Ex : Escompte de 200 € sur une facture de 10 000 € accordé à un client.
+• Perte de change :
+  - Ex : Différence de change de 100 € lors d’une opération en devise.
+• Dotation aux provisions financières :
+  - Ex : Provision de 30 000 € pour dépréciation de titres passant de 100 000 € à 70 000 €.
+
+4. PRODUITS FINANCIERS
+-----------------------------------
+• Revenus des placements financiers :
+  - Ex : Dividendes perçus sur 1 000 actions (ex : 1 000 €) ou intérêts de placements.
+• Plus-value sur cessions de valeurs mobilières :
+  - Ex : Achat d’actions pour 5 000 €, revente pour 6 000 € → plus-value de 1 000 €.
+• Intérêts sur prêt :
+  - Ex : Prêt à une filiale générant 1 500 € d’intérêts.
+• Escomptes obtenus :
+  - Ex : Escompte de 200 € obtenu sur le règlement anticipé d’une facture.
+• Gain de change :
+  - Ex : Variation favorable de change générant un gain de 250 €.
+• Reprise sur provisions financières :
+  - Ex : Reprise de 3 000 € sur une provision initiale de 5 000 €.
+
+5. CHARGES EXCEPTIONNELLES
+-----------------------------------
+• Charges de la cession d’immobilisations :
+  - Ex : Vente d’un véhicule comptabilisé à 15 000 € pour 12 000 € → perte de 3 000 €.
+• Autres charges exceptionnelles :
+  - Ex : Amendes, pénalités, ou indemnités suite à un sinistre non couvert.
+
+6. PRODUITS EXCEPTIONNELS
+-----------------------------------
+• Produits de la cession d’immobilisations :
+  - Ex : Vente d’une machine comptabilisée à 10 000 € pour 12 000 € → plus-value de 2 000 €.
+• Autres produits exceptionnels :
+  - Ex : Dons ou subventions d’équilibre pour compenser un déficit ponctuel.
+
+CONCLUSION
+-----------------------------------
+Le compte de résultat se divise en trois parties principales :
+  1. Exploitation : Activité courante (ventes, achats, charges de personnel, etc.)
+  2. Financier : Gestion des emprunts, placements, et risques financiers.
+  3. Exceptionnel : Opérations inhabituelles ou non récurrentes.
+
+Le résultat net est obtenu en sommant les résultats de ces trois parties après impôt.

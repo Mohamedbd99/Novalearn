@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyKids LMS & University HTML Template </title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.png">
+    <!-- fontawesome 6.4.2 -->
+    <link rel="stylesheet" href="assets/css/plugins/fontawesome-6.css">
+    <!-- swiper Css 10.2.0 -->
+    <link rel="stylesheet" href="assets/css/plugins/swiper.min.css">
+    <!-- magnific popup css -->
+    <link rel="stylesheet" href="assets/css/vendor/magnific-popup.css">
+    <!-- Bootstrap 5.0.2 -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <!-- jquery ui css -->
+    <link rel="stylesheet" href="assets/css/vendor/jquery-ui.css">
+    <!-- metismenu scss -->
+    <link rel="stylesheet" href="assets/css/vendor/metismenu.css">
+    <!-- custom style css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- header style one -->
+    <!-- header style one -->
+	<header class="header-one header--sticky">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="header-one-wrapper">
+							<div class="left-side-header">
+								<a href="home" class="logo-area">
+									<img src="assets/images/logo/logo-1.png" alt="logo" width="280" height="auto">
+								</a>
+							</div>
+
+							<div class="main-nav-one">
+
+								<nav>
+									<ul>
+										<li>
+											<a class="nav-link" href="HomeUser">Home</a>
+										</li>
+										<li>
+											<a class="nav-link" href="AllQuiz">Quizzes</a>
+										</li>
+										<li>
+											<a class="nav-link" href="courseUser">Courses</a>
+										</li>
+										<li>
+											<a class="nav-link" href="exercice">Exercices</a>
+										</li>
+
+										 
+
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												<i class="fas fa-user"></i>
+												<!-- Icône utilisateur -->
+												<i class="fas fa-chevron-down"></i>
+												<!-- Flèche déroulante -->
+											</a>
+											<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+												<li>
+													<a class="dropdown-item" href="{{ path('app_profile') }}">Gérer le profil</a>
+												</li>
+												<li>
+													<form action="{{ path('app_logout') }}" method="post">
+														<button type="submit" class="dropdown-item">Se Déconnecter</button>
+													</form>
+												</li>
+											</ul>
+										</li>
+
+
+									</ul>
+								</nav>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+    <!-- header style end -->
+    <!-- header style end -->
+
+    <!-- Bread-Crumb style -->
+
+    <!-- bread crumb area -->
+    <div class="rts-breadcrumb-area rts-section-gap bg_image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-main-wrapper">
+                        <div class="pagination-wrapper">
+                            <a href="index.html">Home</a>
+                            <i class="fa-regular fa-chevron-right"></i>
+                            <a class="active" href="course.html">Courses</a>
+                        </div>
+                        <!-- breadcrumb pagination area -->
+                        <h2 class="title">Courses</h2>
+                        <!-- breadcrumb pagination area end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bread crumb area end -->
+
+    <!-- Bread-Crumb style End -->
+
+    <!-- course area start -->
+    <div class="rts-course-default-area rts-section-gap rts-shape-move">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-12">
+                    <!-- filter top-area  -->
+                    <div class="filter-small-top-full">
+                        <div class="left-filter">
+  <form id="sortForm" method="get">
+    <label for="sort">Short-by :</label>
+    <select name="sort" id="sort">
+        <option value="downloads_desc" {{ sort == 'downloads_desc' ? 'selected' : '' }}>Top téléchargés</option>
+        <option value="likes_desc" {{ sort == 'likes_desc' ? 'selected' : '' }}>Top appréciés</option>
+    </select>
+</form>
+
+<script>
+    document.getElementById("sort").addEventListener("change", function() {
+        document.getElementById("sortForm").submit(); // Soumet le formulaire automatiquement au changement
+    });
+</script>
+
+  
+                        </div>
+                        <div class="right-filter">
+                            <span>Showing 1-9 of 19 results</span>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="false">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.75 0.5H5.5C5.83152 0.5 6.14946 0.631696 6.38388 0.866116C6.6183 1.10054 6.75 1.41848 6.75 1.75V5.5C6.75 5.83152 6.6183 6.14946 6.38388 6.38388C6.14946 6.6183 5.83152 6.75 5.5 6.75H1.75C1.41848 6.75 1.10054 6.6183 0.866116 6.38388C0.631696 6.14946 0.5 5.83152 0.5 5.5V1.75C0.5 1.41848 0.631696 1.10054 0.866116 0.866116C1.10054 0.631696 1.41848 0.5 1.75 0.5ZM1.75 5.5H5.5V1.75H1.75V5.5ZM10.5 0.5H14.25C14.5815 0.5 14.8995 0.631696 15.1339 0.866116C15.3683 1.10054 15.5 1.41848 15.5 1.75V5.5C15.5 5.83152 15.3683 6.14946 15.1339 6.38388C14.8995 6.6183 14.5815 6.75 14.25 6.75H10.5C10.1685 6.75 9.85054 6.6183 9.61612 6.38388C9.3817 6.14946 9.25 5.83152 9.25 5.5V1.75C9.25 1.41848 9.3817 1.10054 9.61612 0.866116C9.85054 0.631696 10.1685 0.5 10.5 0.5ZM10.5 5.5H14.25V1.75H10.5V5.5ZM5.5 9.25H1.75C1.41848 9.25 1.10054 9.3817 0.866116 9.61612C0.631696 9.85054 0.5 10.1685 0.5 10.5V14.25C0.5 14.5815 0.631696 14.8995 0.866116 15.1339C1.10054 15.3683 1.41848 15.5 1.75 15.5H5.5C5.83152 15.5 6.14946 15.3683 6.38388 15.1339C6.6183 14.8995 6.75 14.5815 6.75 14.25V10.5C6.75 10.1685 6.6183 9.85054 6.38388 9.61612C6.14946 9.3817 5.83152 9.25 5.5 9.25ZM5.5 14.25H1.75V10.5H5.5V14.25ZM10.5 9.25H14.25C14.5815 9.25 14.8995 9.3817 15.1339 9.61612C15.3683 9.85054 15.5 10.1685 15.5 10.5V14.25C15.5 14.5815 15.3683 14.8995 15.1339 15.1339C14.8995 15.3683 14.5815 15.5 14.25 15.5H10.5C10.1685 15.5 9.85054 15.3683 9.61612 15.1339C9.3817 14.8995 9.25 14.5815 9.25 14.25V10.5C9.25 10.1685 9.3817 9.85054 9.61612 9.61612C9.85054 9.3817 10.1685 9.25 10.5 9.25ZM10.5 14.25H14.25V10.5H10.5V14.25Z" fill="#262626" />
+                                        </svg>
+                                        <span>Grid</span>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="true">
+                                        <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.25 6.75H1.5C1.1686 6.74962 0.850875 6.6178 0.616537 6.38346C0.382199 6.14913 0.25038 5.8314 0.25 5.5V1.75C0.25038 1.4186 0.382199 1.10087 0.616537 0.866537C0.850875 0.632199 1.1686 0.50038 1.5 0.5H5.25C5.5814 0.50038 5.89913 0.632199 6.13346 0.866537C6.3678 1.10087 6.49962 1.4186 6.5 1.75V5.5C6.49962 5.8314 6.3678 6.14913 6.13346 6.38346C5.89913 6.6178 5.5814 6.74962 5.25 6.75ZM1.5 1.75V5.5H5.25075L5.25 1.75H1.5ZM9 3H17.75V4.25H9V3ZM9 11.75H17.75V13H9V11.75ZM1.5 15.5H5.25C5.5814 15.4996 5.89913 15.3678 6.13346 15.1335C6.3678 14.8991 6.49962 14.5814 6.5 14.25V10.5C6.49962 10.1686 6.3678 9.85087 6.13346 9.61654C5.89913 9.3822 5.5814 9.25038 5.25 9.25H1.5C1.1686 9.25038 0.850875 9.3822 0.616537 9.61654C0.382199 9.85087 0.25038 10.1686 0.25 10.5V14.25C0.25038 14.5814 0.382199 14.8991 0.616537 15.1335C0.850875 15.3678 1.1686 15.4996 1.5 15.5ZM1.5 14.25V10.5H5.25L5.25075 14.25H1.5Z" fill="#110C2D" />
+                                        </svg>
+                                        <span> List</span>
+                                    </button>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- filter top-area end -->
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row g-5 mt--30">
+ {% for course in courses %}
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6" data-category="transition">
+        <!-- rts single course -->
+        <div class="course-wrapper-style-2 inner">
+            <div class="wrapper-inner bg-seven">
+                <div class="image">
+                    <a href="{{ path('app_course_show', {'id': course.id}) }}">
+                        {% if course.image %}
+<img src="/uploads/courses/{{ course.image }}" alt="Image du cours" style="width: 200px;">    {% else %}
+        <p>Aucune image</p>
+    {% endif %}
+                    </a>
+                    <div class="wishlist save-icon" data-bs-toggle="modal" data-bs-target="#exampleModal-login">
+<div>
+    <div>
+        
+<button class="like-btn" data-id="{{ course.id }}">
+    ❤️ <span class="like-count">{{ course.nbrLike }}</span>
+</button>    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('.like-btn').addEventListener('click', function () {
+        let courseId = this.getAttribute('data-id');
+
+        fetch(`/course/${courseId}/like`, {
+            method: 'POST',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest' // Spécifie que c'est une requête AJAX
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.nbrLike !== undefined) {
+                this.querySelector('.like-count').textContent = data.nbrLike;
+            }
+        });
+    });
+});
+</script>
+
+                    </div>
+                </div>
+                <div class="content">
+                    <ul class="meta-wrapper">
+                        <li class="wrapper-list">
+                            <div class="icon">
+                                <img src="assets/images/icon/12.svg" alt="">
+                            </div>
+                            <p class="desc">Ages 7-9</p> <!-- Statique pour cet exemple -->
+                        </li>
+                        <li class="wrapper-list">
+                            <div class="icon">
+                                <img src="assets/images/icon/13.svg" alt="">
+                            </div>
+                            <p class="desc">20 Min</p> <!-- Statique pour cet exemple -->
+                        </li>
+                    </ul>
+                    <a href="{{ path('course_details', {'id': course.id}) }}">
+                        <h5 class="title">{{ course.titre }}</h5> <!-- Titre dynamique -->
+                    </a>
+                    <p class="desc">{{ course.description }}</p> <!-- Description dynamique -->
+
+                    <div class="review-area">
+                        <ul class="star-rating-area">
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-regular fa-star"></i></li>
+                        </ul>
+                        <p class="desc">4.5 (44)</p> <!-- Statique pour cet exemple -->
+                    </div>
+                    <div class="bottom-wrapper">
+                        <div class="author-area">
+                            <div class="autor-image">
+                                <img src="assets/images/course/author-04.png" width="40" alt="">
+                            </div>
+                            <p class="author-name">{{ course.author.nom }}</p> <!-- Auteur dynamique -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <p>Aucun cours disponible pour le moment.</p>
+{% endfor %}
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="row g-5 mt--30">
+ {% for course in courses %}
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6" data-category="transition">
+        <!-- rts single course -->
+        <div class="course-wrapper-style-2 inner">
+            <div class="wrapper-inner bg-seven">
+                <div class="image">
+                    <a href="{{ path('app_course_show', {'id': course.id}) }}">
+                        <img src="assets/images/course/11.jpg" alt="{{ course.titre }}">
+                    </a>
+                    <div class="wishlist save-icon" data-bs-toggle="modal" data-bs-target="#exampleModal-login">
+<div>
+    <div>
+        
+<button class="like-btn" data-id="{{ course.id }}">
+    ❤️ <span class="like-count">{{ course.nbrLike }}</span>
+</button>    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('.like-btn').addEventListener('click', function () {
+        let courseId = this.getAttribute('data-id');
+
+        fetch(`/course/${courseId}/like`, {
+            method: 'POST',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest' // Spécifie que c'est une requête AJAX
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.nbrLike !== undefined) {
+                this.querySelector('.like-count').textContent = data.nbrLike;
+            }
+        });
+    });
+});
+</script>
+
+                    </div>
+                </div>
+                <div class="content">
+                    <ul class="meta-wrapper">
+                        <li class="wrapper-list">
+                            <div class="icon">
+                                <img src="assets/images/icon/12.svg" alt="">
+                            </div>
+                            <p class="desc">Ages 7-9</p> <!-- Statique pour cet exemple -->
+                        </li>
+                        <li class="wrapper-list">
+                            <div class="icon">
+                                <img src="assets/images/icon/13.svg" alt="">
+                            </div>
+                            <p class="desc">20 Min</p> <!-- Statique pour cet exemple -->
+                        </li>
+                    </ul>
+                    <a href="{{ path('course_details', {'id': course.id}) }}">
+                        <h5 class="title">{{ course.titre }}</h5> <!-- Titre dynamique -->
+                    </a>
+                    <p class="desc">{{ course.description }}</p> <!-- Description dynamique -->
+{% if course.image %}
+<img src="/uploads/courses/{{ course.image }}" alt="Image du cours" style="width: 200px;">    {% else %}
+        <p>Aucune image</p>
+    {% endif %}
+                    <div class="review-area">
+                        <ul class="star-rating-area">
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-regular fa-star"></i></li>
+                        </ul>
+                        <p class="desc">4.5 (44)</p> <!-- Statique pour cet exemple -->
+                    </div>
+                    <div class="bottom-wrapper">
+                        <div class="author-area">
+                            <div class="autor-image">
+                                <img src="assets/images/course/author-04.png" width="40" alt="">
+                            </div>
+                            <p class="author-name">{{ course.author.nom }}</p> <!-- Auteur dynamique -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <p>Aucun cours disponible pour le moment.</p>
+{% endfor %}
+
+                                    <!-- rts single course end -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--30">
+                <div class="col-lg-12">
+                    <!-- rts-pagination-area -->
+                    <div class="rts-pagination-area-2">
+                        <ul>
+                            <li class="button">
+                                <div class="inner"><a href="#"><i class="fa-solid fa-chevron-left"></i></a></div>
+                            </li>
+                            <li class="active">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li class="button">
+                                <div class="inner"><a href="#"><i class="fa-solid fa-chevron-right"></i></a></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- rts-pagination-area end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- course area end -->
+
+
+    <!-- footer call to action area start -->
+
+    <!-- footer call to action area start -->
+    <div class="rts-footer-area section-bg2">
+        <div class="container">
+            <div class="footer-top">
+                <form action="#">
+                    <h3 class="form-title">Don’t Miss Awesome Story From Our Alumni</h3>
+                    <div class="form-inner">
+                        <input type="email" name="Email" placeholder="Enter Your mail" required>
+                        <button type="submit" class="rts-btn btn-primary border-radius">Subscribe Now</button>
+                    </div>
+                </form>
+            </div>
+            <div class="row ptb--65">
+                <div class="col-lg-12">
+                    <!-- footer main wrapper -->
+                    <div class="footer-one-main-wrapper">
+                        <!-- single sized  footer  -->
+                        <div class="footer-single-wized left-logo">
+                            <div class="head">
+                                <a href="#">
+                                    <img src="assets/images/logo/logo-1.svg" alt="logo" loading="lazy">
+                                </a>
+                            </div>
+                            <div class="body">
+                                <p class="dsic">
+                                    We are passionate education dedicated to providing high-quality resources learners
+                                    all backgrounds.
+                                </p>
+                                <ul class="wrapper-list">
+                                    <li><i class="fa-regular fa-location-dot"></i>Yarra Park, Melbourne, Australia </li>
+                                    <li><i class="fa-regular fa-phone"></i><a href="tel:+4733378901">+(61) 485-826-710</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- single sized  footer end -->
+                        <!-- single sized  footer  -->
+                        <div class="footer-single-wized">
+                            <div class="head">
+                                <h6 class="title">About Us</h6>
+                            </div>
+                            <div class="body">
+                                <ul class="menu">
+                                    <li><a href="course-two.html">Our Mission</a></li>
+                                    <li><a href="about.html">Our Course</a></li>
+                                    <li><a href="become-instructor.html">Careers</a></li>
+                                    <li><a href="zoom-meeting.html">Blog & News</a></li>
+                                    <li><a href="pricing.html">Event & News </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- single sized  footer end -->
+                        <!-- single sized  footer  -->
+                        <div class="footer-single-wized">
+                            <div class="head">
+                                <h6 class="title">Our Course</h6>
+                            </div>
+                            <div class="body">
+                                <ul class="menu">
+                                    <li><a href="course.html">Courses</a></li>
+                                    <li><a href="blog.html">Blog</a></li>
+                                    <li><a href="program-details.html">Program</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- single sized  footer end -->
+                        <!-- single sized  footer  -->
+                        <div class="footer-single-wized input-area">
+                            <div class="head">
+                                <h6 class="title">Recent Post</h6>
+                            </div>
+                            <div class="body">
+                                <ul>
+                                    <li class="post-area">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="assets/images/blog/blog-07.jpg" width="80" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <p class="date">October 29, 2023</p>
+                                            <h6 class="post-title"><a href="#">Avoid These 4 Common When Managing Remote Teams</a></h6>
+                                        </div>
+                                    </li>
+                                    <li class="post-area">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="assets/images/blog/blog-08.jpg" width="80" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <p class="date">October 29, 2023</p>
+                                            <h6 class="post-title"><a href="#">How To Draw Realistic Lips In 7 Simple Steps</a></h6>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- single sized  footer end -->
+                    </div>
+                    <!-- footer main wrapper end -->
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area-one-border">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright-area-one">
+                            <p>Copyright © 2024 All Rights Reserved by Studykids</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer call to action area end -->
+    <!-- footer call to action area end -->
+
+  
+
+
+    <!-- header style two -->
+    <div id="side-bar" class="side-bar header-two">
+        <button class="close-icon-menu"><i class="far fa-times"></i></button>
+        <!-- inner menu area desktop start -->
+        <div class="inner-main-wrapper-desk">
+            <div class="inner-content">
+                <h4 class="title">We Build Building and Great Constructive Homes.</h4>
+                <p class="disc">
+                    We successfully cope with tasks of varying complexity, provide long-term guarantees and regularly master new technologies.
+                </p>
+                <div class="footer">
+                    <h4 class="title">Got a project in mind?</h4>
+                    <a href="contact.html" class="rts-btn btn-primary">Let's talk</a>
+                </div>
+            </div>
+        </div>
+        <!-- mobile menu area start -->
+        <div class="mobile-menu-main">
+            <nav class="nav-main mainmenu-nav mt--30">
+                <ul class="mainmenu metismenu" id="mobile-menu-active">
+                    <li class="has-droupdown">
+                        <a href="#" class="main">Home</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a class="mobile-menu-link" href="index.html">Home 01</a></li>
+                            <li><a class="mobile-menu-link" href="index-two.html">Home 02</a></li>
+                            <li><a class="mobile-menu-link" href="index-three.html">Home 03</a></li>
+                            <li><a class="mobile-menu-link" href="index-four.html">home 04</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main">Pages</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a class="mobile-menu-link" href="about.html">About Us</a></li>
+                            <li><a class="mobile-menu-link" href="team.html">Team</a></li>
+                            <li><a class="mobile-menu-link" href="team-details.html">Team Details</a></li>
+                            <li><a class="mobile-menu-link" href="event.html">Event</a></li>
+                            <li><a class="mobile-menu-link" href="event-details.html">Event Details</a></li>
+                            <li><a class="mobile-menu-link" href="program-details.html">Program Details</a></li>
+                            <li><a class="mobile-menu-link" href="pricing.html">Pricing</a></li>
+                            <li><a class="mobile-menu-link" href="pricing-two.html">Pricing Two</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main">Class</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a class="mobile-menu-link" href="course.html">Courses</a></li>
+                            <li><a class="mobile-menu-link" href="course-details.html">Course Details</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-droupdown">
+                        <a href="#" class="main">Blog</a>
+                        <ul class="submenu mm-collapse">
+                            <li><a class="mobile-menu-link" href="blog.html">Blog</a></li>
+                            <li><a class="mobile-menu-link" href="blog-grid.html">Blog Grid</a></li>
+                            <li><a class="mobile-menu-link" href="blog-list.html">Blog List</a></li>
+                            <li><a class="mobile-menu-link" href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
+                            <li><a class="mobile-menu-link" href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+                            <li><a class="mobile-menu-link" href="blog-details.html">Blog Details</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="contact.html" class="main">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="buttons-area">
+                <a href="#" class="rts-btn btn-border">Log In</a>
+                <a href="#" class="rts-btn btn-primary">Sign Up</a>
+            </div>
+
+            <div class="rts-social-style-one pl--20 mt--50">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- mobile menu area end -->
+    </div>
+    <!-- header style two End -->
+
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="txt-loading">
+                <span data-text-preloader="S" class="letters-loading first">
+                        S
+                    </span>
+                <span data-text-preloader="T" class="letters-loading first">
+                        T
+                    </span>
+                <span data-text-preloader="U" class="letters-loading first">
+                    U
+                    </span>
+                <span data-text-preloader="D" class="letters-loading first">
+                    D
+                    </span>
+                <span data-text-preloader="Y" class="letters-loading first">
+                        Y
+                    </span>
+                <span data-text-preloader="K" class="letters-loading">
+                        K
+                    </span>
+                <span data-text-preloader="I" class="letters-loading">
+                        I
+                    </span>
+                <span data-text-preloader="D" class="letters-loading">
+                    D
+                    </span>
+                <span data-text-preloader="S" class="letters-loading">
+                    S
+                    </span>
+            </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- rts backto top start -->
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;"></path>
+        </svg>
+    </div>
+    <!-- rts backto top end -->
+
+    <!-- offcanvase search -->
+    <div class="search-input-area">
+        <div class="container">
+            <div class="search-input-inner">
+                <div class="input-div">
+                    <input class="search-input autocomplete" type="text" placeholder="Search by keyword or #">
+                    <button><i class="far fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="close" class="search-close-icon"><i class="far fa-times"></i></div>
+    </div>
+    <!-- offcanvase search -->
+    <div id="anywhere-home" class="">
+    </div>
+
+    <!-- all scripts -->
+    <!-- jquery min js -->
+    <script src="assets/js/vendor/jquery.min.js"></script>
+    <!-- jquery ui js -->
+    <script src="assets/js/vendor/jquery-ui.js"></script>
+    <!-- metismenu js -->
+    <script src="assets/js/vendor/metismenu.js"></script>
+    <!-- magnific popup js-->
+    <script src="assets/js/vendor/magnifying-popup.js"></script>
+    <!-- swiper JS 10.2.0 -->
+    <script src="assets/js/plugins/swiper.js"></script>
+    <!-- counterup js -->
+    <script src="assets/js/plugins/counterup.js"></script>
+    <!-- waypoint js -->
+    <script src="assets/js/vendor/waypoint.js"></script>
+    <!-- wow js -->
+    <script src="assets/js/vendor/waw.js"></script>
+    <!-- isotop mesonary -->
+    <script src="assets/js/plugins/isotop.js"></script>
+    <!-- jquery imageloaded -->
+    <script src="assets/js/plugins/imagesloaded.pkgd.min.js"></script>
+    <!-- resize sensor js -->
+    <script src="assets/js/plugins/resizer-sensor.js"></script>
+    <!-- sticky sidebar -->
+    <script src="assets/js/plugins/sticky-sidebar.js"></script>
+    <!-- gsap twinmax js -->
+    <script src="assets/js/plugins/twinmax.js"></script>
+    <!-- chroma js -->
+    <script src="assets/js/vendor/chroma.min.js"></script>
+    <!-- bootstrap 5.0.2 -->
+    <script src="assets/js/plugins/bootstrap.min.js"></script>
+    <!-- dymanic Contact Form -->
+    <script src="assets/js/plugins/contact.form.js"></script>
+    <!-- calender js -->
+    <script src="assets/js/plugins/calender.js"></script>
+    <!-- main Js -->
+    <script src="assets/js/main.js"></script>
+
+
+</body>
+
+</html>

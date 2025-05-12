@@ -1,0 +1,67 @@
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center title">📊 Tableau de Bord - Admin</h1>
+        
+        <div class="text-center mt-3">
+            <a href="{{ path('app_admin') }}" class="btn btn-primary"> Retour à l'accueil</a>
+        </div>
+
+        <canvas id="dashboardChart" width="400" height="200" class="mt-4"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('dashboardChart').getContext('2d');
+        var dashboardChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Élèves', 'Enseignants', 'Parents', 'Médecins'],
+                datasets: [{
+                    label: 'Nombre d\'utilisateurs',
+                    data: [
+                        {{ counts.eleves }}, 
+                        {{ counts.enseignants }}, 
+                        {{ counts.parents }}, 
+                        {{ counts.medecins }}
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 206, 86, 0.5)',
+                        'rgba(75, 192, 192, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    <style>
+        .title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #007bff;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .btn {
+            font-size: 1.1rem;
+            padding: 10px 20px;
+        }
+    </style>
+{% endblock %}

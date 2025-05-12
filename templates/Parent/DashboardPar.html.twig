@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Parent</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #343a40;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sidebar h2 {
+            text-align: center;
+        }
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .modify-button {
+            background-color: #28a745;
+            color: white;
+        }
+        .logout-button {
+            background-color: rgb(167, 40, 40);
+            color: white;
+        }
+        .dashboard {
+            flex: 1;
+            padding: 20px;
+            background: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .chart-container {
+            width: 100%;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th, td {
+            padding: 10px;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div>
+            <h2>Menu</h2>
+            <li>
+               <a class="nav-link" href="blogsUser">Blog</a>
+            </li>
+             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+        <li><a class="modify-button" href="{{ path('app_profile') }}">Modifier mon compte</a></li>
+        <li>
+            <form action="{{ path('app_logout') }}" method="post">
+                <button type="submit" class="dropdown-item">Se Déconnecter</button>
+            </form>
+        </li>
+    </ul>
+        </div>
+    </div>
+    <div class="dashboard">
+        <h2>Bienvenue Mr {{ user.nom }} {{ user.prenom }}!</h2>
+        <p>L'ID de votre fils est : <strong>{{ user.getIdFils }}</strong></p>
+        
+        <div class="chart-container">
+            <canvas id="progressChart"></canvas>
+        </div>
+        
+        <h3>Notes des Quiz</h3>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Quiz</th>
+                <th>Note</th>
+            </tr>
+            <tr><td>12/02/2025</td><td>Mathématiques</td><td>85%</td></tr>
+            <tr><td>14/02/2025</td><td>Français</td><td>78%</td></tr>
+        </table>
+        
+        <h3>Notes des Exercices</h3>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Exercice</th>
+                <th>Note</th>
+            </tr>
+            <tr><td>10/02/2025</td><td>Calcul mental</td><td>90%</td></tr>
+            <tr><td>13/02/2025</td><td>Orthographe</td><td>80%</td></tr>
+        </table>
+    </div>
+    
+    <script>
+        var ctx = document.getElementById('progressChart').getContext('2d');
+        var progressChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Janvier', 'Février', 'Mars', 'Avril'],
+                datasets: [{
+                    label: 'Progression Globale (%)',
+                    data: [75, 80, 85, 90],
+                    borderColor: 'blue',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true, max: 100 }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
