@@ -27,7 +27,7 @@ class GenerationController extends AbstractController
 
             // Appeler l'API FastAPI
             $client = HttpClient::create();
-            $url = 'http://127.0.0.1:8001/generate';
+            $url = 'http://127.0.0.1:8003/generate';
 
             try {
                 $response = $client->request('POST', $url, [

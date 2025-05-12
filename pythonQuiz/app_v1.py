@@ -16,7 +16,10 @@ class CourseRequest(BaseModel):
     description: str
 
 def call_gemini(prompt: str) -> dict:
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
+    url = (
+        f"https://generativelanguage.googleapis.com/v1beta/"
+        f"models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
+    )
     headers = {"Content-Type": "application/json"}
     payload = {
         "contents": [{
@@ -43,8 +46,17 @@ def call_gemini(prompt: str) -> dict:
 
 @app.post("/generate")
 async def generate_course(course_request: CourseRequest):
+    # 🔒 Permission check: must look like an education request in French
+    desc = course_request.description.lower()
+    keywords = ["cours", "leçon", "éducation", "apprendre", "enseigner", "étude"]
+    if not any(kw in desc for kw in keywords):
+        raise HTTPException(
+            status_code=403,
+            detail="I don't have permission to help you in this subject"
+        )
+    
     try:
         response = call_gemini(course_request.description)
         return response
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {e}")
