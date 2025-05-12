@@ -1,408 +1,145 @@
-{% block stylesheets %}
-	<link
-	rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+{# templates/post/index.html.twig #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fil d’actualité | Novalearn</title>
 
-	{# Font Awesome pour l'icône fa-ellipsis-vertical #}
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-{% endblock %}
+  <!-- Bootstrap & FontAwesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 
-{% block body %}
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Arial',sans-serif; background:#f4f7fa; color:#333; }
 
-	<style>
-		.feed-container {
-			max-width: 750px;
-			margin: 40px auto;
-			padding-top: 3cm;
-			padding-bottom: 0.5cm;
-		}
-		.post-card {
-			background-color: #fff;
-			border-radius: 10px;
-			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-			margin-bottom: 30px;
-		}
-		.post-header {
-			display: flex;
-			align-items: center;
-			gap: 12px;
-			padding: 16px;
-			border-bottom: 1px solid #eee;
-			position: relative;
-		}
-		.post-avatar {
-			width: 48px;
-			height: 48px;
-			border-radius: 50%;
-			background-color: #ccc;
-			object-fit: cover;
-		}
-		.post-header-info {
-			display: flex;
-			flex-direction: column;
-		}
-		.post-username {
-			font-size: 1rem;
-			font-weight: 600;
-			margin-bottom: 2px;
-			color: #333;
-		}
-		.post-date {
-			font-size: 0.85rem;
-			color: #999;
-		}
-		.post-body {
-			padding: 16px;
-		}
-		.post-title {
-			font-size: 2.5rem;
-			font-family: serif;
-			font-weight: 700;
-			margin-bottom: 8px;
-			color: #2c3e50;
-		}
-		.post-image {
-			max-width: 100%;
-			height: auto;
-			border-radius: 8px;
-			margin-bottom: 16px;
-			box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-		}
-		.post-text {
-			font-size: 1.8rem;
-			font-family: cursive;
-			line-height: 1.6;
-			color: #333;
-			margin-bottom: 16px;
-			white-space: pre-line;
-		}
+    /* pill-nav */
+    .top-nav {
+      position:absolute; top:1rem; left:50%; transform:translateX(-50%);
+      background:#fff; padding:.5rem 2rem; border-radius:50px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      display:flex; gap:1.5rem; align-items:center; z-index:10;
+    }
+    .top-nav .logo { font-size:1.5rem; font-weight:bold; color:#4CACFE; }
+    .top-nav a { color:#333; text-decoration:none; font-weight:500; }
+    .top-nav a:hover { text-decoration:underline; }
 
-		/* Dropdown (3 points) */
-		.dropdown-menu {
-			z-index: 9999;
-			border: none;
-			border-radius: 8px;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-		}
-		.dropdown-item:hover {
-			background-color: #f2f2f2;
-		}
-		.btn-dropdown {
-			color: #333;
-			font-size: 1.5rem;
-			border: none;
-			background: transparent;
-			cursor: pointer;
-		}
-		.btn-dropdown:hover {
-			color: #007bff;
-		}
+    /* hero */
+    .hero {
+      background:#7E4AE2; color:#fff; text-align:center;
+      padding:6rem 1rem 12rem; position:relative;
+    }
+    .hero h1 { font-size:2.5rem; margin-bottom:.5rem; }
+    .hero h1 span { color:#FFD247; }
+    .hero p { max-width:600px; margin:0 auto; font-size:1.1rem; }
+    .hero::after {
+      content:''; position:absolute; bottom:-80px; left:0;
+      width:100%; height:100px; background:#f4f7fa;
+      border-radius:50% 50% 0 0;
+    }
 
-		/* Formulaire de commentaire */
-		.comment-form-title {
-			font-weight: 600;
-			font-size: 0.9rem;
-			margin-bottom: 6px;
-			color: #444;
-		}
-		.comment-form .form-control {
-			font-size: 0.9rem;
-			resize: none;
-		}
-		.comment-form .btn-add-comment {
-			font-size: 0.9rem;
-			border-top-left-radius: 0;
-			border-bottom-left-radius: 0;
-		}
+    /* feed container */
+    .feed-card {
+      max-width:800px;
+      margin:-4rem auto 4rem;
+      padding:0 1rem;
+    }
 
-		/* Commentaires */
-		.comments-title {
-			font-weight: 600;
-			font-size: 0.9rem;
-			margin: 16px 0 8px;
-			color: #444;
-		}
-		.comments-list {
-			list-style: none;
-			margin: 0;
-			padding: 0;
-		}
-		.comment-item {
-			background-color: #fafafa;
-			border-radius: 6px;
-			padding: 12px;
-			margin-bottom: 8px;
-			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-		}
-		.comment-header {
-			margin-bottom: 6px;
-		}
-		.comment-avatar {
-			width: 32px;
-			height: 32px;
-			border-radius: 50%;
-			background-color: #ccc;
-			object-fit: cover;
-		}
-		.comment-author {
-			font-size: 1.4rem;
-			font-weight: 600;
-			color: #333;
-			margin-right: 4px;
-		}
-		.comment-time {
-			font-size: 0.8rem;
-			color: #999;
-		}
-		.comment-text {
-			font-size: 1rem;
-			font-family: Georgia, serif;
-			line-height: 1.4;
-			color: #555;
-			margin-bottom: 6px;
-			white-space: pre-line;
-		}
-		.no-comments {
-			font-style: italic;
-			color: #777;
-		}
+    /* use Bootstrap cards */
+    .post-card { margin-bottom:2rem; }
+    .post-card .card {
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .post-card .card-header {
+      display:flex; justify-content:space-between; align-items:center;
+      background:#fff; border-bottom:1px solid #eee;
+      font-weight:600; color:#333;
+    }
+    .post-card .post-date { font-size:.85rem; color:#999; }
+    .post-card .card-body {
+      padding:1.5rem;
+    }
+    .post-title { font-size:1.75rem; font-family:serif; font-weight:700; margin-bottom:1rem; color:#2c3e50; }
+    .post-text { font-size:1rem; line-height:1.6; color:#333; margin-bottom:1rem; }
+    .post-image { max-width:100%; border-radius:8px; margin-bottom:1rem; }
 
-		/* Pagination */
-		.pagination-container {
-			display: flex;
-			justify-content: center;
-			margin-top: 40px;
-		}
-		.pagination {
-			display: flex;
-			gap: 6px;
-		}
-		.page-link {
-			color: #007bff;
-			border: none;
-			border-radius: 6px;
-			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-			transition: background-color 0.2s;
-		}
-		.page-item.active .page-link {
-			background-color: #007bff;
-			color: #fff;
-			border: none;
-		}
-		.page-link:hover {
-			background-color: #e7e7e7;
-			color: #0056b3;
-		}
-	</style>
+    .back-btn {
+      display:inline-block; margin-top:2rem;
+      background:#0066cc; color:#fff; padding:.75rem 1.5rem;
+      border-radius:5px; text-decoration:none;
+    }
+    .back-btn:hover { background:#004b8d; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <div class="logo">Novalearn</div>
+<a href="{{ path('app_HomeMedecin') }}">Home</a>
+    <a href="/post/all">Tous les Posts</a>
+    <a href="/post/add">Publier un Post</a>
+  </nav>
 
-	<div class="feed-container">
-		{% for postWithComments in postsWithComments %}
-			<div
-				class="post-card">
-				<!-- En-tête du post -->
-				<div class="post-header">
-					<div class="post-header-info">
-						<div class="post-username">
-							{% if postWithComments.post.user and postWithComments.post.user.nom %}
-								{{ postWithComments.post.user.nom }}
-							{% else %}
-								Poste anonyme
-							{% endif %}
-						</div>
-						<div class="post-date">
-							Publié le
-							{{ postWithComments.post.createdAt|date('d M Y H:i')|default('Inconnue') }}
-						</div>
-					</div>
+  <section class="hero">
+    <h1>Bienvenue sur <span>Novalearn !</span></h1>
+    <p>Un espace où chaque jour est une occasion d’apprendre et de grandir.</p>
+  </section>
 
-					<!-- Menu "3 points" (kebab menu) pour le post -->
-					<div class="ms-auto dropdown" data-bs-auto-close="true">
-						<button class="btn-dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Actions sur le post">
-							<i class="fa-solid fa-ellipsis-vertical"></i>
-						</button>
-						<ul class="dropdown-menu dropdown-menu-end">
-							<li>
-								<a class="dropdown-item" href="{{ path('post_edit', { 'id': postWithComments.post.id }) }}">
-									Modifier
-								</a>
-							</li>
-							<li>
-								<form method="POST" action="{{ path('post_delete', { 'id': postWithComments.post.id }) }}" class="d-inline">
-									<input type="hidden" name="_token" value="{{ csrf_token('delete_post_' ~ postWithComments.post.id) }}">
-									<button type="submit" class="dropdown-item" onclick="return confirm('Voulez-vous vraiment supprimer ce post ?');">
-										Supprimer
-									</button>
-								</form>
-							</li>
-						</ul>
-					</div>
-				</div>
+  <div class="feed-card">
+    {% for pwc in postsWithComments %}
+      <div class="post-card">
+        <div class="card">
+          <div class="card-header">
+            <span>
+              {{ pwc.post.user and pwc.post.user.nom
+                 ? pwc.post.user.nom
+                 : 'Poste anonyme' }}
+            </span>
+            <small class="post-date">
+              Publié le {{ pwc.post.createdAt|date('d M Y H:i') }}
+            </small>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-light btn-dropdown" data-bs-toggle="dropdown">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="{{ path('post_edit',{id:pwc.post.id}) }}">Modifier</a></li>
+                <li>
+                  <form method="POST" action="{{ path('post_delete',{id:pwc.post.id}) }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete_post_'~pwc.post.id) }}">
+                    <button class="dropdown-item" onclick="return confirm('Supprimer ce post ?')">Supprimer</button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-				<!-- Corps du post -->
-				<div class="post-body">
-					<div class="post-title">
-						{{ postWithComments.post.title }}
-					</div>
+          <div class="card-body">
+            <div class="post-title">{{ pwc.post.title }}</div>
+            {% if pwc.post.image %}
+              <img src="{{ asset('images/'~pwc.post.image) }}" class="post-image">
+            {% endif %}
+            <div class="post-text">{{ pwc.post.content }}</div>
 
-					{% if postWithComments.post.image %}
-						<img src="{{ asset('images/' ~ postWithComments.post.image) }}" alt="Image du post" class="post-image">
-					{% endif %}
+            {# …comments form & list… #}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <p class="text-center">Aucun post trouvé.</p>
+    {% endfor %}
 
-					<div class="post-text">
-						{{ postWithComments.post.content }}
-					</div>
+    <div class="text-center">
+    
+      <a href="{{ path('app_HomeMedecin') }}" class="back-btn">Retour</a>
+    </div>
+  </div>
 
-
-					<div class="comment-form-title">
-						Ajouter un commentaire :
-					</div>
-					{{ form_start(postWithComments.form, {
-                        'action': path('post_add_comment', { 'id': postWithComments.post.id }),
-                        'attr': {
-                            'class': 'comment-form',
-                            'data-post-id': postWithComments.post.id,
-                            'id': 'commentForm-' ~ postWithComments.post.id
-                        }
-                    }) }}
-					<div class="input-group mb-3">
-						{{ form_widget(postWithComments.form.content, {
-                            'attr': {
-                                'class': 'form-control',
-                                'placeholder': 'Écrivez votre commentaire...'
-                            }
-                        }) }}
-						<div class="input-group-append">
-							<button type="submit" class="btn btn-primary btn-add-comment" title="Ajouter le commentaire">
-								<i class="fas fa-paper-plane"></i>
-								<!-- Icône de flèche -->
-							</button>
-						</div>
-					</div>
-					{{ form_widget(postWithComments.form.post, { 'attr': {'hidden': true} }) }}
-					{{ form_end(postWithComments.form) }}
-
-					<div class="comments-title">Commentaires :</div>
-					<ul class="comments-list" id="comments-list-{{ postWithComments.post.id }}">
-						{% for commentaire in postWithComments.commentaires %}
-							<li class="comment-item" id="comment-{{ commentaire.id }}">
-								<div class="comment-header">
-									<div>
-										<span class="comment-author">
-											{{ commentaire.user.prenom ~ ' ' ~ commentaire.user.nom }}
-										</span>
-										<span class="comment-time">
-											•
-											{{ commentaire.createdAt|date('d M Y H:i')|default('Inconnue') }}
-										</span>
-									</div>
-								</div>
-								<div class="comment-text">
-									<span class="comment-content">{{ commentaire.content }}</span>
-									<form method="POST" action="{{ path('update_comment', { 'id': commentaire.id }) }}" class="update-comment-form" data-comment-id="{{ commentaire.id }}" style="display: none;">
-										<textarea name="content" class="form-control">{{ commentaire.content }}</textarea>
-										<button type="submit" class="btn btn-primary btn-sm mt-2">Enregistrer</button>
-										<button type="button" class="btn btn-secondary btn-sm mt-2 cancel-update">Annuler</button>
-									</form>
-								</div>
-								<div class="comment-actions">
-									<button class="btn btn-icon btn-warning btn-sm edit-comment" title="Modifier le commentaire">
-										<i class="fa-solid fa-pen"></i>
-									</button>
-									<form method="POST" action="{{ path('delete_comment', { 'id': commentaire.id }) }}" class="delete-comment-form" data-comment-id="{{ commentaire.id }}">
-										<button type="submit" class="btn btn-danger">
-											Supprimer
-										</button>
-									</form>
-								</div>
-							</li>
-						{% else %}
-							<li class="no-comments">
-								Aucun commentaire pour ce post.
-							</li>
-						{% endfor %}
-					</ul>
-				</div>
-				<!-- /post-body -->
-			</div>
-			<!-- /post-card -->
-		{% endfor %}
-
-		<!-- Pagination -->
-		<div class="pagination-container">
-			{{ knp_pagination_render(pagination) }}
-		</div>
-	</div>
-	<style>
-		.back-btn {
-			margin-top: 20px;
-			padding: 10px 20px;
-			background-color: #007bff;
-			color: white;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-		}
-		.back-btn:hover {
-			background-color: #0056b3;
-		}
-	</style>
-
-	<div class="feed-container">
-		<!-- Votre contenu existant... -->
-
-		<!-- Ajouter le bouton retour -->
-			<div class="back-button-container"> {% if is_granted('ROLE_MEDECIN') %}
-				<a href="{{ path('app_HomeMedecin') }}">
-					<button class="back-btn">Retour</button>
-				</a>
-			{% elseif is_granted('ROLE_ENSEIGNANT') %}
-				<a href="{{ path('app_HomeEnseignant') }}">
-					<button class="back-btn">Retour</button>
-				</a>
-			{% else %}
-				{# Par défaut, renvoyer à l’accueil public ou à HomeUser #}
-				<a href="{{ path('app_home') }}">
-					<button class="back-btn">Retour</button>
-				</a>
-			{% endif %}
-		</div>
-
-
-		<!-- Votre contenu existant... -->
-	</div>
-
-	<!-- Bootstrap JS (inclut Popper pour les dropdown) -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-// Sélection de tous les boutons dropdown
-var dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-dropdownToggles.forEach(function (toggle) {
-// Initialise (ou récupère) l'instance Bootstrap du dropdown
-var dropdownInstance = bootstrap.Dropdown.getInstance(toggle);
-if (! dropdownInstance) {
-dropdownInstance = new bootstrap.Dropdown(toggle);
-}
-
-// Forcer l'ouverture/fermeture au clic
-toggle.addEventListener('click', function (event) {
-event.preventDefault();
-dropdownInstance.toggle();
-});
-});
-
-// Fermer le dropdown si on clique en dehors
-document.addEventListener('click', function (event) {
-dropdownToggles.forEach(function (toggle) {
-if (! toggle.parentElement.contains(event.target)) {
-var instance = bootstrap.Dropdown.getInstance(toggle);
-if (instance && toggle.parentElement.classList.contains('show')) {
-instance.hide();
-}
-}
-});
-});
-});
-	</script>
-{% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

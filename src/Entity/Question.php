@@ -6,7 +6,7 @@ use App\Repository\QuestionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: QuestionRepository::class)]
-#[ORM\Table(name: "qestionQuiz")]
+#[ORM\Table(name: "question")]
 class Question
 {
     #[ORM\Id]

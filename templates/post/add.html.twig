@@ -1,175 +1,163 @@
-
-
-{% block body %}
+{# templates/post/add.html.twig #}
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Novalearn{% endblock %}</title>
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.png">
-    {% block css %}
-    <link rel="stylesheet" href="assets/css/plugins/fontawesome-6.css">
-    <link rel="stylesheet" href="assets/css/plugins/swiper.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/jquery-ui.css">
-    <link rel="stylesheet" href="assets/css/vendor/metismenu.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    {% endblock %}
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publier un Post | Novalearn</title>
 
-<style>
-    .content-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 30px;
-        background-color: #f3f4f6;
+  <style>
+    /* reset & typography */
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family:'Arial',sans-serif; background:#f4f7fa; color:#333; }
+
+    /* pill-shaped nav */
+    .top-nav {
+      position:absolute; top:1rem; left:50%; transform:translateX(-50%);
+      background:#fff; padding:.5rem 2rem; border-radius:50px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      display:flex; gap:1.5rem; align-items:center; z-index:10;
+    }
+    .top-nav .logo { font-size:1.5rem; font-weight:bold; color:#4CACFE; }
+    .top-nav a {
+      color:#333; text-decoration:none; font-weight:500; font-size:1rem;
+    }
+    .top-nav a:hover { text-decoration:underline; }
+
+    /* hero */
+    .hero {
+      background:#7E4AE2; color:#fff; text-align:center;
+      padding:6rem 1rem 12rem; position:relative;
+    }
+    .hero h1 { font-size:2.5rem; margin-bottom:.5rem; }
+    .hero h1 span { color:#FFD247; }
+    .hero p { max-width:600px; margin:0 auto 2rem; font-size:1.1rem; line-height:1.5; }
+    .hero::after {
+          height: 100px;
+  bottom: -100px;
+
+      content:''; position:absolute; bottom:-80px; left:0;
+      width:100%; height:100px; background:#f4f7fa;
+      border-radius:50% 50% 0 0;
     }
 
-    .form-container {
-        width: 100%;
-        max-width: 700px;
-        background-color: #fff;
-        border-radius: 15px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        padding: 30px;
-        margin: 20px;
+.form-card {
+  position: relative;      /* enable z‐index on a static element */
+  z-index: 10;             /* stack it above the wave */
+  max-width: 640px;
+  margin: -100px auto 4rem;/* pull up by the exact wave height */
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+    .form-card .heading-title {
+      text-align:center; color:#6D34FE;
+      font-size:26px; margin-bottom:25px; font-weight:bold;
     }
 
-    .heading-title {
-        text-align: center;
-        color: #333;
-        font-size: 26px;
-        margin-bottom: 25px;
-        font-weight: bold;
+    /* inputs */
+    .form-inputs {
+      display:grid; gap:20px;
     }
-
-    .form-inner {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-        margin-bottom: 20px;
-    }
-
-    .form-group {
-        display: flex;
-        flex-direction: column;
-    }
-
+    .form-group { display:flex; flex-direction:column; }
     .form-group label {
-        font-weight: 600;
-        color: #555;
-        margin-bottom: 8px;
-        font-size: 16px;
+      font-weight:600; color:#555; margin-bottom:8px; font-size:16px;
     }
-
     .form-group input,
-    .form-group select,
     .form-group textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 15px;
-        transition: 0.3s;
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+      width:100%; padding:12px; border:1px solid #ccc;
+      border-radius:8px; font-size:15px; background:#fafafa;
+      transition:0.3s; box-shadow:inset 0 2px 4px rgba(0,0,0,0.05);
     }
-
     .form-group input:focus,
-    .form-group select:focus,
     .form-group textarea:focus {
-        border-color: #ffcc00;
-        box-shadow: 0 0 6px rgba(255, 204, 0, 0.5);
+      border-color:#ffcc00; box-shadow:0 0 6px rgba(255,204,0,0.5); outline:none;
     }
 
-    .form-btn button {
-        padding: 12px 25px;
-        background: #ffcc00;
-        color: #000;
-        border: none;
-        border-radius: 8px;
-        font-size: 18px;
-        cursor: pointer;
-        transition: 0.3s;
-        margin-top: 10px;
-    }
-
-    .form-btn button:hover {
-        background: #e6b800;
-    }
-
+    /* anonymous checkbox */
     .radio-btn {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+      display:flex; align-items:center; gap:10px;
     }
-
-    .radio-btn input[type="radio"] {
-        display: none;
-    }
-
+    .radio-btn input[type="checkbox"] { display:none; }
     .radio-btn label {
-        position: relative;
-        padding-left: 30px;
-        cursor: pointer;
-        font-size: 16px;
-        color: #555;
+      position:relative; padding-left:30px; cursor:pointer;
+      font-size:16px; color:#555;
     }
-
     .radio-btn label::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 20px;
-        height: 20px;
-        border: 2px solid #ffcc00;
-        border-radius: 50%;
-        background-color: #fff;
-        transition: 0.3s;
+      content:''; position:absolute; left:0; top:0;
+      width:20px; height:20px; border:2px solid #ffcc00;
+      border-radius:50%; background:#fff; transition:0.3s;
+    }
+    .radio-btn input[type="checkbox"]:checked + label::before {
+      background:#ffcc00; border-color:#e6b800;
+    }
+    .radio-btn input[type="checkbox"]:checked + label::after {
+      content:'✔'; position:absolute; left:4px; top:-2px;
+      font-size:14px; color:#fff;
     }
 
-    .radio-btn input[type="radio"]:checked + label::before {
-        background-color: #ffcc00;
-        border-color: #e6b800;
+    /* buttons */
+.form-btn {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-btn button {
+  padding: 12px 25px;
+  background:rgb(120, 71, 255);         /* Novalearn accent gold */
+  color: #fff;                 /* white text for contrast */
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.form-btn button:hover {
+  background:rgb(102, 7, 255);         /* slightly deeper gold on hover */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+    @media (max-width:768px) {
+      .form-card { padding:20px; }
     }
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <div class="logo">Novalearn</div>
+<a href="{{ path('app_HomeMedecin') }}">Home</a>
+    <a href="/post/all">Tous les Posts</a>
+    <a href="/post/add">Publier un Post</a>
+  </nav>
 
-    .radio-btn input[type="radio"]:checked + label::after {
-        content: '✔';
-        position: absolute;
-        left: 4px;
-        top: -2px;
-        font-size: 14px;
-        color: white;
-    }
+  <section class="hero">
+    <h1>Bienvenue sur <span>Novalearn !</span></h1>
+    <p>Un espace où chaque jour est une occasion d’apprendre et de grandir.</p>
+  </section>
 
-    @media (max-width: 768px) {
-        .form-inner {
-            grid-template-columns: 1fr;
-        }
+  <div class="form-card">
+    <h3 class="heading-title">Publier un Post</h3>
 
-        .form-container {
-            padding: 20px;
-        }
-    }
-</style>
-
-<div class="content-container">
-    <div class="form-container">
-        <h3 class="heading-title">Publier un Post</h3>
-
-        {{ form_start(postForm) }}
-        <div class="form-inner">
-            <div class="form-group">{{ form_row(postForm.title) }}</div>
-            <div class="form-group">{{ form_row(postForm.content) }}</div>
-            <div class="form-group radio-btn">{{ form_row(postForm.anonymous) }}</div>
+    {{ form_start(postForm) }}
+      <div class="form-inputs">
+        <div class="form-group">
+          {{ form_row(postForm.title) }}
         </div>
-
-        <div class="form-btn text-center">
-            <button type="submit">Publier</button>
+        <div class="form-group">
+          {{ form_row(postForm.content) }}
         </div>
-        {{ form_end(postForm) }}
-    </div>
-</div>
-
-{% endblock %}
+        <div class="form-group radio-btn">
+          {{ form_widget(postForm.anonymous) }}
+          <label for="{{ postForm.anonymous.vars.id }}">Publier en anonyme</label>
+        </div>
+      </div>
+      <div class="form-btn">
+        <button type="submit">Publier</button>
+      </div>
+    {{ form_end(postForm) }}
+  </div>
+</body>
+</html>
