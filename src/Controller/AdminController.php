@@ -18,7 +18,7 @@ class AdminController extends AbstractController
     {
         $parents = $userRepository->findBy(['role' => 'ROLE_PARENT']);
         $eleves = $userRepository->findBy(['role' => 'ROLE_ELEVE']);
-        $enseignants = $userRepository->findBy(['role' => 'enseignant']);
+        $enseignants = $userRepository->findBy(['role' => 'ROLE_ENSEIGNANT']);
         $medecins = $userRepository->findBy(['role' => 'ROLE_MEDECIN']);
         
         return $this->render('Admin/admin.html.twig', [
@@ -104,12 +104,12 @@ public function dashboard(UserRepository $userRepository): Response
 {
     $counts = [
         'eleves' => count($userRepository->findBy(['role' => 'ROLE_ELEVE'])),
-        'enseignants' => count($userRepository->findBy(['role' => 'enseignant'])),
+        'enseignants' => count($userRepository->findBy(['role' => 'ROLE_ENSEIGNANT'])),
         'parents' => count($userRepository->findBy(['role' => 'ROLE_PARENT'])),
         'medecins' => count($userRepository->findBy(['role' => 'ROLE_MEDECIN'])),
     ];
 
-    return $this->render('admin/dashboard.html.twig', [
+    return $this->render('Admin/dashboard.html.twig', [
         'counts' => $counts,
     ]);
 }

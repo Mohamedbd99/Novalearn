@@ -20,10 +20,10 @@ class FormEnsType extends AbstractType
         // src/Form/UserType.php
 ->add('role', ChoiceType::class, [
     'choices' => [
-        'Enseignant' => 'Enseignant',
-        'Parent' => 'Parent',
-        'User' => 'User',
-        'Medecin' => 'Medecin',
+        'Enseignant' => 'ROLE_ENSEIGNANT',
+        'Parent' => 'ROLE_PARENT',
+        'User' => 'ROLE_PARENT',
+        'Medecin' => 'ROLE_MEDECIN',
     ],
     'required' => true,  // Le champ doit être rempli
     'empty_data' => 'USER',  // Valeur par défaut si aucun choix n'est fait
