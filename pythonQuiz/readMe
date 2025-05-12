@@ -10,3 +10,4 @@ pip install fastapi uvicorn transformers
 cd pythonQuiz
 uvicorn app_BD:app --host 0.0.0.0 --port 8001
 uvicorn TextToSpeach:app --host 0.0.0.0 --port 8002
+uvicorn app_v1:app --host 0.0.0.0 --port 8003
