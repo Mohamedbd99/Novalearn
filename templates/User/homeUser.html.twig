@@ -52,23 +52,25 @@
 							<div class="main-nav-one">
 
 								<nav>
-									<ul>
-										<li>
-											<a class="nav-link" href="HomeUser">Home</a>
+									<ul>										<li>
+											<a class="nav-link" href="{{ path('app_HomeUser') }}">Home</a>
 										</li>
 										<li>
-											<a class="nav-link" href="AllQuiz">Quizzes</a>
+											<a class="nav-link" href="{{ path('allQuiz') }}">Quizzes</a>
 										</li>
 										<li>
-											<a class="nav-link" href="courseUser">Courses</a>
-										</li>
-										<li>
-											<a class="nav-link" href="exercice">Exercices</a>
-										</li>
-
-										 
-
-										<li class="nav-item dropdown">
+											<a class="nav-link" href="{{ path('app_course_user') }}">Courses</a>
+										</li>										<li>
+											<a class="nav-link" href="{{ path('app_exercice_index') }}">Exercices</a>
+										</li><li class="has-dropdown">
+											<a class="nav-link" href="{{ path('app_reclamation_front') }}">
+												<i class="fas fa-exclamation-circle me-1"></i>Réclamations
+											</a>
+											<ul class="submenu">
+												<li><a href="{{ path('app_reclamation_front') }}">Soumettre une réclamation</a></li>
+												<li><a href="{{ path('app_reclamation_user_list') }}">Mes réclamations</a></li>
+											</ul>
+										</li><li class="nav-item dropdown">
 											<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 												<i class="fas fa-user"></i>
 												<!-- Icône utilisateur -->
@@ -114,11 +116,11 @@
 
 
 								<p class="disc">Bienvenue sur NovaLearn, un espace où chaque jour est une occasion d’apprendre et de grandir.
-									                            Notre communauté dynamique œuvre pour favoriser l'apprentissage</p>
-
-
-								<div class="banner-btn">
+									                            Notre communauté dynamique œuvre pour favoriser l'apprentissage</p>								<div class="banner-btn">
 									<a href="about.html" class="rts-btn btn-primary border-radius">Explorer maintenant</a>
+									<a href="{{ path('app_reclamation_front') }}" class="rts-btn btn-secondary border-radius ms-3" style="background-color: #FF6B6B; border-color: #FF6B6B; color: white;">
+										<i class="fas fa-exclamation-circle me-2"></i>Soumettre une réclamation
+									</a>
 									<div class="video-btn-area">
 										<div class="vedio-icone">
 											<a class="video-play-button play-video popup-video" href="https://www.youtube.com/watch?v=ezbJwaLmOeM">

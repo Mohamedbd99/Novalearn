@@ -7,14 +7,93 @@
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/fav.png">
     <!-- fontawesome -->
     <link rel="stylesheet" href="/assets/css/plugins/fontawesome-6.css">
+    <!-- swiper Css -->
+    <link rel="stylesheet" href="/assets/css/plugins/swiper.min.css">
+    <!-- magnific popup css -->
+    <link rel="stylesheet" href="/assets/css/vendor/magnific-popup.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
+    <!-- jquery ui css -->
+    <link rel="stylesheet" href="/assets/css/vendor/jquery-ui.css">
+    <!-- metismenu scss -->
+    <link rel="stylesheet" href="/assets/css/vendor/metismenu.css">
     <!-- custom style css -->
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+    <!-- header style one -->
+    <header class="header-one header--sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="header-one-wrapper">
+                        <div class="left-side-header">
+                            <a href="{{ path('app_home') }}" class="logo-area">
+                                <img src="/assets/images/logo/logo-1.png" alt="logo" width="280" height="auto">
+                            </a>
+                        </div>
+
+                        <div class="main-nav-one">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
+                                    </li>
+                                    {% if app.user %}
+                                        {% if is_granted('ROLE_ELEVE') %}
+                                            <li>
+                                                <a class="nav-link" href="{{ path('allQuiz') }}">Quizzes</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" href="{{ path('app_course_user') }}">Courses</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" href="{{ path('app_exercice_index') }}">Exercices</a>
+                                            </li>                                            <li class="has-dropdown">
+                                                <a class="nav-link active" href="{{ path('app_reclamation_front') }}">
+                                                    <i class="fas fa-exclamation-circle me-1"></i>Réclamations
+                                                </a>
+                                                <ul class="submenu">
+                                                    <li><a href="{{ path('app_reclamation_front') }}">Soumettre une réclamation</a></li>
+                                                    <li><a class="active" href="{{ path('app_reclamation_user_list') }}">Mes réclamations</a></li>
+                                                </ul>
+                                            </li>
+                                        {% endif %}
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                        
+                        <div class="header-right-area-one">
+                            {% if app.user %}
+                                <div class="dropdown">
+                                    <a class="rts-btn btn-primary border-radius dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fas fa-user me-2"></i>{{ app.user.nom }}
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                        <li><a class="dropdown-item" href="{{ path('app_profile') }}">Gérer le profil</a></li>
+                                        <li>
+                                            <form action="{{ path('app_logout') }}" method="post" class="dropdown-item">
+                                                <button type="submit" class="btn btn-link p-0">Se Déconnecter</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            {% else %}
+                                <div class="buttons-area">
+                                    <a href="{{ path('app_login') }}" class="rts-btn btn-primary border-radius">Connexion</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header style end -->
+
     <!-- Start Contact form area -->
-    <div class="rts-contact-form-area rts-section-gap">
+    <div class="rts-contact-form-area rts-section-gap pt--100">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -74,10 +153,69 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Bootstrap & jQuery JS -->
+    </div>    <!-- Bootstrap & jQuery JS -->
     <script src="/assets/js/vendor/jquery.min.js"></script>
     <script src="/assets/js/vendor/bootstrap.min.js"></script>
+    
+    <!-- Footer area start -->
+    <footer class="rts-footer-one footer-bg footer-bg-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-one-main-wrapper">
+                        <!-- single sized footer -->
+                        <div class="footer-single-wized left-logo">
+                            <div class="head">
+                                <a href="{{ path('app_home') }}">
+                                    <img src="/assets/images/logo/logo-1.png" alt="logo" loading="lazy">
+                                </a>
+                            </div>
+                            <div class="body">
+                                <p class="dsic">
+                                    Novalearn est dédié à fournir des ressources d'apprentissage de haute qualité pour des apprenants de tous horizons.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- single sized footer end -->
+                        
+                        <!-- single sized footer -->
+                        <div class="footer-single-wized">
+                            <div class="head">
+                                <h6 class="title">Services</h6>
+                            </div>
+                            <div class="body">
+                                <ul class="menu">
+                                    <li><a href="{{ path('allQuiz') }}">Quizzes</a></li>
+                                    <li><a href="{{ path('app_course_user') }}">Cours</a></li>
+                                    <li><a href="{{ path('app_exercice_index') }}">Exercices</a></li>
+                                    <li><a href="{{ path('app_reclamation_front') }}">Soumettre une réclamation</a></li>
+                                    <li><a href="{{ path('app_reclamation_user_list') }}">Suivre mes réclamations</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- single sized footer end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area-one-border">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright-area-one">
+                            <p>Copyright © 2025 Tous droits réservés par Novalearn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer area end -->
+    
+    <!-- Additional scripts -->
+    <script src="/assets/js/vendor/jquery-ui.js"></script>
+    <script src="/assets/js/plugins/swiper.js"></script>
+    <script src="/assets/js/plugins/metismenu.js"></script>
+    <script src="/assets/js/theme.js"></script>
 </body>
 </html>

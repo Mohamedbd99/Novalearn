@@ -27,9 +27,8 @@ class Blog
     private ?string $category = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $created_at = null;
-
-    #[ORM\ManyToOne]
+    private ?\DateTimeInterface $created_at = null;    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'blogs')]
+    #[ORM\JoinColumn(name: 'author_id', referencedColumnName: 'id')]
     private ?User $author = null;
 
     // Ajout de la nouvelle propriété 'title'

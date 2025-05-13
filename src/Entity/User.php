@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -59,44 +61,72 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $specialite = null;
 
     #[ORM\Column(name: "isVerified", type: "boolean", nullable: false)]
-private bool $isVerified = false;
+    private bool $isVerified = false;
     
-#[ORM\Column(name: "verificationToken", type: "string", length: 255, nullable: false)]
-private string $verificationToken;
+    #[ORM\Column(name: "verificationToken", type: "string", length: 255, nullable: false)]
+    private string $verificationToken;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-private ?int $verification_code = null;
+    private ?int $verification_code = null;
 
-#[ORM\Column(type: 'boolean')]
-private bool $isActive = true;
+    #[ORM\Column(type: 'boolean')]
+    private bool $isActive = true;
 
+    /**
+     * @var Collection<int, Course>
+     */
+    #[ORM\OneToMany(targetEntity: Course::class, mappedBy: 'author')]
+    private Collection $courses;
 
+    /**
+     * @var Collection<int, Post>
+     */
+    #[ORM\OneToMany(targetEntity: Post::class, mappedBy: 'user')]
+    private Collection $posts;
+
+    /**
+     * @var Collection<int, Quiz>
+     */
+    #[ORM\OneToMany(targetEntity: Quiz::class, mappedBy: 'user')]
+    private Collection $quizzes;
+
+    /**
+ * @var Collection<int, Blog>
+ */
+#[ORM\OneToMany(mappedBy: 'author', targetEntity: Blog::class)]
+private Collection $blogs;
+
+public function __construct()
+{
+    $this->courses = new ArrayCollection();
+    $this->posts = new ArrayCollection();
+    $this->quizzes = new ArrayCollection();
+    $this->blogs = new ArrayCollection();
+}
 
     // Getters and Setters
 
-    
     public function getVerificationCode(): ?int
-{
-    return $this->verification_code;
-}
+    {
+        return $this->verification_code;
+    }
 
-public function setVerificationCode(?int $verification_code): static
-{
-    $this->verification_code = $verification_code;
-    return $this;
-}
+    public function setVerificationCode(?int $verification_code): static
+    {
+        $this->verification_code = $verification_code;
+        return $this;
+    }
 
-public function getIsActive(): bool
-{
-    return $this->isActive;
-}
+    public function getIsActive(): bool
+    {
+        return $this->isActive;
+    }
 
-public function setIsActive(bool $isActive): static
-{
-    $this->isActive = $isActive;
-    return $this;
-}
-
+    public function setIsActive(bool $isActive): static
+    {
+        $this->isActive = $isActive;
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -269,6 +299,124 @@ public function setIsActive(bool $isActive): static
     public function setVerificationToken(?string $verificationToken): self
     {
         $this->verificationToken = $verificationToken;
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Course>
+     */
+    public function getCourses(): Collection
+    {
+        return $this->courses;
+    }
+
+    public function addCourse(Course $course): static
+    {
+        if (!$this->courses->contains($course)) {
+            $this->courses->add($course);
+            $course->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCourse(Course $course): static
+    {
+        if ($this->courses->removeElement($course)) {
+            // set the owning side to null (unless already changed)
+            if ($course->getAuthor() === $this) {
+                $course->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Post>
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    public function addPost(Post $post): static
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts->add($post);
+            $post->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(Post $post): static
+    {
+        if ($this->posts->removeElement($post)) {
+            // set the owning side to null (unless already changed)
+            if ($post->getUser() === $this) {
+                $post->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Quiz>
+     */
+    public function getQuizzes(): Collection
+    {
+        return $this->quizzes;
+    }
+
+    public function addQuiz(Quiz $quiz): static
+    {
+        if (!$this->quizzes->contains($quiz)) {
+            $this->quizzes->add($quiz);
+            $quiz->setUser($this);
+        }
+
+        return $this;
+    }    public function removeQuiz(Quiz $quiz): static
+    {
+        if ($this->quizzes->removeElement($quiz)) {
+            // set the owning side to null (unless already changed)
+            if ($quiz->getUser() === $this) {
+                $quiz->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+    
+    /**
+     * @return Collection<int, Blog>
+     */
+    public function getBlogs(): Collection
+    {
+        return $this->blogs;
+    }
+
+    public function addBlog(Blog $blog): static
+    {
+        if (!$this->blogs->contains($blog)) {
+            $this->blogs->add($blog);
+            $blog->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBlog(Blog $blog): static
+    {
+        if ($this->blogs->removeElement($blog)) {
+            // set the owning side to null (unless already changed)
+            if ($blog->getAuthor() === $this) {
+                $blog->setAuthor(null);
+            }
+        }
+
         return $this;
     }
 }
