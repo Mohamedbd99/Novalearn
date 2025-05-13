@@ -1,0 +1,13 @@
+{% extends 'Admin/admin_layout.html.twig' %}
+
+{% block content %}
+<h1>Éditer Catégorie</h1>
+<div class="table-container">
+    {{ form_start(form) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.description) }}
+        <button class="btn btn-ajout">Enregistrer</button>
+    {{ form_end(form) }}
+    <a href="{{ path('admin_categories') }}" class="btn btn-delete">Retour</a>
+</div>
+{% endblock %}

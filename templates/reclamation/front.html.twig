@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soumettre une réclamation - NovaLearn</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/fav.png">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="/assets/css/plugins/fontawesome-6.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
+    <!-- custom style css -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        .form-error {
+            color: #dc3545;
+            display: block;
+            margin-top: 5px;
+            font-size: 0.875em;
+        }
+        
+        .is-invalid {
+            border-color: #dc3545 !important;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(0.375em + 0.1875rem) center;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+        }
+        
+        .profanity-warning {
+            color: #dc3545;
+            background-color: rgba(220, 53, 69, 0.1);
+            border-left: 3px solid #dc3545;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .alert ul {
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Start Contact form area -->
+    <div class="rts-contact-form-area rts-section-gap pt--100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-area-rts text-center">
+                        <h2 class="title">Soumettre une réclamation</h2>
+                        <p>Vous rencontrez un problème ou avez une suggestion ? Soumettez votre réclamation ci-dessous.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt--50">
+            <div class="col-12 col-lg-8">
+                    <div class="form-wrapper">
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-success">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        
+                        {% if form.vars.errors|length > 0 %}
+                            <div class="alert alert-danger">
+                                <h5>Veuillez corriger les erreurs suivantes:</h5>
+                                <ul>
+                                    {% for error in form.vars.errors %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+
+                        {{ form_start(form, {'attr': {'class': 'contact-form-contact'}}) }}
+                            <div class="form-group mb-4">
+                                {{ form_label(form.category) }}
+                                {{ form_widget(form.category) }}
+                                {{ form_errors(form.category) }}
+                            </div>
+                            <div class="form-group mb-4">
+                                {{ form_label(form.nom) }}
+                                {{ form_widget(form.nom) }}
+                                {{ form_errors(form.nom) }}
+                            </div>
+                            <div class="form-group mb-4">
+                                {{ form_label(form.email) }}
+                                {{ form_widget(form.email) }}
+                                {{ form_errors(form.email) }}
+                            </div>
+                            <div class="form-group mb-4">
+                                {{ form_label(form.message) }}
+                                {{ form_widget(form.message) }}
+                                {{ form_errors(form.message) }}
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="rts-btn btn-primary">Envoyer ma réclamation</button>
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <a href="{{ path('app_reclamation_user_list') }}" class="rts-btn btn-primary">Suivre mes réclamations</a>
+                    <a href="/" class="rts-btn btn-secondary">Retour à l'accueil</a>
+                </div>
+            </div>
+        </div>
+    </div>    <!-- Bootstrap & jQuery JS -->
+    <script src="/assets/js/vendor/jquery.min.js"></script>
+    <script src="/assets/js/vendor/bootstrap.min.js"></script>
+    
+    <!-- Profanity check script -->
+    <script>
+        $(document).ready(function() {
+            // Simple list of common profanity words to check client-side
+            // This is just a basic check - server-side validation is more thorough
+            const basicProfanityList = [
+                'fuck', 'shit', 'ass', 'bitch', 'damn', 
+                'dick', 'cunt', 'bastard', 'piss'
+                // Note: this is just a minimal example list
+            ];
+            
+            // Helper function to check text against profanity list
+            function containsProfanity(text) {
+                if (!text) return false;
+                
+                text = text.toLowerCase();
+                for (const word of basicProfanityList) {
+                    if (text.includes(word)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            
+            // Function to show warning if profanity is detected
+            function checkInputForProfanity(input) {
+                const value = $(input).val();
+                const fieldName = $(input).attr('name').replace('reclamation_front[', '').replace(']', '');
+                const fieldLabel = fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
+                
+                // Remove any existing warning
+                $(input).next('.profanity-warning').remove();
+                
+                // Check for profanity
+                if (containsProfanity(value)) {
+                    $(input).addClass('is-invalid');
+                    $('<div class="profanity-warning text-danger mt-1">Attention: Ce texte pourrait contenir des termes inappropriés.</div>')
+                        .insertAfter(input);
+                } else {
+                    $(input).removeClass('is-invalid');
+                }
+            }
+            
+            // Check message and name fields as user types
+            $('#reclamation_front_message').on('blur', function() {
+                checkInputForProfanity(this);
+            });
+            
+            $('#reclamation_front_nom').on('blur', function() {
+                checkInputForProfanity(this);
+            });
+            
+            // Final check on form submission
+            $('form.contact-form-contact').on('submit', function(e) {
+                let hasProfanity = false;
+                
+                // Check all text inputs and textareas
+                $('input[type="text"], textarea', this).each(function() {
+                    if (containsProfanity($(this).val())) {
+                        checkInputForProfanity(this);
+                        hasProfanity = true;
+                    }
+                });
+                
+                // If profanity is found, show warning but still allow submission
+                // (server-side validation will handle it)
+                if (hasProfanity) {
+                    if (!confirm('Des termes inappropriés ont été détectés. Ils seront automatiquement filtrés. Voulez-vous continuer?')) {
+                        e.preventDefault();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
